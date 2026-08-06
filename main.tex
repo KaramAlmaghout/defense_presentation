@@ -1,0 +1,1505 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% Match the dissertation's pdfLaTeX typography: the Computer Modern/CM-Super
+% serif family is used for body text, headings, and mathematics.
+\usefonttheme{serif}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,tabularx,array,multirow}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage[
+  backend=biber,
+  bibencoding=utf8,
+  sorting=none,
+  style=numeric,
+  maxnames=99,
+  doi=false,
+  url=false,
+  isbn=false
+]{biblatex}
+\addbibresource{publications.bib}
+
+% Publication format requested for the defense slide:
+% Authors. Title // Venue. – Year. – Vol. x, No. y. – P. z. DOI: URL.
+\DeclareNameFormat{publicationauthor}{%
+  \nameparts{#1}%
+  \ifitemannotation{highlight}
+    {\mkbibbold{\namepartfamily\addspace\namepartgiveni}}
+    {\namepartfamily\addspace\namepartgiveni}%
+  \ifnumless{\value{listcount}}{\value{liststop}}
+    {\addcomma\space}
+    {}}
+\DeclareFieldFormat{publicationtitle}{#1}
+\DeclareFieldFormat{publicationvenue}{#1}
+\DeclareFieldFormat{publicationpages}{#1}
+\DeclareFieldFormat{publicationdoi}{%
+  \href{https://doi.org/#1}{\nolinkurl{https://doi.org/#1}}}
+\newbibmacro*{publicationentry}{%
+  \printnames[publicationauthor]{author}%
+  \addperiod\space
+  \printfield[publicationtitle]{title}%
+  \space\text{//}\space
+  \ifentrytype{article}
+    {\printfield[publicationvenue]{journaltitle}}
+    {\printfield[publicationvenue]{booktitle}}%
+  \addperiod\space\textendash\space
+  \printfield{year}\addperiod
+  \iffieldundef{volume}
+    {}
+    {\space\textendash\space Vol.\space\printfield{volume}%
+     \iffieldundef{number}{}{,\space No.\space\printfield{number}}%
+     \addperiod}%
+  \iffieldundef{pages}
+    {}
+    {\space\textendash\space P.\space\printfield[publicationpages]{pages}\addperiod}%
+  \iffieldundef{doi}
+    {}
+    {\space DOI:\space\printfield[publicationdoi]{doi}\addperiod}}
+\DeclareCiteCommand{\publicationcite}
+  {}
+  {\usebibmacro{publicationentry}}
+  {\multicitedelim}
+  {}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric,decorations.pathreplacing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{appendixnumberbeamer}
+
+\graphicspath{{assets/}}
+\input{theme}
+
+\title[Mathematical modeling and motion planning for DLOs]{%
+  Mathematical Modeling and Motion Planning\\
+  for Robotic Manipulation of Deformable Linear Objects}
+\subtitle{Thesis for the degree of Candidate of Technical Sciences}
+\author[Karam Almaghout]{Karam Almaghout}
+\institute{%
+  Innopolis University\\[0.5ex]
+  Scientific supervisor: Alexandr Klimchik, PhD\\[0.7ex]
+  Specialty 1.2.2 --- Mathematical modeling, numerical methods and software packages}
+\date{Innopolis, 2026}
+
+\hypersetup{
+  pdftitle={Mathematical Modeling and Motion Planning for Robotic Manipulation of Deformable Linear Objects},
+  pdfauthor={Karam Almaghout},
+  colorlinks=true,
+  linkcolor=IUBlue,
+  urlcolor=IUBlue
+}
+
+\newcommand{\DLO}{\mathrm{DLO}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cfree}{\mathcal{C}_{\mathrm{free}}}
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% 1. Title
+% -----------------------------------------------------------------------------
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[IUBlue] (current page.north west) rectangle
+      ([yshift=-3.72cm]current page.north east);
+    % \draw[white!70,line width=1.2pt]
+    %   ([xshift=0.8cm,yshift=-3.47cm]current page.north west)
+    %   .. controls +(2.1cm,0.85cm) and +(-2.0cm,-0.65cm) ..
+    %   ([xshift=-0.8cm,yshift=-3.37cm]current page.north east);
+    % \foreach \x/\y in {1.2/-3.30,2.55/-2.97,4.0/-3.04,5.45/-3.39,6.9/-3.57,8.35/-3.40,9.8/-3.05,11.25/-3.00,12.7/-3.26,14.15/-3.38}{
+    %   \fill[white] ([xshift=\x cm,yshift=\y cm]current page.north west) circle (1.35pt);
+    % }
+  \end{tikzpicture}
+
+  \vspace*{0.48cm}
+  \begin{center}
+    {\color{white}\usebeamerfont{title}\inserttitle\par}
+    \vspace{0.34cm}
+    {\color{white!92}\usebeamerfont{subtitle}\insertsubtitle\par}
+  \end{center}
+
+  \vspace{1.12cm}
+  \begin{center}
+    {\large\bfseries Karam Almaghout}\par
+    \vspace{0.35cm}
+    {\small Innopolis University}\par
+    \vspace{0.28cm}
+    {\small Scientific supervisor: \textbf{Alexandr Klimchik, PhD}}\par
+    \vspace{0.42cm}
+    \begin{tikzpicture}
+      \node[draw=IUBlue,line width=0.7pt,rounded corners=2pt,fill=IUPaleBlue,
+        inner xsep=8pt,inner ysep=5pt,align=center] {
+        \textbf{Specialty 1.2.2}\\[-0.2ex]
+        \small Mathematical modeling, numerical methods and software packages};
+    \end{tikzpicture}
+    \vfill
+    {\small Innopolis, 2026}
+  \end{center}
+
+  \note{0:25. Introduce the title, specialty, candidate, and supervisor. State that the talk is organized around the scientific problem, five novelty results, four principal statements of the thesis, and their verification.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 2. Relevance
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Relevance}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \vspace{0.1cm}
+      \begin{tikzpicture}[node distance=0.17cm]
+        \node[flowbox,text width=6.65cm,minimum height=1.02cm,anchor=north west] (a) at (0,0) {
+          \textbf{Distributed state}\\[-0.3ex]
+          \scriptsize A DLO has infinite degrees of freedom; the two grasped ends do not determine its shape.};
+        \node[circle,fill=IUBlue,text=white,font=\bfseries\scriptsize,inner sep=2.2pt] at ([xshift=-0.12cm]a.west) {1};
+
+        \node[flowbox,text width=6.65cm,minimum height=1.02cm,anchor=north west,below=of a] (b) {
+          \textbf{Unknown, variable mechanics}\\[-0.3ex]
+          \scriptsize Bending and contact are nonlinear; material identification is costly and cable-specific.};
+        \node[circle,fill=IUBlue,text=white,font=\bfseries\scriptsize,inner sep=2.2pt] at ([xshift=-0.12cm]b.west) {2};
+
+        \node[flowbox,text width=6.65cm,minimum height=1.02cm,anchor=north west,below=of b] (c) {
+          \textbf{Whole-object collision}\\[-0.3ex]
+          \scriptsize Safe end-effector paths or collision-free snapshots do not guarantee a safe cable deformation.};
+        \node[circle,fill=IUBlue,text=white,font=\bfseries\scriptsize,inner sep=2.2pt] at ([xshift=-0.12cm]c.west) {3};
+      \end{tikzpicture}
+
+      \vspace{0.23cm}
+      \begin{beamercolorbox}[wd=\linewidth,sep=5pt]{claimbar}
+        \small\textbf{Research requirement:} the complete DLO shape must be observed,
+        represented, planned, and controlled.
+      \end{beamercolorbox}
+    \end{column}
+
+    \begin{column}{0.49\textwidth}
+      \begin{columns}[T,totalwidth=\linewidth]
+        \begin{column}{0.55\linewidth}
+          \includegraphics[width=\linewidth,height=2.42cm,keepaspectratio]{wire_harness.jpg}
+          \centering\scriptsize Wire-harness assembly
+        \end{column}
+        \begin{column}{0.43\linewidth}
+          \includegraphics[width=\linewidth,height=2.42cm,keepaspectratio]{surgical_threads.png}
+          \centering\scriptsize Surgical-thread manipulation
+        \end{column}
+      \end{columns}
+
+      \vspace{0.25cm}
+      \begin{tikzpicture}
+        \node[gapbox,text width=6.85cm,minimum height=1.55cm] {
+          \textbf{Research problem}\\[0.2ex]
+          \small Transition from \textbf{local shape correction} to
+          \textbf{large, obstacle-constrained deformation}.};
+      \end{tikzpicture}
+
+      \source{Dissertation Introduction and Synopsis, Relevance of the thesis topic.}
+    \end{column}
+  \end{columns}
+
+  \note{0:55. Motivate with industrial and medical examples. Emphasize the three coupled difficulties, then state the central unresolved transition exactly: from local correction to large obstacle-constrained deformation.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 3. Research landscape: diagram inspired by slide 2 of Thesis presentation.pdf
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Problem formulation}
+  \centering
+  \begin{tikzpicture}[x=0.98cm,y=0.92cm]
+    \def\xA{1.15}
+    \def\xB{5.25}
+    \def\xC{9.35}
+    \def\w{3.75}
+
+    % Row-based problem traceability follows the supplied thesis-presentation template.
+    \draw[RuleGray,dashed,line width=0.65pt] (0.78,4.55) -- (13.36,4.55);
+    \draw[RuleGray,dashed,line width=0.65pt] (0.78,3.02) -- (13.36,3.02);
+    \draw[RuleGray,dashed,line width=0.65pt] (0.78,1.48) -- (13.36,1.48);
+
+    \node[font=\bfseries\fontsize{6.3}{7.0}\selectfont,text=MidGray,align=center,text width=1.45cm] at (0.26,5.28) {PROBLEM};
+    \node[font=\bfseries\fontsize{6.3}{7.0}\selectfont,text=MidGray,align=center,text width=1.45cm] at (0.26,3.78) {METHODS};
+    \node[font=\bfseries\fontsize{6.3}{7.0}\selectfont,text=MidGray,align=center,text width=1.45cm] at (0.26,2.25) {LIMITS};
+    \node[font=\bfseries\fontsize{6.3}{7.0}\selectfont,text=MidGray,align=center,text width=1.45cm] at (0.26,0.62) {RESULTS};
+
+    \node[flowbox,text width=11.92cm,minimum height=1.0cm,anchor=south west] at (1.15,4.73) {
+      \textbf{Planar dual-arm DLO manipulation under large deformation and workspace obstacles}\\[-0.1ex]
+      \footnotesize without prior identification of dynamic or material parameters};
+
+    \node[flowbox,text width=\w cm,minimum height=1.12cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xA,3.26) {
+      \textbf{DLO reconstruction}\\ Artificial markers or dense contours};
+    \node[flowbox,text width=\w cm,minimum height=1.12cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xB,3.26) {
+      \textbf{Shape control}\\ Local Jacobians; identified or learned models};
+    \node[flowbox,text width=\w cm,minimum height=1.12cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xC,3.26) {
+      \textbf{Cable motion planning}\\ End-effector paths or isolated DLO states};
+
+    \node[gapbox,text width=\w cm,minimum height=1.28cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xA,1.72) {
+      No ordered marker-free state for discrete planning and control};
+    \node[gapbox,text width=\w cm,minimum height=1.28cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xB,1.72) {
+      Local deformation range or dependence on identified and trained models};
+    \node[gapbox,text width=\w cm,minimum height=1.28cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xC,1.72) {
+      Static-state collision tests omit swept-transition feasibility};
+
+    \node[contribution,text width=\w cm,minimum height=1.24cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xA,0.00) {
+      \textbf{Finite-dimensional state + VFPs}\\ Ordered image-based reconstruction};
+    \node[contribution,text width=\w cm,minimum height=1.24cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xB,0.00) {
+      \textbf{ALI + Jacobian + OCP}\\ Length-feasible large-deformation control};
+    \node[contribution,text width=\w cm,minimum height=1.24cm,inner sep=3pt,
+      font=\fontsize{7.1}{8.1}\selectfont,anchor=south west] at (\xC,0.00) {
+      \textbf{GCR configuration-space model}\\ Ordered swept-transition validation};
+
+    \node[tinylabel] at (3.03,-0.32) {Chapter 2};
+    \node[tinylabel] at (7.13,-0.32) {Chapter 3};
+    \node[tinylabel] at (11.23,-0.32) {Chapter 4};
+  \end{tikzpicture}
+
+  \note{1:05. Read the diagram by rows. State the formal problem, compare the three method classes, identify their methodological limitations, and map the dissertation results to Chapters 2--4. The columns are independent; no perception-to-GCR data flow is implied.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 4. Integrated methodology
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Research methodology}
+  \begin{block}{Shape control (Chapters 2--3)}
+    \centering
+    \begin{tikzpicture}[x=1cm,y=1cm,
+      methodarrow/.style={-{Latex[length=1.65mm,width=1.15mm]},line width=0.55pt,draw=IUBlue}]
+      \node[flowbox,text width=1.55cm,minimum height=0.58cm,font=\scriptsize] (rgb) at (0.90,0.45) {RGB image};
+      \node[constraintbox,text width=1.55cm,minimum height=0.58cm,font=\scriptsize] (target) at (0.90,-0.43) {Target \(\bm t\)};
+      \node[contribution,text width=1.85cm,minimum height=0.58cm,font=\scriptsize] (vfp) at (3.05,0.45) {VFP state \(\bm p\)\\[-0.2ex]points \(N\)};
+      \node[contribution,text width=1.85cm,minimum height=0.58cm,font=\scriptsize] (ali) at (3.05,-0.43) {ALI target \(\bm p^\kappa\)\\[-0.2ex]\(\lambda,K\)};
+      \node[flowbox,text width=1.65cm,minimum height=0.68cm,font=\scriptsize] (error) at (5.35,0.01) {Stage error\\\(\bm e^\kappa=\bm p^\kappa-\bm p\)};
+      \node[flowbox,text width=2.25cm,minimum height=0.68cm,font=\scriptsize] (control) at (7.90,0.01) {Geometric Jacobian + OCP\\[-0.2ex]\(\bm\eta,\varepsilon\)};
+      \node[flowbox,text width=1.65cm,minimum height=0.68cm,font=\scriptsize] (robot) at (10.45,0.01) {Bounded dual-arm step};
+      \node[contribution,text width=2.15cm,minimum height=0.68cm,font=\scriptsize] (validation) at (12.95,0.01) {MATLAB study + physical KUKA validation};
+      \draw[methodarrow] (rgb)--(vfp);
+      \draw[methodarrow] (target)--(ali);
+      \draw[methodarrow] (vfp)--(error);
+      \draw[methodarrow] (ali)--(error);
+      \draw[methodarrow] (error)--(control);
+      \draw[methodarrow] (control)--(robot);
+      \draw[methodarrow] (robot)--(validation);
+    \end{tikzpicture}
+  \end{block}
+
+  \vspace{-0.03cm}
+  \begin{block}{Global routing (Chapter 4)}
+    \centering
+    \begin{tikzpicture}[x=1cm,y=1cm,
+      methodarrow/.style={-{Latex[length=1.65mm,width=1.15mm]},line width=0.55pt,draw=IUBlue}]
+      \node[constraintbox,text width=1.90cm,minimum height=0.58cm,font=\scriptsize] (states) at (1.05,0.45) {\(C_{\mathrm{start}},C_{\mathrm{goal}}\)};
+      \node[constraintbox,text width=1.90cm,minimum height=0.58cm,font=\scriptsize] (map) at (1.05,-0.43) {\(\mathcal O,d_{\min}\)};
+      \node[contribution,text width=2.45cm,minimum height=0.68cm,font=\scriptsize] (generate) at (4.00,0.01) {Sampling + APF + relaxation\\[-0.2ex]\(p_g,p_t,\epsilon\)};
+      \node[flowbox,text width=2.35cm,minimum height=0.68cm,font=\scriptsize] (edge) at (7.05,0.01) {Ordered transition validation \(\Gamma\)};
+      \node[flowbox,text width=2.15cm,minimum height=0.68cm,font=\scriptsize] (path) at (9.90,0.01) {Refined path\\\(\mathcal P=\{C_0,\ldots,C_K\}\)};
+      \node[contribution,text width=2.25cm,minimum height=0.68cm,font=\scriptsize] (simulation) at (12.75,0.01) {C++ benchmarks + MuJoCo validation};
+      \draw[methodarrow] (states)--(generate);
+      \draw[methodarrow] (map)--(generate);
+      \draw[methodarrow] (generate)--(edge);
+      \draw[methodarrow] (edge)--(path);
+      \draw[methodarrow] (path)--(simulation);
+    \end{tikzpicture}
+  \end{block}
+
+  \note{0:55. Present the two studies as independent branches. The Chapter 3 controller uses the VFP-observed state and prescribed target shapes. Chapter 4 starts from prescribed cable configurations and obstacle geometry; it does not use the perception pipeline.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 5. Goal, object, subject, tasks
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Goal and objectives}
+  \begin{beamercolorbox}[wd=\textwidth,sep=5pt,left]{claimbar}
+    \small\textbf{Goal.} Develop a system of mathematical models and effective numerical methods for
+    dual-arm DLO shape control and routing under large planar deformations and workspace obstacles,
+    \textbf{without prior identification of dynamic and material parameters}.
+  \end{beamercolorbox}
+
+  \vspace{0.22cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.37\textwidth}
+      \begin{block}{Object of research}
+        \small The process of planar dual-arm robotic manipulation of deformable linear objects.
+      \end{block}
+      \vspace{-0.05cm}
+      \begin{block}{Subject of research}
+        \small Mathematical models, numerical methods, and algorithms for representation,
+        simulation, visual reconstruction, deformation-path generation, control, and routing.
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.61\textwidth}
+      \begin{enumerate}\small
+        \item Reconstruct a featureless planar DLO as an ordered point set from RGB images.
+        \item Construct length-feasible intermediary shapes for large deformation, including concavity reversal.
+        \item Model the local robot--cable relation and calculate bounded dual-arm motion by constrained optimization.
+        \item Formulate a configuration-space model and numerical global-routing method with swept-transition constraints.
+        \item Implement and verify the methods by computational experiments, physics simulation, and physical shape-control experiments.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+
+  \note{0:55. Read the goal nearly verbatim because it is the formal thesis formulation. Summarize the object and subject, then use the five tasks as the roadmap for the rest of the talk.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 6. Formal problem
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Mathematical formulation}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=3.92cm,keepaspectratio]{dlo_state.png}
+      \source{Dissertation, Chapter 2: ordered current and target DLO shapes.}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \begin{block}{Finite-dimensional cable state}
+        \vspace{-0.4ex}
+        \footnotesize
+        \[
+          \bm p=[\bm p_1^{\mathsf T},\ldots,\bm p_N^{\mathsf T}]^{\mathsf T}
+          \in\R^{2N},\qquad \bm p_n=[x_n,y_n]^{\mathsf T}.
+        \]
+      \end{block}
+
+      \vspace{-0.05cm}
+      \begin{itemize}\scriptsize
+        \item \textbf{Shape-control problem:} find bounded dual-arm motions that drive
+          \(\bm p\) through admissible intermediary shapes to target \(\bm t\).
+        \item \textbf{Routing problem:} find
+          \(\mathcal P=\{C_0,\ldots,C_K\}\subset\Cfree\) with admissible
+          deformations between every neighboring pair.
+        \item \textbf{Identification-free control requirement:} no prior identification of
+          cable stiffness, damping, or learned dynamics.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.10cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.2pt,left]{claimbar}
+    \scriptsize\textbf{Modeling assumptions used in Chapters 2--4.}
+    The methods are formulated for planar, quasi-static DLO motion, dual-arm endpoint
+    grasps, and known static obstacles. Top-view RGB perception is used only for physical
+    shape-control validation. These assumptions delimit the reported results.
+  \end{beamercolorbox}
+
+  \note{0:55. Define the common point state first. Distinguish the local shape-control problem from the global routing problem. Explain that planar and quasi-static motion, endpoint grasps, and known obstacles are the modeling assumptions adopted in Chapters 2--4; they delimit the reported results rather than constituting separate contributions. RGB perception belongs only to the physical shape-control study.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 7. Ordered representation
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Ordered DLO representation}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.50\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=3.72cm,keepaspectratio]{dlo_state.png}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Finite-dimensional state}
+        \small
+        \[\bm p=[\bm p_1^{\mathsf T},\ldots,\bm p_N^{\mathsf T}]^{\mathsf T}\in\R^{2N},\]
+        \vspace{-1.2ex}
+        \[\|\bm p_{n+1}-\bm p_n\|\approx l_s.\]
+      \end{block}
+      \begin{itemize}\footnotesize
+        \item ordered material points \(\bm p_1,\ldots,\bm p_N\);
+        \item approximately equidistant centerline discretization;
+        \item direct pointwise correspondence with the target state \(\bm t\);
+        \item compatible with the developed discrete planning and control models.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.12cm}
+  \centering
+  \begin{tikzpicture}
+    \node[contribution,text width=13.25cm,minimum height=1.02cm,font=\small,align=left] {
+      \textbf{Scientific result 1.} An image-based method reconstructs the ordered finite-dimensional state of a marker-free planar cable. VFPs supplies approximately equidistant material points directly compatible with the discrete planning and control models.};
+  \end{tikzpicture}
+
+  \note{0:55. Define the state and its ordering. State Scientific Result 1 using the synopsis formulation: marker-free image-based reconstruction, approximately equidistant material points, and direct compatibility with the developed planning and control models. Do not imply that VFP images are used by GCR.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 9. VFP
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{VFP reconstruction}
+  \centering
+  \includegraphics[width=0.88\textwidth,height=4.35cm,keepaspectratio]{vfps_pipeline.png}
+
+  \vspace{0.08cm}
+  \begin{tikzpicture}[node distance=0.18cm]
+    \node[flowbox,text width=2.95cm,minimum height=0.82cm,font=\footnotesize] (s1) {\textbf{1. Segment}\\[-0.2ex]marked tool and cable};
+    \node[flowbox,text width=2.95cm,minimum height=0.82cm,font=\footnotesize,right=of s1] (s2) {\textbf{2. Thin}\\[-0.2ex]one-pixel centerline};
+    \node[flowbox,text width=2.95cm,minimum height=0.82cm,font=\footnotesize,right=of s2] (s3) {\textbf{3. Traverse}\\[-0.2ex]sliding circular mask};
+    \node[contribution,text width=2.95cm,minimum height=0.82cm,font=\footnotesize,right=of s3] (s4) {\textbf{4. Reconstruct}\\[-0.2ex]ordered VFP set};
+    \draw[processarrow] (s1) -- (s2);
+    \draw[processarrow] (s2) -- (s3);
+    \draw[processarrow] (s3) -- (s4);
+  \end{tikzpicture}
+
+  \vspace{0.12cm}
+  \begin{beamercolorbox}[wd=0.90\textwidth,sep=3.5pt,center]{claimbar}
+    \small The cable remains marker-free; one marked gripper establishes the material-point traversal order.
+  \end{beamercolorbox}
+
+  \note{0:55. Clarify the wording: the cable is marker-free, while one tool is marked to establish the starting end. Describe segmentation, thinning, circular-mask traversal, and ordered output.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 10. Simulation model
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Simulation model}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \footnotesize\textbf{Purpose.} The mass--spring model provides a controlled numerical
+    environment for parameter studies; it is not an input to the shape controller.
+  \end{beamercolorbox}
+
+  \vspace{0.18cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.34\textwidth}
+      \begin{block}{Discretization}
+        \centering
+        \includegraphics[width=\linewidth,height=2.25cm,keepaspectratio]{mass_spring.png}
+        \vspace{0.05cm}
+        \begin{itemize}\scriptsize
+          \item point masses represent the ordered DLO state;
+          \item linear springs penalize segment extension;
+          \item torsional springs and damping model bending and dissipation.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \begin{block}{Mechanical model}
+        \footnotesize
+        \[
+          \mathbf M\ddot{\bm p}=\bm f_l+\bm f_b+\bm f_d,
+        \]
+        \vspace{-1.5ex}
+        \[
+          E_l=\sum_{n=1}^{N-1}\frac{k_l}{2}
+          \bigl(\|\bm p_{n+1}-\bm p_n\|-l_s\bigr)^2,
+        \]
+        \vspace{-1.4ex}
+        \[
+          \bm f_l=-\nabla_{\bm p}E_l.
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \begin{block}{Numerical study}
+        \begin{enumerate}\scriptsize
+          \item backward Euler integration;
+          \item conjugate-gradient solution;
+          \item controller step;
+          \item repeated parameter and target-shape studies.
+        \end{enumerate}
+      \end{block}
+      \begin{tikzpicture}
+        \node[gapbox,text width=3.15cm,minimum height=0.82cm,font=\scriptsize,align=left] {
+          \textbf{Claim boundary:} no stiffness or damping value is supplied to the controller.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \note{0:45. Separate the three roles: discrete mechanical representation, numerical realization, and parameter-study use. Emphasize that the mass--spring model generates evaluation data but supplies no material parameter or simulator state to the controller.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 11. LI -> ILI -> ALI
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Interpolation methods}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.59\textwidth}
+      \footnotesize
+      \renewcommand{\arraystretch}{1.06}
+      \begin{tabularx}{\linewidth}{>{\bfseries}p{0.62cm} >{\RaggedRight\arraybackslash}X >{\RaggedRight\arraybackslash}X}
+        \toprule
+        & \textbf{Mechanism} & \textbf{Limitation / role}\\
+        \midrule
+        LI & Pointwise interpolation. & Segment-length violation; possible failure.\\[0.35ex]
+        ILI & Linear step + sequential projection to \(l_s\). & Length-feasible; no reliable concavity reversal.\\[0.35ex]
+        \color{ContributionGreen}ALI & Anchor translation + segment-angle interpolation. & Structural length invariant; opposite concavity admitted.\\
+        \bottomrule
+      \end{tabularx}
+
+      \vspace{0.16cm}
+      \begin{tikzpicture}
+        \node[gapbox,text width=7.85cm,minimum height=0.78cm,font=\footnotesize,align=left] {
+          \textbf{Failure mechanism:} pointwise interpolation moves corresponding points through incompatible shapes when concavity changes.};
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.39\textwidth}
+      \centering
+      \includegraphics[width=0.47\linewidth]{linear_interpolation.png}\hfill
+      \includegraphics[width=0.47\linewidth]{ali_interpolation.png}
+
+      \vspace{0.05cm}
+      \begin{columns}[T,totalwidth=\linewidth]
+        \begin{column}{0.48\linewidth}\centering\footnotesize Pointwise linear\end{column}
+        \begin{column}{0.48\linewidth}\centering\footnotesize ALI\end{column}
+      \end{columns}
+
+      \vspace{0.12cm}
+      \includegraphics[width=0.84\linewidth,height=1.82cm,keepaspectratio]{ali_geometry.png}
+      \centering\scriptsize ALI intermediary profiles through an extended configuration
+    \end{column}
+  \end{columns}
+
+  \note{0:55. Present LI and ILI as the deliberate progression that exposes the numerical problem. Focus attention on ALI: it changes the representation of the interpolation, not just a tuning constant.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 12. ALI
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Angular--linear interpolation}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.44\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=3.45cm,keepaspectratio]{ali_geometry.png}
+      \vspace{0.03cm}
+      \begin{tikzpicture}
+        \node[contribution,text width=5.85cm,minimum height=0.76cm,font=\footnotesize] {
+          Anchor \(\sigma\) translates; bidirectional reconstruction propagates angle interpolation to both ends.};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.54\textwidth}
+      \begin{block}{Construction at stage \(\kappa\)}
+        \vspace{-0.5ex}
+        \footnotesize\begin{align*}
+          \sigma&=\arg\max_n\|\bm t_n-\bm p_n^0\|,\qquad
+          K=\left\lfloor\frac{\|\bm t_\sigma-\bm p_\sigma^0\|}{\lambda}\right\rfloor+1,\\
+          \bm p_\sigma^\kappa&=\bm p_\sigma^0+\frac{\kappa}{K}(\bm t_\sigma-\bm p_\sigma^0),\\
+          \theta_n^\kappa&=\theta_n^0+\frac{\kappa}{K}(\theta_n^t-\theta_n^0),\\
+          \bm p_{n+1}^\kappa&=\bm p_n^\kappa+l_s
+          \begin{bmatrix}\cos\theta_n^\kappa\\ \sin\theta_n^\kappa\end{bmatrix}.
+        \end{align*}
+        \vspace{-1.2ex}\footnotesize Reconstruct symmetrically from \(\sigma\) toward both cable ends.
+      \end{block}
+
+      \vspace{0.06cm}
+      \begin{tikzpicture}
+        \node[contribution,text width=7.15cm,minimum height=0.82cm,font=\footnotesize] {
+          \textbf{Scientific result 2: structural length invariant}\\[-0.1ex]
+          \(\|\bm p_{n+1}^\kappa-\bm p_n^\kappa\|=l_s\) by construction; the path admits the tested opposite-concavity transformations.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \note{1:00. Explain only the three essential equations: choose the maximally displaced anchor, interpolate its position and the segment angles, then reconstruct the chain. The defense point is the structural length invariant.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 13. Closed loop
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Shape-control architecture}
+  \centering
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \footnotesize\textbf{Stage policy.} ALI generates
+    \(\{\bm p^1,\ldots,\bm p^K\}\). The controller tracks \(\bm p^\kappa\),
+    advances to \(\kappa+1\) when \(e_{\rm mean}\leq e_{\rm tol}\), and terminates at \(K\).
+  \end{beamercolorbox}
+
+  \vspace{0.28cm}
+  \begin{tikzpicture}[x=1cm,y=1cm,
+    looparrow/.style={-{Latex[length=1.8mm,width=1.25mm]},line width=0.65pt,draw=IUBlue}]
+    \node[flowbox,text width=1.55cm,minimum height=0.78cm,font=\scriptsize] (image) at (0.95,1.55) {RGB image};
+    \node[contribution,text width=1.65cm,minimum height=0.78cm,font=\scriptsize] (observe) at (3.05,1.55) {VFP state\\\(\bm p\)};
+    \node[flowbox,text width=1.85cm,minimum height=0.78cm,font=\scriptsize] (error) at (5.45,1.55) {Shape error\\\(\bm e^\kappa=\bm p^\kappa-\bm p\)};
+    \node[flowbox,text width=2.35cm,minimum height=0.78cm,font=\scriptsize] (control) at (8.30,1.55) {Geometric Jacobian\\+ constrained OCP};
+    \node[constraintbox,text width=1.85cm,minimum height=0.78cm,font=\scriptsize] (robot) at (11.20,1.55) {Bounded dual-arm motion};
+    \node[contribution,text width=1.75cm,minimum height=0.78cm,font=\scriptsize] (cable) at (13.55,1.55) {Cable deformation};
+
+    \node[contribution,text width=2.05cm,minimum height=0.68cm,font=\scriptsize] (target) at (5.45,3.00) {ALI stage target \(\bm p^\kappa\)};
+
+    \draw[looparrow] (image)--(observe);
+    \draw[looparrow] (observe)--(error);
+    \draw[looparrow] (target)--(error);
+    \draw[looparrow] (error)--(control);
+    \draw[looparrow] (control)--(robot);
+    \draw[looparrow] (robot)--(cable);
+    \draw[looparrow] (cable.south) -- ++(0,-0.78) -|
+      node[pos=0.35,below,font=\scriptsize,text=MidGray]{new image after each robot step} (image.south);
+  \end{tikzpicture}
+
+  \vspace{0.12cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \footnotesize\textbf{Closed-loop interpretation.} ALI supplies the ordered stage
+    targets; each robot step is computed from the current image-based state and bounded
+    OCP. The controller uses neither simulator states nor identified cable parameters.
+  \end{beamercolorbox}
+  \note{0:55. Read the central loop from left to right: image, VFP observation, stage error, geometry-based constrained control, robot motion, and cable deformation. Then explain the smaller ALI stage loop. A new image closes every control iteration; reaching tolerance advances the stage, and reaching stage K terminates the task.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 14. Jacobian and OCP
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Geometric Jacobian and control}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.35\textwidth}
+      \centering
+      \includegraphics[width=0.78\linewidth,height=3.45cm,keepaspectratio]{rigidity_geometry.png}
+      \vspace{0.08cm}
+      \begin{block}{Geometric coupling}
+        \vspace{-1.2ex}
+        \[
+          D_n^m=\eta_n^m l_s,\quad d_n^m=\|\bm p_n-\bm r_m\|,
+        \]
+        \vspace{-2.0ex}
+        \[
+          \mu_n^m=\exp\!\left(-|D_n^m-d_n^m|\right).
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.63\textwidth}
+      \begin{block}{Local robot--cable velocity model}
+        \vspace{-0.6ex}
+        \[
+          \mathbf J_n^m=\mu_n^m
+          \begin{bmatrix}
+            1&0&-D_n^m\sin\varphi_m\\
+            0&1& D_n^m\cos\varphi_m
+          \end{bmatrix},
+          \qquad \dot{\bm p}=\mathbf J\dot{\bm r}.
+        \]
+      \end{block}
+
+      \begin{block}{Constrained optimization at each intermediary shape}
+        \vspace{-0.8ex}
+        \[
+          \min_{\dot{\bm r}}\;\sum_{n=1}^{N}\|\bm p_n^\kappa-\bm p_n\|_2
+          \quad\text{s.t.}\quad
+          \dot{\bm p}=\mathbf J\dot{\bm r},\qquad
+          |\dot{\bm r}|\preceq\bm\nu.
+        \]
+      \end{block}
+
+      \begin{tikzpicture}
+        \node[contribution,text width=8.25cm,minimum height=1.10cm,font=\footnotesize,align=left] {
+          \textbf{Scientific result 3.} The analytical diminishing-rigidity Jacobian depends on observed geometry rather than identified stiffness, damping, or learned dynamics; it is incorporated into constrained dual-arm control.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \note{1:00. Interpret the weight before the matrix: taut geometry means strong coupling; slack means weak coupling. Then show the OCP and make clear that the Jacobian is geometric rather than an identified dynamics model.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 15. Validation design
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Experimental setup}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.60\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=4.15cm,keepaspectratio]{kuka_setup.jpg}
+      \source{Dissertation, Chapter 3: two KUKA LBR iiwa manipulators and top-view camera.}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \begin{block}{Computational study}
+        \footnotesize
+        \begin{itemize}
+          \item MATLAB mass--spring simulation;
+          \item two cables: \(L=350\) and \(700\) mm;
+          \item \(N\in\{8,10,12,14\}\);
+          \item interpolation step sweep: \(1\)--\(100\) mm.
+        \end{itemize}
+      \end{block}
+      \vspace{-0.06cm}
+      \begin{block}{Real-world experiment}
+        \scriptsize
+        \begin{itemize}
+          \item two KUKA LBR iiwa robots;
+          \item Intel RealSense D435;
+          \item C++ implementation with ROS communication and robot-control nodes;
+          \item VFP feedback with \(N=10\);
+          \item obstacle-free planar shape control.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \begin{beamercolorbox}[wd=\textwidth,sep=3pt,left]{claimbar}
+    \footnotesize The same geometry-based controller transfers from simulation to hardware without stiffness or damping identification.
+  \end{beamercolorbox}
+  \note{0:45. Describe the two-stage validation design. The real-world experiment uses two KUKA LBR iiwa manipulators, an Intel RealSense camera, and C++/ROS software for perception, communication, and robot control. Keep the physical cable and simulation models distinct; the same controller crosses the simulation-to-hardware boundary without parameter identification.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 16. Shape-control results
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Shape-control results}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.59\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+          xbar,
+          width=8.1cm,height=4.55cm,
+          xmin=0,xmax=13.2,
+          symbolic y coords={M,S,L,U},
+          ytick=data,
+          xlabel={Final mean shape error [mm]},
+          xlabel style={font=\scriptsize},
+          tick label style={font=\scriptsize},
+          legend style={font=\scriptsize,draw=none,at={(0.5,1.02)},anchor=south,legend columns=2},
+          grid=major,grid style={draw=RuleGray!55},
+          axis line style={draw=RuleGray},
+          enlarge y limits=0.18,
+          bar width=5.2pt
+        ]
+          \addplot[fill=IUBlue!45,draw=IUBlue] coordinates {(4.9,M) (5.2,S) (6.9,L) (4.0,U)};
+          \addplot[fill=ContributionGreen!58,draw=ContributionGreen] coordinates {(5.2,M) (10.6,S) (10.9,L) (11.7,U)};
+          \legend{Simulation,Physical experiment}
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.39\textwidth}
+      \begin{tikzpicture}[node distance=0.13cm]
+        \node[contribution,text width=5.05cm,minimum height=1.00cm,font=\scriptsize,align=left] (accuracy) {
+          \textbf{Final accuracy}\\[-0.1ex]
+          Simulation: \(4.0\)--\(6.9\) mm; real-world experiment: \(5.2\)--\(11.7\) mm.};
+        \node[flowbox,text width=5.05cm,minimum height=1.00cm,font=\scriptsize,align=left,below=of accuracy] (points) {
+          \textbf{Discretization study}\\[-0.1ex]
+          All \(32\) combinations of two cables, four targets, and \(N\in\{8,10,12,14\}\) completed the task; six reached the iteration cap before the strict tolerance.};
+        \node[constraintbox,text width=5.05cm,minimum height=1.00cm,font=\scriptsize,align=left,below=of points] (step) {
+          \textbf{ALI-step study}\\[-0.1ex]
+          \(\lambda=10\)--\(50\) mm provided the tested balance between final error and iteration count.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.10cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.2pt,left]{claimbar}
+    \scriptsize\textbf{Interpretation.} The studies quantify accuracy, discretization sensitivity,
+    and ALI-step selection separately; the reported intervals apply to the tested cables,
+    target shapes, and planar experimental conditions.
+  \end{beamercolorbox}
+
+  \note{0:55. Read the physical error range, then distinguish task completion from strict convergence: all 32 completed, but six hit the iteration cap. Mention the supported 10--50 mm step interval.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 17. Concavity reversal
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Concavity reversal}
+  \centering
+  \renewcommand{\arraystretch}{0.85}
+  \begin{tabular}{@{}cccc@{}}
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_1_path.png} &
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_2_path.png} &
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_3_path.png} &
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_4_path.png} \\
+    \scriptsize Planned path 1 & \scriptsize Planned path 2 & \scriptsize Planned path 3 & \scriptsize Planned path 4 \\[0.3ex]
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_1_final.png} &
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_2_final.png} &
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_3_final.png} &
+    \includegraphics[width=0.225\textwidth,height=1.43cm,keepaspectratio]{concavity_4_final.png} \\
+    \small \(e_{\mathrm{mean}}=12.4\) mm &
+    \small \(e_{\mathrm{mean}}=9.0\) mm &
+    \small \(e_{\mathrm{mean}}=8.1\) mm &
+    \small \(e_{\mathrm{mean}}=4.5\) mm
+  \end{tabular}
+
+  \vspace{0.22cm}
+  \begin{tikzpicture}
+    \node[contribution,text width=13.3cm,minimum height=0.95cm,align=left] {
+      ALI preserves nominal segment length through the extended configuration; closed-loop execution completed all four physical transformations.};
+  \end{tikzpicture}
+
+  \note{0:55. This is the clearest demonstration of why ALI was needed. Explain the colored path overlays and give the four final mean errors. Phrase novelty relative to the surveyed prior two-end local-deformation works.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 18. GCR problem
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Global routing problem}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.57\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=4.38cm,keepaspectratio]{gcr_problem.png}
+      \source{Dissertation, Chapter 4: start/goal configurations and static obstacles.}
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \begin{block}{Configuration space}
+        \small
+        \vspace{-0.8ex}
+        \[
+          C=(p_1,\ldots,p_N)\in\mathcal X=\R^{2N}.
+        \]
+        \vspace{-1.1ex}
+        Find \(\mathcal P=\{C_0,\ldots,C_K\}\) from \(C_{\mathrm{start}}\) to
+        \(C_{\mathrm{goal}}\).
+      \end{block}
+      \begin{block}{Every configuration must satisfy}
+        \footnotesize
+        \begin{itemize}
+          \item all points and segments lie in free space;
+          \item \(\ell_{\min}\leq\|p_{k+1}-p_k\|\leq\ell_{\max}\);
+          \item obstacle clearance is at least \(d_{\min}\).
+        \end{itemize}
+      \end{block}
+      \begin{tikzpicture}
+        \node[gapbox,text width=5.45cm,minimum height=0.76cm,font=\footnotesize,align=left] {
+          \textbf{Static validity alone is insufficient.} Each route edge must admit a feasible cable deformation.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \note{1:00. Define a cable configuration as a point in R to the 2N. List static constraints, then deliberately end with the missing condition: feasible transitions, which motivates the next slides.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 19. Candidate generation
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Candidate generation}
+  \centering
+  \begin{tabular}{@{}ccc@{}}
+    \includegraphics[width=0.305\textwidth,height=2.48cm,keepaspectratio]{gcr_raw.pdf} &
+    \includegraphics[width=0.305\textwidth,height=2.48cm,keepaspectratio]{gcr_apf.pdf} &
+    \includegraphics[width=0.305\textwidth,height=2.48cm,keepaspectratio]{gcr_relax.pdf} \\
+    \small\textbf{1. Guided sample} & \small\textbf{2. Whole-cable APF} & \small\textbf{3. Projected relaxation} \\
+    \scriptsize global exploration & \scriptsize attraction + segment repulsion & \scriptsize length, clearance, elasticity
+  \end{tabular}
+
+  \vspace{0.14cm}
+  \begin{tikzpicture}[node distance=0.17cm]
+    \node[flowbox,text width=4.10cm,minimum height=1.72cm,font=\scriptsize,align=center] (f1) {
+      \textbf{Mixture sampler}\\[0.25ex]
+      \(\displaystyle C^{\mathrm{raw}}\sim
+        \begin{cases}C_g,&p_g,\\ C_t,&p_t,\\ C_r,&1-p_g-p_t,
+        \end{cases}\)\\[-0.1ex]
+      goal-, tree-, and broad-random sources};
+    \node[flowbox,text width=4.10cm,minimum height=1.72cm,font=\scriptsize,align=center,right=of f1] (f2) {
+      \textbf{Configuration-level bias}\\[0.35ex]
+      \(\begin{gathered}
+        U(C)=U_{\mathrm{att}}(C)+U_{\mathrm{rep}}(C),\\
+        C^b=C^{\mathrm{raw}}-\eta\nabla U(C^{\mathrm{raw}})
+      \end{gathered}\)\\[0.25ex]
+      attraction and obstacle repulsion act on the complete cable};
+    \node[contribution,text width=4.10cm,minimum height=1.72cm,font=\scriptsize,align=center,right=of f2] (f3) {
+      \textbf{Projected elastic relaxation}\\[0.25ex]
+      \(\begin{aligned}
+        C^{\mathrm{relax}}=\arg\min_{C\in\Cfree}\;&\|C-C^b\|^2\\[-0.2ex]
+        &+\alpha_sD_s\\[-0.2ex]
+        &+\alpha_bD_b
+      \end{aligned}\)\\[0.25ex]
+      \(D_s,D_b\): segment- and curvature-vector deviations from \(C^{\mathrm{ref}}\)};
+  \end{tikzpicture}
+
+  \note{0:55. Describe the three panels and their equations left to right. The mixture preserves exploration; the APF is a configuration-level sampling bias rather than a complete planner; projected relaxation restores cable admissibility relative to a feasible reference.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 20. Transition validation
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Transition admissibility}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=3.12cm,keepaspectratio]{transition_free.pdf}
+      \smalltag[ContributionGreen]{Admissible: swept regions are obstacle-free}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=3.12cm,keepaspectratio]{transition_blocked.pdf}
+      \smalltag[GapRed]{Inadmissible: swept region intersects an obstacle}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.12cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Segment swept polygon}
+        \vspace{-1.1ex}
+        \[
+          \mathcal S_k(C^a,C^b)=\operatorname{conv}
+          \{p_k^a,p_{k+1}^a,p_{k+1}^b,p_k^b\},
+        \]
+        \vspace{-1.5ex}
+        \[\mathcal S_k(C^a,C^b)\cap\mathcal O=\varnothing.\]
+      \end{block}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \begin{block}{Ordered edge predicate}
+        \vspace{-0.8ex}
+        \small
+        \[
+          \begin{aligned}
+            \Gamma={}&\operatorname{PathFree}\land\operatorname{AxisConsistent}\\[-0.2ex]
+                     &{}\land\operatorname{EndpointFeasible}.
+          \end{aligned}
+        \]
+        \footnotesize The same predicate is used for parent selection, tree connection, and shortcut refinement.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \note{1:05. Contrast the accepted and rejected edge. Explain the convex swept polygon for corresponding segments, then the full predicate. Stress that endpoint snapshots alone would miss the blocked transition.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 21. GCR algorithm
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{GCR algorithm}
+  \centering
+  \begin{tikzpicture}[node distance=0.23cm and 0.25cm]
+    \node[flowbox,text width=2.15cm,font=\footnotesize] (trees) {Two-tree initialization};
+    \node[flowbox,text width=2.15cm,font=\footnotesize,right=of trees] (sample) {Guided mixture sampling};
+    \node[flowbox,text width=2.45cm,font=\footnotesize,right=of sample] (candidate) {APF bias + projected relaxation};
+    \node[flowbox,text width=2.45cm,font=\footnotesize,right=of candidate] (parent) {Ordered parent and edge validation};
+    \node[constraintbox,text width=2.15cm,font=\footnotesize,right=of parent] (connect) {Opposite-tree connection?};
+
+    \node[contribution,text width=2.85cm,font=\footnotesize,below=1.10cm of connect] (extract) {Extract oriented start--goal path};
+    \node[contribution,text width=2.85cm,font=\footnotesize,left=0.45cm of extract] (short) {Transition-safe shortcut refinement};
+    \node[contribution,text width=2.85cm,font=\footnotesize,left=0.45cm of short] (return) {Return refined configuration path};
+
+    \draw[processarrow] (trees)--(sample);
+    \draw[processarrow] (sample)--(candidate);
+    \draw[processarrow] (candidate)--(parent);
+    \draw[processarrow] (parent)--(connect);
+    \draw[processarrow] (connect)--node[right,font=\scriptsize,text=ContributionGreen]{yes}(extract);
+    \draw[processarrow] (extract)--(short);
+    \draw[processarrow] (short)--(return);
+
+    \draw[rejectarrow] (connect.north) -- ++(0,0.55) -| node[pos=0.25,above,font=\scriptsize,text=GapRed]{no: alternate active tree and continue} (sample.north);
+    \draw[rejectarrow] (candidate.south) -- ++(0,-0.58) -| node[pos=0.28,below,font=\scriptsize,text=GapRed]{inadmissible candidate} (sample.south);
+  \end{tikzpicture}
+
+  \vspace{0.38cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Edge cost}
+        \vspace{-1.0ex}
+        \[
+          d(C^a,C^b)+\alpha_{\mathrm{def}}E_{\mathrm{def}}(C^b,C^a),
+        \]
+        \footnotesize Maximum corresponding-point motion combined with changes of segment and discrete-curvature vectors.
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{tikzpicture}
+        \node[contribution,text width=6.45cm,minimum height=1.1cm,font=\footnotesize,align=left] {
+          \textbf{Scientific result 4.} The GCR configuration-space model establishes transition admissibility from obstacle-free swept segment regions and endpoint-order consistency, rather than endpoint-configuration collision tests alone.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \note{0:55. Traverse the workflow once. Explain the two rejection loops and the final shortcut condition. Avoid claiming that any single component is novel in isolation; the contribution is their ordered composition for a DLO.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 22. GCR benchmarks
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{GCR results}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3pt,left]{claimbar}
+    \scriptsize\textbf{Benchmark design.} The planner was evaluated in \textbf{10 planar scenarios},
+    with \(1000\) independent random seeds per scenario.
+  \end{beamercolorbox}
+
+  \vspace{0.10cm}
+  \centering
+  \begin{tabular}{@{}cccc@{}}
+    \includegraphics[width=0.218\textwidth,height=1.58cm,keepaspectratio]{route_arc.pdf} &
+    \includegraphics[width=0.218\textwidth,height=1.58cm,keepaspectratio]{route_gate.pdf} &
+    \includegraphics[width=0.218\textwidth,height=1.58cm,keepaspectratio]{route_trap.pdf} &
+    \includegraphics[width=0.218\textwidth,height=1.58cm,keepaspectratio]{route_corridor.pdf} \\
+    \scriptsize Arc-to-straight & \scriptsize Narrow gate & \scriptsize U-shaped trap & \scriptsize L-corridor
+  \end{tabular}
+
+  \vspace{0.10cm}
+  {\scriptsize\textbf{Selected benchmark rows} --- single-threaded C++ implementation}
+
+  \vspace{0.07cm}
+  \scriptsize
+  \setlength{\tabcolsep}{5.0pt}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{cccccc}
+    \toprule
+    Scenario & Success [\%] & Time [s] & Iterations [\(10^3\)] & Raw path & Refined path\\
+    \midrule
+    1  & 100 & \(0.240\pm0.143\) & \(2.08\pm1.20\) & \(17\pm4\) & \(5\pm1\)\\
+    3  & 100 & \(0.008\pm0.003\) & \(0.07\pm0.03\) & \(13\pm2\) & \(3\pm1\)\\
+    4  & 100 & \(1.306\pm0.871\) & \(6.98\pm4.52\) & \(22\pm5\) & \(5\pm1\)\\
+    10 & 100 & \(0.339\pm0.139\) & \(2.60\pm1.08\) & \(25\pm4\) & \(9\pm1\)\\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.15cm}
+  \begin{beamercolorbox}[wd=0.94\textwidth,sep=3pt,center]{claimbar}
+    \scriptsize All 10,000 tested routes satisfied the stated predicates; this is empirical evidence, not a universal planning guarantee. Shortcutting retained the same transition predicate.
+  \end{beamercolorbox}
+  \note{1:00. Use the selected rows to compare an easy case, the most constrained case, and representative intermediate cases. State that all 10,000 tested runs succeeded, qualify this as empirical evidence, and note that shortcut refinement preserves the ordered transition predicate.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 23. MuJoCo validation
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Simulation validation}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{1.8pt}
+  \begin{tabular}{@{}ccccc@{}}
+    & Start & 33\% & 67\% & End\\[-0.1ex]
+    \textbf{S1} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_s1_start.pdf} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_s1_33.pdf} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_s1_67.pdf} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_s1_end.pdf} \\[0.10ex]
+    \textbf{S7} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_start.pdf} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_33.pdf} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_67.pdf} &
+    \includegraphics[width=0.19\textwidth,height=1.52cm,keepaspectratio]{mujoco_end.pdf}
+  \end{tabular}
+
+  \vspace{0.08cm}
+  {\fontsize{7.4}{8.2}\selectfont
+  \renewcommand{\arraystretch}{1.04}
+  \setlength{\tabcolsep}{7.0pt}
+  \begin{tabular}{ccc@{\hspace{0.72cm}}ccc}
+    \toprule
+    \textbf{Scenario} & \textbf{RMSE [mm]} & \(\bm e_{\max}\) \textbf{[mm]} &
+    \textbf{Scenario} & \textbf{RMSE [mm]} & \(\bm e_{\max}\) \textbf{[mm]}\\
+    \midrule
+    1 & 2.20 & 3.41 & 6  & 2.08 & 3.32\\
+    2 & 2.22 & 3.72 & 7  & 4.66 & 7.81\\
+    3 & 4.32 & 6.49 & 8  & 4.13 & 6.28\\
+    4 & 1.60 & 2.31 & 9  & 4.58 & 7.32\\
+    5 & 1.87 & 2.70 & 10 & 2.83 & 4.73\\
+    \bottomrule
+  \end{tabular}}
+
+  \vspace{0.07cm}
+  \begin{beamercolorbox}[wd=0.96\textwidth,sep=2.5pt,left]{claimbar}
+    \scriptsize Complete Chapter 4 validation table for the \(0.27\) m cable:
+    RMSE \(1.60\)--\(4.66\) mm and maximum pointwise error \(2.31\)--\(7.81\) mm.
+    The study is physics-based MuJoCo validation; no physical GCR experiment is claimed.
+  \end{beamercolorbox}
+
+  \note{0:55. Compare the execution sequences for Scenarios 1 and 7, then read the selected error table. Across all ten scenarios, RMSE is 1.60--4.66 mm and maximum pointwise error is 2.31--7.81 mm. Explicitly delimit the claim to physics-based simulation.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 24. Claims
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Principal statements of the thesis}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \begin{tikzpicture}
+        \node[flowbox,text width=6.65cm,minimum height=2.35cm,font=\footnotesize,align=left,anchor=north west] (s1) at (0,0) {
+          \textbf{I. Ordered DLO-state reconstruction}\\[0.25ex]
+          A finite-dimensional planar-DLO representation and the VFP method reconstruct the ordered point state from RGB without artificial cable markers; the state is directly applicable to the developed planning and control methods.\\[0.25ex]
+          \color{IUBlue}\bfseries\scriptsize Passport Points 2, 3, and 5};
+        \node[contribution,text width=6.65cm,minimum height=2.35cm,font=\footnotesize,align=left,anchor=north west,below=0.18cm of s1] (s2) {
+          \textbf{II. Large-deformation shape control}\\[0.25ex]
+          ALI, the diminishing-rigidity Jacobian, and constrained optimization provide model-free dual-arm shape control under large planar deformation, including opposite concavities, while preserving nominal discrete segment lengths.\\[0.25ex]
+          \color{ContributionGreen}\bfseries\scriptsize Passport Points 2, 5, and 8};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{tikzpicture}
+        \node[contribution,text width=6.65cm,minimum height=2.35cm,font=\footnotesize,align=left,anchor=north west] (s3) at (0,0) {
+          \textbf{III. Global routing of an ordered DLO}\\[0.25ex]
+          The GCR configuration-space model constructs globally feasible routes among static planar obstacles subject to collision-free swept segment regions, material-point ordering, and specified endpoint constraints.\\[0.25ex]
+          \color{ContributionGreen}\bfseries\scriptsize Passport Points 2, 6, and 8};
+        \node[constraintbox,text width=6.65cm,minimum height=2.35cm,font=\footnotesize,align=left,anchor=north west,below=0.18cm of s3] (s4) {
+          \textbf{IV. Software and experimental support}\\[0.25ex]
+          The models and methods are implemented in research software and supported by computational experiments; shape control is physically verified, whereas GCR is verified by physics-based dual-arm simulation.\\[0.25ex]
+          \color{ConstraintOrange}\bfseries\scriptsize Passport Points 3, 6, and 9};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+  \note{1:10. Present the four statements using the synopsis formulations. Distinguish the five scientific novelty results from these four integrated propositions, and state the validation boundary in Proposition IV.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 25. Significance, limits, future
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Scientific and practical significance}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \begin{block}{Theoretical significance}
+        \footnotesize
+        \begin{itemize}
+          \item the ordered point representation defines a common finite-dimensional state for observation, simulation, planning, and control;
+          \item ALI defines a length-feasible deformation path;
+          \item the diminishing-rigidity Jacobian geometrically models the local robot--cable relation;
+          \item GCR defines route admissibility for complete transitions rather than isolated configurations.
+        \end{itemize}
+      \end{block}
+      \vspace{-0.05cm}
+      \begin{tikzpicture}
+        \node[flowbox,text width=6.55cm,minimum height=1.35cm,font=\footnotesize] {
+          \textbf{Reliability of the results}\\[0.2ex]
+          Established mathematical apparatus; simulation and hardware reproduction; repeated randomized experiments; peer-reviewed publication; explicit separation of physical and simulation validation.};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{block}{Practical significance}
+        \footnotesize
+        \begin{itemize}
+          \item no cable-specific training dataset and no controller identification of stiffness or damping;
+          \item software for mass--spring experiments, physical shape-control studies, statistical GCR evaluation, and MuJoCo validation;
+          \item methodological basis for planar wire-harness assembly, hose routing, rope handling, and related dual-arm tasks.
+        \end{itemize}
+      \end{block}
+      \vspace{-0.05cm}
+      \begin{tikzpicture}
+        \node[gapbox,text width=6.55cm,minimum height=1.35cm,font=\footnotesize] {
+          \textbf{Established scope}\\[0.2ex]
+          Planar quasi-static manipulation; known static obstacles; clear top-view perception; physical validation of shape control; numerical and MuJoCo validation of GCR.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+  \note{0:55. State theoretical and practical significance using the synopsis wording. Then identify the reliability basis and the established validation scope without extending the claims to physical GCR.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 25. Principal results
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Principal scientific results}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \begin{tikzpicture}
+        \node[flowbox,text width=6.65cm,minimum height=2.05cm,font=\footnotesize,align=left,anchor=north west] (c1) at (0,0) {
+          \textbf{1. Ordered finite-dimensional state}\\[0.25ex]
+          VFPs reconstruct an ordered DLO state from a featureless cable image, and that state is used consistently by the developed shape-planning and control methods.};
+        \node[contribution,text width=6.65cm,minimum height=2.05cm,font=\footnotesize,align=left,anchor=north west,below=0.18cm of c1] (c2) {
+          \textbf{2. Large planar deformation}\\[0.25ex]
+          ALI and diminishing-rigidity control extend model-free shape control from local corrections to large planar deformations, including changes of concavity.};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{tikzpicture}
+        \node[contribution,text width=6.65cm,minimum height=2.05cm,font=\footnotesize,align=left,anchor=north west] (c3) at (0,0) {
+          \textbf{3. Transition-admissible global routing}\\[0.25ex]
+          GCR extends the formulation to cluttered environments by requiring transition feasibility, rather than only static collision freedom, for every route edge.};
+        \node[constraintbox,text width=6.65cm,minimum height=2.05cm,font=\footnotesize,align=left,anchor=north west,below=0.18cm of c3] (c4) {
+          \textbf{4. Software implementation and verification}\\[0.25ex]
+          The research software supports computational experiments, physical shape-control studies, and simulation validation of global routing within specialty 1.2.2.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.24cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=4.5pt,center]{claimbar}
+    \small The obtained results comprise mathematical models, effective numerical methods,
+    and problem-oriented software verified within the stated experimental scope.
+  \end{beamercolorbox}
+
+  \note{0:40. State the four principal scientific findings from the synopsis. Close by relating them to the three mandatory components of specialty 1.2.2 and to the stated experimental scope.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 26. Publications and conferences
+% -----------------------------------------------------------------------------
+\begin{frame}[t]{Publications and conferences}
+  % \begin{beamercolorbox}[wd=\textwidth,sep=4pt,center]{claimbar}
+  %   \footnotesize Five peer-reviewed works report the principal thesis results:
+  %   four are indexed by Scopus and one is published in a HAC/VAK journal.
+  % \end{beamercolorbox}
+
+  % \vspace{0.16cm}
+      \begin{block}{Publications}
+        \fontsize{5.15}{5.90}\selectfont
+        \begin{enumerate}
+          \setlength{\itemsep}{0.22ex}
+          \item \publicationcite{almaghout2024robotic}
+          \item \publicationcite{almaghout2024manipulation}
+          \item \publicationcite{almaghout2024energy}
+          \item \publicationcite{almaghout2022planar}
+          \item \publicationcite{almaghout2022vision}
+        \end{enumerate}
+      \end{block}
+      \begin{block}{Conferences}
+        \fontsize{6.2}{7.2}\selectfont
+        \begin{enumerate}
+          \setlength{\itemsep}{0.55ex}
+          \item 10th IFAC Conference on Manufacturing Modelling, Management and Control (MIM), Nantes, France, 2022.
+          \item International Conference ``Nonlinearity, Information and Robotics'' (NIR), Innopolis, Russia, 2022.
+          \item International Russian Automation Conference (RusAutoCon), Sochi, Russia, 2023.
+        \end{enumerate}
+      \end{block}
+
+
+  \vspace{0.10cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3pt,left]{claimbar}
+    \scriptsize\textbf{Note:} the research was conducted within RSF project No.~22-41-02006.
+  \end{beamercolorbox}
+  \note{0:45. The five entries are generated from the dissertation BibTeX records: three journal articles and two conference-proceedings papers. Then identify the three international conferences at which the results were presented and mention RSF project support.}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% 27. Closing slide
+% -----------------------------------------------------------------------------
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[IUBlue] (current page.south west) rectangle (current page.north east);
+    \draw[white!55,line width=1.0pt]
+      ([xshift=0.9cm,yshift=1.55cm]current page.south west)
+      .. controls +(3.0cm,0.9cm) and +(-3.0cm,-0.8cm) ..
+      ([xshift=-0.9cm,yshift=1.72cm]current page.south east);
+    % \foreach \x/\y in {1.1/1.50,2.7/1.82,4.4/1.95,6.1/1.78,7.8/1.55,9.5/1.48,11.2/1.68,12.9/1.92,14.5/1.76}{
+    %   \fill[white] ([xshift=\x cm,yshift=\y cm]current page.south west) circle (1.25pt);
+    % }
+  \end{tikzpicture}
+  \vfill
+  \begin{center}
+    {\color{white}\Huge\bfseries Thank you for your attention}\par
+    \vspace{0.65cm}
+    {\color{white!92}\LARGE Questions?}\par
+    \vspace{1.10cm}
+    {\color{white!82}\normalsize Karam Almaghout --- Candidate defense, specialty 1.2.2}
+  \end{center}
+  \vfill
+  \note{0:15. Thank the committee and invite questions. Total target time: approximately 23 minutes 45 seconds.}
+\end{frame}
+
+% =============================================================================
+% Backup slides (excluded from the main-frame total by appendixnumberbeamer)
+% =============================================================================
+\appendix
+\section{Backup}
+
+\begin{frame}[t]{Specialty compliance}
+  \begin{beamercolorbox}[wd=\textwidth,sep=4.5pt,center]{claimbar}
+    \small The dissertation contains all three mandatory components of specialty 1.2.2:
+    mathematical modeling, numerical methods, and software packages.
+  \end{beamercolorbox}
+
+  \vspace{0.22cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.325\textwidth}
+      \begin{tikzpicture}
+        \node[flowbox,text width=4.35cm,minimum height=2.0cm,font=\footnotesize] {
+          {\color{IUBlue}\bfseries Mathematical modeling}\\[0.35ex]
+          Ordered DLO state; cable simulation; geometric Jacobian; deformation-path and configuration-space models};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.325\textwidth}
+      \begin{tikzpicture}
+        \node[contribution,text width=4.35cm,minimum height=2.0cm,font=\footnotesize] {
+          {\color{ContributionGreen}\bfseries Numerical methods}\\[0.35ex]
+          VFPs; LI/ILI/ALI; constrained optimization; bidirectional GCR; projected relaxation; swept-transition tests};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.325\textwidth}
+      \begin{tikzpicture}
+        \node[constraintbox,text width=4.35cm,minimum height=2.0cm,font=\footnotesize] {
+          {\color{ConstraintOrange}\bfseries Software packages}\\[0.35ex]
+          Perception and control software; MATLAB studies; single-threaded C++ GCR; MuJoCo validation};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \centering
+  \begin{tikzpicture}[node distance=0.16cm and 0.18cm]
+    \node[flowbox,text width=4.15cm,minimum height=0.82cm,font=\footnotesize] (p2) {\textbf{Point 2}: effective computational methods};
+    \node[flowbox,text width=4.15cm,minimum height=0.82cm,font=\footnotesize,right=of p2] (p3) {\textbf{Point 3}: problem-oriented programs};
+    \node[flowbox,text width=4.15cm,minimum height=0.82cm,font=\footnotesize,right=of p3] (p5) {\textbf{Point 5}: validation methods};
+    \node[flowbox,text width=4.15cm,minimum height=0.82cm,font=\footnotesize,below=of p2] (p6) {\textbf{Point 6}: simulation systems};
+    \node[flowbox,text width=4.15cm,minimum height=0.82cm,font=\footnotesize,right=of p6] (p8) {\textbf{Point 8}: comprehensive investigation};
+    \node[flowbox,text width=4.15cm,minimum height=0.82cm,font=\footnotesize,right=of p8] (p9) {\textbf{Point 9}: numerical experiments};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]{Task--result traceability}
+  \footnotesize
+  \renewcommand{\arraystretch}{1.23}
+  \begin{tabularx}{\textwidth}{
+    >{\bfseries\RaggedRight\arraybackslash}p{0.65cm}
+    >{\RaggedRight\arraybackslash}X
+    >{\RaggedRight\arraybackslash}X
+    >{\RaggedRight\arraybackslash}p{2.15cm}}
+    \toprule
+    \textbf{Task} & \textbf{Developed result} & \textbf{Verification} & \textbf{Passport}\\
+    \midrule
+    1 & Ordered DLO state and VFP perception & Used in physical KUKA feedback experiments & 2, 3, 5\\
+    2 & LI/ILI/ALI; ALI structural segment-length invariant & MATLAB + four physical concavity reversals & 2, 5, 8\\
+    3 & Diminishing-rigidity Jacobian and constrained controller & Simulation/hardware shape errors & 2, 5, 8\\
+    4 & GCR model, search, and ordered swept-transition predicate & 10,000 benchmark runs + MuJoCo & 2, 6, 8\\
+    5 & MATLAB/C++/robotics research software and experiment procedures & Parameter sweeps, statistics, hardware/simulation & 3, 6, 9\\
+    \bottomrule
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}[t]{Physical shape-control errors}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
+      \begin{block}{U/L/S/M targets, \(N=10\)}
+        \centering\small
+        \renewcommand{\arraystretch}{1.25}
+        \begin{tabular}{lrrrr}
+          \toprule
+          & U & L & S & M\\
+          \midrule
+          Simulation mean [mm] & 4.0 & 6.9 & 5.2 & 4.9\\
+          Physical mean [mm] & 11.7 & 10.9 & 10.6 & 5.2\\
+          Physical std. [mm] & 5.7 & 5.0 & 6.4 & 3.0\\
+          \bottomrule
+        \end{tabular}
+      \end{block}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Opposite-concavity targets}
+        \centering\small
+        \renewcommand{\arraystretch}{1.25}
+        \begin{tabular}{lrrrr}
+          \toprule
+          Scenario & 1 & 2 & 3 & 4\\
+          \midrule
+          Mean [mm] & 12.4 & 9.0 & 8.1 & 4.5\\
+          Std. [mm] & 5.1 & 3.7 & 3.1 & 3.3\\
+          \bottomrule
+        \end{tabular}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.35cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=4pt,left]{claimbar}
+    \small\textbf{Experimental interpretation:} physical error includes camera noise, calibration, unmodeled friction, and non-ideal grasping; these effects are included in the reported ranges.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[t]{Comparative scope}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \footnotesize\textbf{Comparison basis.} Chapter 3 considers recent approaches that
+    address comparable DLO shape-control tasks and reports their demonstrated scope.
+  \end{beamercolorbox}
+
+  \vspace{0.18cm}
+  \centering
+  \fontsize{7.4}{8.5}\selectfont
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabularx}{\textwidth}{
+    >{\RaggedRight\arraybackslash}p{2.35cm}
+    >{\Centering\arraybackslash}p{1.05cm}
+    >{\Centering\arraybackslash}p{1.55cm}
+    >{\Centering\arraybackslash}p{1.55cm}
+    >{\RaggedRight\arraybackslash}X}
+    \toprule
+    \textbf{Approach} & \textbf{Space} & \textbf{Robot} & \textbf{Cable marks} & \textbf{Demonstrated task scope}\\
+    \midrule
+    Zhu et al. (2018) & 2D & dual-arm & no & local deformation\\
+    Zhu et al. (2021) & 2D & single-arm & no & local deformation\\
+    Qi et al. (2021) & 2D & dual-arm & no & local deformation\\
+    Qi et al. (2022) & 2D & dual-arm & no & local deformation\\
+    Wang et al. (2022) & 2D & dual-arm & no & local deformation\\
+    Yu et al. (2022a) & 2D/3D & single-arm & yes & large deformation\\
+    Yu et al. (2022b) & 2D/3D & dual-arm & yes & large deformation\\
+    \addlinespace[0.2ex]
+    \textbf{Proposed approach} & \textbf{2D} & \textbf{dual-arm} & \textbf{no} &
+      \textbf{large deformation and concavity change}\\
+    \bottomrule
+  \end{tabularx}
+
+  \vspace{0.18cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \footnotesize\textbf{Positioning within the selected works.} The proposed method is
+    distinguished by the joint treatment of marker-free dual-arm control, large planar
+    deformation, and opposite-concavity transformations.
+  \end{beamercolorbox}
+
+  \note{Appendix. Explain the inclusion criterion before comparing rows. Within the selected comparable studies, emphasize the combined scope of marker-free dual-arm manipulation, large planar deformation, and concavity change. Do not interpret the table as a universal ranking.}
+\end{frame}
+
+\begin{frame}[t]{Comparative methods}
+  \centering
+  \fontsize{7.15}{8.2}\selectfont
+  \renewcommand{\arraystretch}{1.20}
+  \begin{tabularx}{\textwidth}{
+    >{\RaggedRight\arraybackslash}p{2.30cm}
+    >{\RaggedRight\arraybackslash}p{3.15cm}
+    >{\RaggedRight\arraybackslash}p{3.30cm}
+    >{\RaggedRight\arraybackslash}X}
+    \toprule
+    \textbf{Approach} & \textbf{Intermediate profiles} &
+    \textbf{Robot--DLO relation} & \textbf{Robot-motion method}\\
+    \midrule
+    Zhu et al. (2018) & none & numerical Jacobian & proportional control\\
+    Zhu et al. (2021) & linear interpolation & numerical Jacobian & proportional control\\
+    Qi et al. (2021) & none & numerical Jacobian & finite-time sliding-mode control\\
+    Qi et al. (2022) & none & numerical Jacobian & model-predictive control\\
+    Wang et al. (2022) & none & hybrid offline--online model & model-predictive control\\
+    Yu et al. (2022a) & none & hybrid offline--online model & adaptive control\\
+    Yu et al. (2022b) & none & hybrid offline--online model & optimization-based adaptive control\\
+    \addlinespace[0.2ex]
+    \textbf{Proposed approach} & \textbf{angular--linear interpolation} &
+      \textbf{analytical geometric Jacobian} & \textbf{constrained optimization}\\
+    \bottomrule
+  \end{tabularx}
+
+  \vspace{0.20cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \footnotesize\textbf{Methodological distinction.} ALI supplies length-feasible stage
+    targets, while the analytical geometric Jacobian and constrained optimization compute
+    dual-arm motion without an offline learned deformation model.
+  \end{beamercolorbox}
+
+  \vspace{0.10cm}
+  {\scriptsize\color{MidGray}
+    2022a: Yu et al., \emph{Shape control of deformable linear objects};
+    2022b: Yu et al., \emph{Global model learning for large deformation control}.}
+
+  \note{Appendix. Compare the methodological columns of the same Chapter 3 table. The contribution is the combination of ALI stage targets, an analytical diminishing-rigidity Jacobian, and constrained optimization without offline learned deformation dynamics. Preserve the stated scope: planar and obstacle-free feedback shape control.}
+\end{frame}
+
+\begin{frame}[t]{GCR benchmark table}
+  \centering\small
+  \renewcommand{\arraystretch}{1.08}
+  \begin{tabular}{cccc}
+    \toprule
+    \textbf{Scenario} & \textbf{Success [\%]} & \textbf{Planning time [s]} & \textbf{Refined configurations}\\
+    \midrule
+    1  & 100 & \(0.240\pm0.143\) & \(5\pm1\)\\
+    2  & 100 & \(0.283\pm0.197\) & \(5\pm1\)\\
+    3  & 100 & \(0.008\pm0.003\) & \(3\pm1\)\\
+    4  & 100 & \(1.306\pm0.871\) & \(5\pm1\)\\
+    5  & 100 & \(0.017\pm0.005\) & \(7\pm1\)\\
+    6  & 100 & \(0.145\pm0.061\) & \(7\pm1\)\\
+    7  & 100 & \(0.151\pm0.066\) & \(7\pm1\)\\
+    8  & 100 & \(0.072\pm0.033\) & \(6\pm1\)\\
+    9  & 100 & \(0.104\pm0.059\) & \(5\pm1\)\\
+    10 & 100 & \(0.339\pm0.139\) & \(9\pm1\)\\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.28cm}
+  \begin{beamercolorbox}[wd=0.84\textwidth,sep=4pt,center]{claimbar}
+    \small Single-threaded C++; 1,000 independent random seeds per scenario; success required all static and ordered-transition predicates to hold.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[t]{MuJoCo validation system}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.65\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=5.25cm,keepaspectratio]{mujoco_setup.pdf}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \begin{block}{System}
+        \small Two UR10 manipulators drive the two cable endpoints through the refined GCR waypoint sequence.
+      \end{block}
+      \begin{block}{Metrics}
+        \small \(\mathrm{RMSE}=1.60\)--\(4.66\) mm;\\
+        \(e_{\max}=2.31\)--\(7.81\) mm;\\
+        cable length \(0.27\) m.
+      \end{block}
+      \begin{tikzpicture}
+        \node[gapbox,text width=4.35cm] {\scriptsize Simulation validation only; physical GCR experiments remain future work.};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}
