@@ -12,23 +12,23 @@ pauses and transitions.
 | 3 | Problem formulation | 1:05 | 2:25 |
 | 4 | Research methodology | 0:55 | 3:20 |
 | 5 | Goal and objectives | 0:55 | 4:15 |
-| 6 | Mathematical formulation | 0:55 | 5:10 |
-| 7 | Ordered DLO representation | 0:55 | 6:05 |
-| 8 | VFP reconstruction | 0:55 | 7:00 |
-| 9 | Simulation model | 0:45 | 7:45 |
-| 10 | Interpolation methods | 0:55 | 8:40 |
-| 11 | Angular–linear interpolation | 1:00 | 9:40 |
-| 12 | Shape-control architecture | 0:55 | 10:35 |
-| 13 | Geometric Jacobian and control | 1:00 | 11:35 |
-| 14 | Experimental setup | 0:45 | 12:20 |
-| 15 | Shape-control results | 0:55 | 13:15 |
-| 16 | Concavity reversal | 0:55 | 14:10 |
-| 17 | Global routing problem | 1:00 | 15:10 |
-| 18 | Candidate generation | 0:55 | 16:05 |
-| 19 | Transition admissibility | 1:05 | 17:10 |
-| 20 | GCR algorithm | 0:55 | 18:05 |
-| 21 | GCR results | 1:00 | 19:05 |
-| 22 | Simulation validation | 0:55 | 20:00 |
+| 6 | Problem setup | 0:55 | 5:10 |
+| 7 | DLO representation: Ordered state | 0:55 | 6:05 |
+| 8 | DLO perception: VFP reconstruction | 0:55 | 7:00 |
+| 9 | DLO model | 0:45 | 7:45 |
+| 10 | DLO planning: Interpolation methods | 0:55 | 8:40 |
+| 11 | DLO planning: Angular–linear interpolation | 1:00 | 9:40 |
+| 12 | DLO control: Architecture | 0:55 | 10:35 |
+| 13 | DLO control: Geometric Jacobian | 1:00 | 11:35 |
+| 14 | DLO control: Experimental setup | 0:45 | 12:20 |
+| 15 | DLO control: Results | 0:55 | 13:15 |
+| 16 | DLO control: Concavity reversal | 0:55 | 14:10 |
+| 17 | DLO routing: Problem formulation | 1:00 | 15:10 |
+| 18 | DLO routing: Candidate generation | 0:55 | 16:05 |
+| 19 | DLO routing: Transition admissibility | 1:05 | 17:10 |
+| 20 | DLO routing: GCR algorithm | 0:55 | 18:05 |
+| 21 | DLO routing: Computational results | 1:00 | 19:05 |
+| 22 | DLO routing: Simulation validation | 0:55 | 20:00 |
 | 23 | Principal statements of the thesis | 1:10 | 21:10 |
 | 24 | Scientific and practical significance | 0:55 | 22:05 |
 | 25 | Principal scientific results | 0:40 | 22:45 |
@@ -79,41 +79,43 @@ deformations and obstacles, without prior identification of dynamic or material
 parameters. Identify the object and subject of research, then use the five objectives
 as the roadmap for the technical part of the defense.
 
-### 6. Mathematical formulation — 0:55
+### 6. Problem setup — 0:55
 
-Represent the planar cable by an ordered finite-dimensional point vector. Shape control
-seeks bounded gripper velocities that reduce the state error through admissible
-intermediate shapes. Global routing seeks a sequence of complete cable configurations
-whose states and connecting deformations satisfy geometric constraints. Planar,
-quasi-static motion, endpoint grasps, and known static obstacles are the modeling
-assumptions adopted in Chapters 2--4; they delimit the claims rather than constituting
-additional contributions. Top-view RGB perception applies only to the physical
-shape-control study.
+Separate the two formal problems. Shape control maps an observed current shape and a
+prescribed target to bounded dual-arm motions through admissible intermediary shapes.
+Global routing maps prescribed start and goal configurations plus a known obstacle map
+to an ordered sequence whose states and swept transitions are admissible. Both use the
+planar quasi-static and endpoint-grasp assumptions. Do not introduce the VFP contribution
+on this slide.
 
-### 7. Ordered DLO representation — 0:55
+### 7. DLO representation: Ordered state — 0:55
 
-Scientific Result 1 is an image-based, finite-dimensional, marker-free representation
-of a planar DLO by approximately equidistant material points in a fixed order. The
-ordering supplies correspondence between observations and target shapes and makes the
-state directly compatible with the developed planning and control models. Do not imply
-that the VFP images are an input to GCR.
+Introduce only the finite-dimensional state: the point order, approximate spacing, and
+pointwise correspondence with the target. Its role is to convert distributed cable
+geometry into a state compatible with the subsequent methods. The reconstruction method
+and its scientific-result statement follow on slide 8. Do not imply that VFP images are
+an input to GCR.
 
-### 8. VFP reconstruction — 0:55
+### 8. DLO perception: VFP reconstruction — 0:55
 
-The cable itself is marker-free; one marked gripper fixes the starting end and therefore
-the traversal order. The image is segmented, reduced to a one-pixel centerline, and
-traversed using a circular mask. The output is an ordered, approximately equidistant set
-of Virtual Feature Points rather than an unordered contour.
+Explain the method before stating the result. The cable image is segmented, reduced to
+a one-pixel centerline, and traversed with a circular mask; one marked gripper fixes the
+starting end. The output is an ordered, approximately equidistant VFP set. Then state
+Scientific Result 1: image-based reconstruction of a marker-free planar cable state that
+is directly compatible with the developed discrete planning and control models.
+Transition: after establishing the measured state, introduce the numerical DLO model
+used to evaluate the planning and control methods.
 
-### 9. Simulation model — 0:45
+### 9. DLO model — 0:45
 
 The discrete mass–spring system combines linear springs for segment length, torsional
 springs for bending, and damping. Backward Euler integration and a conjugate-gradient
 update support repeated numerical experiments. This model is a validation instrument,
 not a claimed novelty; the feedback controller uses observed geometry and does not
-identify cable stiffness or damping.
+identify cable stiffness or damping. Transition: with the state and evaluation model
+established, turn to construction of the intermediary deformation path.
 
-### 10. Interpolation methods — 0:55
+### 10. DLO planning: Interpolation methods — 0:55
 
 Pointwise linear interpolation can contract the discretized cable, while incremental
 linear interpolation limits individual steps but can stagnate or fail during concavity
@@ -121,15 +123,16 @@ changes. ALI changes the interpolation coordinates: it combines translation of a
 anchor point with interpolation of segment angles. The improvement is structural, not
 merely a change of a tuning parameter.
 
-### 11. Angular–linear interpolation — 1:00
+### 11. DLO planning: Angular–linear interpolation — 1:00
 
 Scientific Result 2 is the ALI method. Select the point with maximum required
 displacement as the anchor, interpolate its position and all segment angles, and
 reconstruct the chain forward and backward. Every reconstruction increment has the
 nominal segment length; therefore length preservation is built into the construction.
-This also permits transitions between configurations of opposite concavity.
+This also permits transitions between configurations of opposite concavity. Transition:
+ALI produces target shapes; the next question is how the robots track them.
 
-### 12. Shape-control architecture — 0:55
+### 12. DLO control: Architecture — 0:55
 
 ALI determines a sequence of local target shapes, not robot velocities. At every stage,
 a new image updates the VFP state, the shape error is formed, and constrained
@@ -138,7 +141,7 @@ Read the single closed loop from left to right. The stage policy above it advanc
 ALI target only after the prescribed error condition is satisfied and terminates at
 the final stage.
 
-### 13. Geometric Jacobian and control — 1:00
+### 13. DLO control: Geometric Jacobian — 1:00
 
 Scientific Result 3 is the analytical diminishing-rigidity Jacobian and its use in
 constrained control. The geometric weight approaches one for a taut cable portion and
@@ -147,7 +150,7 @@ using observed geometry, without identified stiffness, damping, or learned dynam
 The optimization minimizes the predicted shape error subject to this mapping and robot
 velocity bounds.
 
-### 14. Experimental setup — 0:45
+### 14. DLO control: Experimental setup — 0:45
 
 Verification has two levels: MATLAB parameter studies over cable lengths, point counts,
 and ALI steps, followed by physical closed-loop tests using two KUKA LBR iiwa robots and
@@ -155,21 +158,22 @@ a RealSense camera. The real-world system is implemented in C++ with ROS communi
 and robot-control nodes. The same geometry-based controller is transferred from
 simulation to hardware without cable-parameter identification.
 
-### 15. Shape-control results — 0:55
+### 15. DLO control: Results — 0:55
 
 For the U, L, S, and M targets, physical mean final error ranges from 5.2 to 11.7 mm.
 All 32 parameter combinations completed the manipulation task, although six reached the
 iteration limit before satisfying the stricter convergence criterion. The experimentally
 supported ALI step interval for the tested systems is 10–50 mm.
 
-### 16. Concavity reversal — 0:55
+### 16. DLO control: Concavity reversal — 0:55
 
 Opposite-concavity transformations are the strongest large-deformation test. ALI passes
 through an extended configuration while preserving nominal segment length, and the
 physical closed loop completes all four transformations. The corresponding mean final
-errors are 12.4, 9.0, 8.1, and 4.5 mm.
+errors are 12.4, 9.0, 8.1, and 4.5 mm. Transition: this completes obstacle-free shape
+control; the next section extends the problem to global routing among obstacles.
 
-### 17. Global routing problem — 1:00
+### 17. DLO routing: Problem formulation — 1:00
 
 A cable configuration is a point in a (2N)-dimensional configuration space. Static
 admissibility requires free space, prescribed segment length, and obstacle clearance.
@@ -177,7 +181,7 @@ These conditions are insufficient on their own: each neighboring pair of route s
 must also admit a collision-free deformation. This edge condition distinguishes the
 formulation from planning only isolated collision-free snapshots.
 
-### 18. Candidate generation — 0:55
+### 18. DLO routing: Candidate generation — 0:55
 
 GCR combines goal-biased, tree-biased, and broad sampling. A whole-cable artificial
 potential field biases a candidate configuration; projected relaxation then restores
@@ -186,7 +190,7 @@ formula: the mixture probabilities, the APF gradient update, and the reference-b
 segment/curvature objective. The potential field is one candidate-generation operation
 within the global search, not the global planner itself.
 
-### 19. Transition admissibility — 1:05
+### 19. DLO routing: Transition admissibility — 1:05
 
 Endpoint configurations may both be collision-free while the swept cable intersects an
 obstacle. For every pair of corresponding segments, a convex swept polygon is tested
@@ -194,15 +198,16 @@ against the obstacle set. The complete ordered-edge predicate additionally enfor
 material-point order and endpoint feasibility. It is applied during parent selection,
 tree connection, and route refinement.
 
-### 20. GCR algorithm — 0:55
+### 20. DLO routing: GCR algorithm — 0:55
 
 Scientific Result 4 is the GCR configuration-space formulation and algorithm. Two trees
 grow from the prescribed start and goal. Candidates pass sampling, whole-cable bias,
 relaxation, and ordered transition checks; the connected path is oriented and shortcut
 only under the same edge predicate and route-cost condition. The contribution is the
-ordered composition of these operations for complete-cable routing.
+ordered composition of these operations for complete-cable routing. Transition: having
+defined the complete algorithm, evaluate its repeatability, cost, and route refinement.
 
-### 21. GCR results — 1:00
+### 21. DLO routing: Computational results — 1:00
 
 Begin with the benchmark design: ten planar scenarios and 1,000 independent seeds per
 scenario. Use the selected table rows to compare Scenario 3, the easiest case, with Scenario 4,
@@ -211,7 +216,7 @@ scenario, all 10,000 tested runs satisfied the specified static and ordered-tran
 predicates. Mean single-threaded planning time is 0.008–1.306 s, and refinement reduces
 13–25 raw configurations to 3–9. The 100% value is empirical, not a universal theorem.
 
-### 22. Simulation validation — 0:55
+### 22. DLO routing: Simulation validation — 0:55
 
 Scientific Result 5 concerns implementation and verification. GCR produces complete
 cable configurations, whose endpoints drive two UR10 robots through quasi-static
@@ -219,7 +224,8 @@ waypoints in MuJoCo. Compare the illustrated executions for Scenarios 1 and 7 an
 use the complete two-panel validation table. Across ten scenarios, final-shape RMSE is
 1.60–4.66 mm and maximum pointwise error is 2.31–7.81 mm for the modeled 0.27 m cable.
 This is independent physics-based simulation; physical GCR experiments are outside the
-dissertation scope.
+dissertation scope. Transition: with both research branches verified, synthesize the
+principal statements and significance of the thesis.
 
 ### 23. Principal statements of the thesis — 1:10
 

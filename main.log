@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.14)  6 AUG 2026 15:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.14)  6 AUG 2026 17:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1491,35 +1491,15 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Overfull \hbox (4.15413pt too wide) in paragraph at lines 201--201
-[][]  
- []
-
-<assets/wire_harness.jpg, id=32, 803.0pt x 534.99875pt>
-File: assets/wire_harness.jpg Graphic file (type jpg)
-<use assets/wire_harness.jpg>
-Package pdftex.def Info: assets/wire_harness.jpg  used on input line 201.
-(pdftex.def)             Requested size: 103.33992pt x 68.85022pt.
-<assets/surgical_threads.png, id=33, 494.59781pt x 233.37187pt>
-File: assets/surgical_threads.png Graphic file (type png)
-<use assets/surgical_threads.png>
-Package pdftex.def Info: assets/surgical_threads.png  used on input line 201.
-(pdftex.def)             Requested size: 89.31808pt x 42.144pt.
-[2
-
- <./assets/wire_harness.jpg> <./assets/surgical_threads.png>] [3
-
-]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 312
+LaTeX Font Info:    Trying to load font information for U+msa on input line 185
 .
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 312
+LaTeX Font Info:    Trying to load font information for U+msb on input line 185
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1527,62 +1507,71 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [4
+)
+<assets/wire_harness.jpg, id=34, 803.0pt x 534.99875pt>
+File: assets/wire_harness.jpg Graphic file (type jpg)
+<use assets/wire_harness.jpg>
+Package pdftex.def Info: assets/wire_harness.jpg  used on input line 185.
+(pdftex.def)             Requested size: 103.33992pt x 68.85022pt.
+<assets/surgical_threads.png, id=35, 494.59781pt x 233.37187pt>
+File: assets/surgical_threads.png Graphic file (type png)
+<use assets/surgical_threads.png>
+Package pdftex.def Info: assets/surgical_threads.png  used on input line 185.
+(pdftex.def)             Requested size: 132.66019pt x 62.5946pt.
+ [2
+
+ <./assets/wire_harness.jpg> <./assets/surgical_threads.png>] [3
+
+] [4
+
+] [5
+
+] [6
 
 ]
-[5
-
-]
-<assets/dlo_state.png, id=70, 622.7265pt x 436.5108pt>
+<assets/dlo_state.png, id=83, 622.7265pt x 436.5108pt>
 File: assets/dlo_state.png Graphic file (type png)
 <use assets/dlo_state.png>
-Package pdftex.def Info: assets/dlo_state.png  used on input line 394.
-(pdftex.def)             Requested size: 159.11147pt x 111.5319pt.
+Package pdftex.def Info: assets/dlo_state.png  used on input line 428.
+(pdftex.def)             Requested size: 150.99673pt x 105.84373pt.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [6
-
- <./assets/dlo_state.png>]
-File: assets/dlo_state.png Graphic file (type png)
-<use assets/dlo_state.png>
-Package pdftex.def Info: assets/dlo_state.png  used on input line 429.
-(pdftex.def)             Requested size: 150.99673pt x 105.84373pt.
  [7
 
-]
-<assets/vfps_pipeline.png, id=95, 1776.6375pt x 864.22874pt>
+ <./assets/dlo_state.png>]
+<assets/vfps_pipeline.png, id=96, 1776.6375pt x 864.22874pt>
 File: assets/vfps_pipeline.png Graphic file (type png)
 <use assets/vfps_pipeline.png>
-Package pdftex.def Info: assets/vfps_pipeline.png  used on input line 455.
-(pdftex.def)             Requested size: 254.4205pt x 123.76047pt.
+Package pdftex.def Info: assets/vfps_pipeline.png  used on input line 459.
+(pdftex.def)             Requested size: 221.0761pt x 107.5404pt.
  [8
 
  <./assets/vfps_pipeline.png>]
 <assets/mass_spring.png, id=103, 791.95876pt x 292.09125pt>
 File: assets/mass_spring.png Graphic file (type png)
 <use assets/mass_spring.png>
-Package pdftex.def Info: assets/mass_spring.png  used on input line 514.
-(pdftex.def)             Requested size: 144.12947pt x 53.158pt.
+Package pdftex.def Info: assets/mass_spring.png  used on input line 523.
+(pdftex.def)             Requested size: 146.5705pt x 54.0583pt.
  [9
 
  <./assets/mass_spring.png>]
 <assets/linear_interpolation.png, id=114, 421.575pt x 316.18124pt>
 File: assets/linear_interpolation.png Graphic file (type png)
 <use assets/linear_interpolation.png>
-Package pdftex.def Info: assets/linear_interpolation.png  used on input line 55
-9.
+Package pdftex.def Info: assets/linear_interpolation.png  used on input line 56
+8.
 (pdftex.def)             Requested size: 77.70935pt x 58.28033pt.
 <assets/ali_interpolation.png, id=115, 421.575pt x 316.18124pt>
 File: assets/ali_interpolation.png Graphic file (type png)
 <use assets/ali_interpolation.png>
-Package pdftex.def Info: assets/ali_interpolation.png  used on input line 559.
+Package pdftex.def Info: assets/ali_interpolation.png  used on input line 568.
 (pdftex.def)             Requested size: 77.70935pt x 58.28033pt.
 <assets/ali_geometry.png, id=116, 740.7675pt x 548.0475pt>
 File: assets/ali_geometry.png Graphic file (type png)
 <use assets/ali_geometry.png>
-Package pdftex.def Info: assets/ali_geometry.png  used on input line 559.
+Package pdftex.def Info: assets/ali_geometry.png  used on input line 568.
 (pdftex.def)             Requested size: 69.98933pt x 51.78072pt.
  [10
 
@@ -1590,75 +1579,73 @@ Package pdftex.def Info: assets/ali_geometry.png  used on input line 559.
  (PNG copy)> <./assets/ali_geometry.png>]
 File: assets/ali_geometry.png Graphic file (type png)
 <use assets/ali_geometry.png>
-Package pdftex.def Info: assets/ali_geometry.png  used on input line 599.
+Package pdftex.def Info: assets/ali_geometry.png  used on input line 608.
 (pdftex.def)             Requested size: 132.6768pt x 98.15926pt.
  [11
 
-]
-[12
+] [12
 
 ]
-<assets/rigidity_geometry.png, id=134, 436.63126pt x 434.62375pt>
+<assets/rigidity_geometry.png, id=135, 436.63126pt x 434.62375pt>
 File: assets/rigidity_geometry.png Graphic file (type png)
 <use assets/rigidity_geometry.png>
-Package pdftex.def Info: assets/rigidity_geometry.png  used on input line 694.
+Package pdftex.def Info: assets/rigidity_geometry.png  used on input line 703.
 (pdftex.def)             Requested size: 98.61089pt x 98.1575pt.
  [13
 
  <./assets/rigidity_geometry.png>]
-<assets/kuka_setup.jpg, id=149, 1284.8pt x 578.16pt>
+<assets/kuka_setup.jpg, id=150, 1284.8pt x 578.16pt>
 File: assets/kuka_setup.jpg Graphic file (type jpg)
 <use assets/kuka_setup.jpg>
-Package pdftex.def Info: assets/kuka_setup.jpg  used on input line 734.
+Package pdftex.def Info: assets/kuka_setup.jpg  used on input line 743.
 (pdftex.def)             Requested size: 254.36766pt x 114.46544pt.
  [14
 
  <./assets/kuka_setup.jpg>]
-Package pgfplots info on input line 788: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 797: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
-
-[15
+ [15
 
 ]
-<assets/concavity_1_path.png, id=160, 597.23125pt x 229.85875pt>
+<assets/concavity_1_path.png, id=161, 597.23125pt x 229.85875pt>
 File: assets/concavity_1_path.png Graphic file (type png)
 <use assets/concavity_1_path.png>
-Package pdftex.def Info: assets/concavity_1_path.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_1_path.png  used on input line 828.
 (pdftex.def)             Requested size: 95.3858pt x 36.7115pt.
-<assets/concavity_2_path.png, id=161, 607.26875pt x 233.87375pt>
+<assets/concavity_2_path.png, id=162, 607.26875pt x 233.87375pt>
 File: assets/concavity_2_path.png Graphic file (type png)
 <use assets/concavity_2_path.png>
-Package pdftex.def Info: assets/concavity_2_path.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_2_path.png  used on input line 828.
 (pdftex.def)             Requested size: 95.38588pt x 36.73538pt.
-<assets/concavity_3_path.png, id=162, 597.23125pt x 229.85875pt>
+<assets/concavity_3_path.png, id=163, 597.23125pt x 229.85875pt>
 File: assets/concavity_3_path.png Graphic file (type png)
 <use assets/concavity_3_path.png>
-Package pdftex.def Info: assets/concavity_3_path.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_3_path.png  used on input line 828.
 (pdftex.def)             Requested size: 95.3858pt x 36.7115pt.
-<assets/concavity_4_path.png, id=163, 601.24625pt x 231.86626pt>
+<assets/concavity_4_path.png, id=164, 601.24625pt x 231.86626pt>
 File: assets/concavity_4_path.png Graphic file (type png)
 <use assets/concavity_4_path.png>
-Package pdftex.def Info: assets/concavity_4_path.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_4_path.png  used on input line 828.
 (pdftex.def)             Requested size: 95.38484pt x 36.78447pt.
-<assets/concavity_1_final.png, id=164, 611.28375pt x 231.86626pt>
+<assets/concavity_1_final.png, id=165, 611.28375pt x 231.86626pt>
 File: assets/concavity_1_final.png Graphic file (type png)
 <use assets/concavity_1_final.png>
-Package pdftex.def Info: assets/concavity_1_final.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_1_final.png  used on input line 828.
 (pdftex.def)             Requested size: 95.38226pt x 36.17947pt.
-<assets/concavity_2_final.png, id=165, 605.26125pt x 229.85875pt>
+<assets/concavity_2_final.png, id=166, 605.26125pt x 229.85875pt>
 File: assets/concavity_2_final.png Graphic file (type png)
 <use assets/concavity_2_final.png>
-Package pdftex.def Info: assets/concavity_2_final.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_2_final.png  used on input line 828.
 (pdftex.def)             Requested size: 95.38455pt x 36.22398pt.
-<assets/concavity_3_final.png, id=166, 595.22375pt x 225.84375pt>
+<assets/concavity_3_final.png, id=167, 595.22375pt x 225.84375pt>
 File: assets/concavity_3_final.png Graphic file (type png)
 <use assets/concavity_3_final.png>
-Package pdftex.def Info: assets/concavity_3_final.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_3_final.png  used on input line 828.
 (pdftex.def)             Requested size: 95.38306pt x 36.19087pt.
-<assets/concavity_4_final.png, id=167, 595.22375pt x 225.84375pt>
+<assets/concavity_4_final.png, id=168, 595.22375pt x 225.84375pt>
 File: assets/concavity_4_final.png Graphic file (type png)
 <use assets/concavity_4_final.png>
-Package pdftex.def Info: assets/concavity_4_final.png  used on input line 819.
+Package pdftex.def Info: assets/concavity_4_final.png  used on input line 828.
 (pdftex.def)             Requested size: 95.38306pt x 36.19087pt.
  [16
 
@@ -1666,135 +1653,129 @@ Package pdftex.def Info: assets/concavity_4_final.png  used on input line 819.
 avity_3_path.png> <./assets/concavity_4_path.png> <./assets/concavity_1_final.p
 ng> <./assets/concavity_2_final.png> <./assets/concavity_3_final.png> <./assets
 /concavity_4_final.png>]
-<assets/gcr_problem.png, id=177, 722.7pt x 433.62pt>
+<assets/gcr_problem.png, id=178, 722.7pt x 433.62pt>
 File: assets/gcr_problem.png Graphic file (type png)
 <use assets/gcr_problem.png>
-Package pdftex.def Info: assets/gcr_problem.png  used on input line 858.
+Package pdftex.def Info: assets/gcr_problem.png  used on input line 867.
 (pdftex.def)             Requested size: 207.70296pt x 124.62177pt.
  [17
 
  <./assets/gcr_problem.png>]
-<assets/gcr_raw.pdf, id=184, 572.13701pt x 370.61958pt>
+<assets/gcr_raw.pdf, id=185, 572.13701pt x 370.61958pt>
 File: assets/gcr_raw.pdf Graphic file (type pdf)
 <use assets/gcr_raw.pdf>
-Package pdftex.def Info: assets/gcr_raw.pdf  used on input line 899.
+Package pdftex.def Info: assets/gcr_raw.pdf  used on input line 908.
 (pdftex.def)             Requested size: 108.9254pt x 70.55983pt.
-<assets/gcr_apf.pdf, id=185, 572.13701pt x 370.61958pt>
+<assets/gcr_apf.pdf, id=186, 572.13701pt x 370.61958pt>
 File: assets/gcr_apf.pdf Graphic file (type pdf)
 <use assets/gcr_apf.pdf>
-Package pdftex.def Info: assets/gcr_apf.pdf  used on input line 899.
+Package pdftex.def Info: assets/gcr_apf.pdf  used on input line 908.
 (pdftex.def)             Requested size: 108.9254pt x 70.55983pt.
-<assets/gcr_relax.pdf, id=186, 572.13701pt x 370.61958pt>
+<assets/gcr_relax.pdf, id=187, 572.13701pt x 370.61958pt>
 File: assets/gcr_relax.pdf Graphic file (type pdf)
 <use assets/gcr_relax.pdf>
-Package pdftex.def Info: assets/gcr_relax.pdf  used on input line 899.
+Package pdftex.def Info: assets/gcr_relax.pdf  used on input line 908.
 (pdftex.def)             Requested size: 108.9254pt x 70.55983pt.
  [18
 
  <./assets/gcr_raw.pdf> <./assets/gcr_apf.pdf> <./assets/gcr_relax.pdf>]
-<assets/transition_free.pdf, id=345, 601.045pt x 388.72084pt>
+<assets/transition_free.pdf, id=344, 601.045pt x 388.72084pt>
 File: assets/transition_free.pdf Graphic file (type pdf)
 <use assets/transition_free.pdf>
-Package pdftex.def Info: assets/transition_free.pdf  used on input line 947.
+Package pdftex.def Info: assets/transition_free.pdf  used on input line 956.
 (pdftex.def)             Requested size: 137.25612pt x 88.76924pt.
-<assets/transition_blocked.pdf, id=346, 601.045pt x 388.72084pt>
+<assets/transition_blocked.pdf, id=345, 601.045pt x 388.72084pt>
 File: assets/transition_blocked.pdf Graphic file (type pdf)
 <use assets/transition_blocked.pdf>
-Package pdftex.def Info: assets/transition_blocked.pdf  used on input line 947.
+Package pdftex.def Info: assets/transition_blocked.pdf  used on input line 956.
 
 (pdftex.def)             Requested size: 137.25612pt x 88.76924pt.
-
-Overfull \hbox (8.19244pt too wide) in paragraph at lines 947--947
- [] 
- []
-
-[19
+ [19
 
  <./assets/transition_free.pdf> <./assets/transition_blocked.pdf>] [20
 
 ]
-<assets/route_arc.pdf, id=476, 619.85698pt x 402.09622pt>
+<assets/route_arc.pdf, id=475, 619.85698pt x 402.09622pt>
 File: assets/route_arc.pdf Graphic file (type pdf)
 <use assets/route_arc.pdf>
-Package pdftex.def Info: assets/route_arc.pdf  used on input line 1041.
+Package pdftex.def Info: assets/route_arc.pdf  used on input line 1050.
 (pdftex.def)             Requested size: 69.30055pt x 44.9547pt.
-<assets/route_gate.pdf, id=477, 619.85698pt x 402.09622pt>
+<assets/route_gate.pdf, id=476, 619.85698pt x 402.09622pt>
 File: assets/route_gate.pdf Graphic file (type pdf)
 <use assets/route_gate.pdf>
-Package pdftex.def Info: assets/route_gate.pdf  used on input line 1041.
+Package pdftex.def Info: assets/route_gate.pdf  used on input line 1050.
 (pdftex.def)             Requested size: 69.30055pt x 44.9547pt.
-<assets/route_trap.pdf, id=478, 619.85698pt x 402.09622pt>
+<assets/route_trap.pdf, id=477, 619.85698pt x 402.09622pt>
 File: assets/route_trap.pdf Graphic file (type pdf)
 <use assets/route_trap.pdf>
-Package pdftex.def Info: assets/route_trap.pdf  used on input line 1041.
+Package pdftex.def Info: assets/route_trap.pdf  used on input line 1050.
 (pdftex.def)             Requested size: 69.30055pt x 44.9547pt.
-<assets/route_corridor.pdf, id=479, 619.85698pt x 402.09622pt>
+<assets/route_corridor.pdf, id=478, 619.85698pt x 402.09622pt>
 File: assets/route_corridor.pdf Graphic file (type pdf)
 <use assets/route_corridor.pdf>
-Package pdftex.def Info: assets/route_corridor.pdf  used on input line 1041.
+Package pdftex.def Info: assets/route_corridor.pdf  used on input line 1050.
 (pdftex.def)             Requested size: 69.30055pt x 44.9547pt.
-
-[21
+ [21
 
  <./assets/route_arc.pdf> <./assets/route_gate.pdf> <./assets/route_trap.pdf> <
 ./assets/route_corridor.pdf>]
-<assets/mujoco_s1_start.pdf, id=603, 462.52798pt x 260.17201pt>
+<assets/mujoco_s1_start.pdf, id=602, 462.52798pt x 260.17201pt>
 File: assets/mujoco_s1_start.pdf Graphic file (type pdf)
 <use assets/mujoco_s1_start.pdf>
-Package pdftex.def Info: assets/mujoco_s1_start.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_s1_start.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_s1_33.pdf, id=604, 462.52798pt x 260.17201pt>
+<assets/mujoco_s1_33.pdf, id=603, 462.52798pt x 260.17201pt>
 File: assets/mujoco_s1_33.pdf Graphic file (type pdf)
 <use assets/mujoco_s1_33.pdf>
-Package pdftex.def Info: assets/mujoco_s1_33.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_s1_33.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_s1_67.pdf, id=605, 462.52798pt x 260.17201pt>
+<assets/mujoco_s1_67.pdf, id=604, 462.52798pt x 260.17201pt>
 File: assets/mujoco_s1_67.pdf Graphic file (type pdf)
 <use assets/mujoco_s1_67.pdf>
-Package pdftex.def Info: assets/mujoco_s1_67.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_s1_67.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_s1_end.pdf, id=606, 462.52798pt x 260.17201pt>
+<assets/mujoco_s1_end.pdf, id=605, 462.52798pt x 260.17201pt>
 File: assets/mujoco_s1_end.pdf Graphic file (type pdf)
 <use assets/mujoco_s1_end.pdf>
-Package pdftex.def Info: assets/mujoco_s1_end.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_s1_end.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_start.pdf, id=607, 462.52798pt x 260.17201pt>
+<assets/mujoco_start.pdf, id=606, 462.52798pt x 260.17201pt>
 File: assets/mujoco_start.pdf Graphic file (type pdf)
 <use assets/mujoco_start.pdf>
-Package pdftex.def Info: assets/mujoco_start.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_start.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_33.pdf, id=608, 462.52798pt x 260.17201pt>
+<assets/mujoco_33.pdf, id=607, 462.52798pt x 260.17201pt>
 File: assets/mujoco_33.pdf Graphic file (type pdf)
 <use assets/mujoco_33.pdf>
-Package pdftex.def Info: assets/mujoco_33.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_33.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_67.pdf, id=609, 462.52798pt x 260.17201pt>
+<assets/mujoco_67.pdf, id=608, 462.52798pt x 260.17201pt>
 File: assets/mujoco_67.pdf Graphic file (type pdf)
 <use assets/mujoco_67.pdf>
-Package pdftex.def Info: assets/mujoco_67.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_67.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-<assets/mujoco_end.pdf, id=610, 462.52798pt x 260.17201pt>
+<assets/mujoco_end.pdf, id=609, 462.52798pt x 260.17201pt>
 File: assets/mujoco_end.pdf Graphic file (type pdf)
 <use assets/mujoco_end.pdf>
-Package pdftex.def Info: assets/mujoco_end.pdf  used on input line 1088.
+Package pdftex.def Info: assets/mujoco_end.pdf  used on input line 1097.
 (pdftex.def)             Requested size: 76.88548pt x 43.24808pt.
-LaTeX Font Info:    Calculating math sizes for size <7.4> on input line 1088.
+LaTeX Font Info:    Calculating math sizes for size <7.4> on input line 1097.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.7> not available
-(Font)              size <5> substituted on input line 1088.
+(Font)              size <5> substituted on input line 1097.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.7> not available
-(Font)              size <5> substituted on input line 1088.
+(Font)              size <5> substituted on input line 1097.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <3.7> not available
-(Font)              size <5> substituted on input line 1088.
+(Font)              size <5> substituted on input line 1097.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <3.7> not available
-(Font)              size <5> substituted on input line 1088.
+(Font)              size <5> substituted on input line 1097.
 
 [22
 
@@ -1809,7 +1790,7 @@ oco_33.pdf> <./assets/mujoco_67.pdf> <./assets/mujoco_end.pdf>] [23
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-238.
+247.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1817,51 +1798,51 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Calculating math sizes for size <5.15> on input line 1238.
+LaTeX Font Info:    Calculating math sizes for size <5.15> on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <2.575> not available
-(Font)              size <3> substituted on input line 1238.
+(Font)              size <3> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.60497> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.575> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.60497> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.575> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2.575> not available
-(Font)              size <3> substituted on input line 1238.
+(Font)              size <3> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <2.575> not available
-(Font)              size <3> substituted on input line 1238.
+(Font)              size <3> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <3.60497> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <2.575> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <3.60497> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <2.575> not available
-(Font)              size <5> substituted on input line 1238.
+(Font)              size <5> substituted on input line 1247.
 
 [26
 
@@ -1870,16 +1851,11 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <2.575> not available
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 1269.
+(hyperref)                removing `\translate ' on input line 1280.
 
 [28
 
-]
-Overfull \hbox (0.89044pt too wide) in paragraph at lines 1333--1333
-[]|\T1/cmr/bx/n/8 (-20) Task|  
- []
-
-[29
+] [29
 
 ] [30
 
@@ -1893,7 +1869,7 @@ Overfull \hbox (0.89044pt too wide) in paragraph at lines 1333--1333
 <assets/mujoco_setup.pdf, id=702, 870.1308pt x 498.54214pt>
 File: assets/mujoco_setup.pdf Graphic file (type pdf)
 <use assets/mujoco_setup.pdf>
-Package pdftex.def Info: assets/mujoco_setup.pdf  used on input line 1503.
+Package pdftex.def Info: assets/mujoco_setup.pdf  used on input line 1515.
 (pdftex.def)             Requested size: 260.70932pt x 149.37361pt.
  [34
 
@@ -1924,15 +1900,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 48397 strings out of 474222
- 1103875 string characters out of 5746180
+ 48391 strings out of 474222
+ 1103804 string characters out of 5746180
  1981843 words of memory out of 5000000
- 69517 multiletter control sequences out of 15000+600000
- 620467 words of font info for 309 fonts, out of 8000000 for 9000
+ 69498 multiletter control sequences out of 15000+600000
+ 620406 words of font info for 315 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,20n,123p,1129b,2602s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><
+></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
 usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.
@@ -1944,7 +1920,7 @@ usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
 r/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
 local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/lo
-cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></us
+cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></us
 r/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb>
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.
 pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmm
@@ -1958,34 +1934,34 @@ cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local
 /texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/t
 exlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texl
-ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
-e/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
-2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
-23/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023
-/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/
-2023/texmf-dist/fonts/type1/public/cm-super/sfbx0500.pfb></usr/local/texlive/20
-23/texmf-dist/fonts/type1/public/cm-super/sfbx0600.pfb></usr/local/texlive/2023
-/texmf-dist/fonts/type1/public/cm-super/sfbx0700.pfb></usr/local/texlive/2023/t
-exmf-dist/fonts/type1/public/cm-super/sfbx0800.pfb></usr/local/texlive/2023/tex
-mf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2023/texmf
--dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/texmf-d
-ist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dis
-t/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/
-fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2023/texmf-dist/fo
-nts/type1/public/cm-super/sfrm0500.pfb></usr/local/texlive/2023/texmf-dist/font
-s/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/
-type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2023/texmf-dist/fonts/ty
-pe1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/type
-1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/
-public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pu
-blic/cm-super/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public
-/cm-super/sfti0700.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/c
-m-super/sftt0800.pfb>
-Output written on main.pdf (34 pages, 4432297 bytes).
+ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
+e/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/20
+23/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texliv
+e/2023/texmf-dist/fonts/type1/public/cm-super/sfbx0500.pfb></usr/local/texlive/
+2023/texmf-dist/fonts/type1/public/cm-super/sfbx0600.pfb></usr/local/texlive/20
+23/texmf-dist/fonts/type1/public/cm-super/sfbx0700.pfb></usr/local/texlive/2023
+/texmf-dist/fonts/type1/public/cm-super/sfbx0800.pfb></usr/local/texlive/2023/t
+exmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2023/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/texmf
+-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-d
+ist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dis
+t/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2023/texmf-dist/
+fonts/type1/public/cm-super/sfrm0500.pfb></usr/local/texlive/2023/texmf-dist/fo
+nts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/font
+s/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2023/texmf-dist/fonts/
+type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2023/texmf-dist/fonts/type
+1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/
+public/cm-super/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publ
+ic/cm-super/sfti0700.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public
+/cm-super/sftt0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/c
+m-super/sftt1000.pfb>
+Output written on main.pdf (34 pages, 4449243 bytes).
 PDF statistics:
  967 PDF objects out of 1000 (max. 8388607)
  438 compressed objects within 5 object streams
  71 named destinations out of 1000 (max. 500000)
- 160506 words of extra memory for PDF output out of 184870 (max. 10000000)
+ 158970 words of extra memory for PDF output out of 184870 (max. 10000000)
 

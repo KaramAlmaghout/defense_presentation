@@ -147,53 +147,37 @@
 % -----------------------------------------------------------------------------
 \begin{frame}[t]{Relevance}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
+    \begin{column}{0.65\textwidth}
       \vspace{0.1cm}
-      \begin{tikzpicture}[node distance=0.17cm]
-        \node[flowbox,text width=6.65cm,minimum height=1.02cm,anchor=north west] (a) at (0,0) {
-          \textbf{Distributed state}\\[-0.3ex]
-          \scriptsize A DLO has infinite degrees of freedom; the two grasped ends do not determine its shape.};
-        \node[circle,fill=IUBlue,text=white,font=\bfseries\scriptsize,inner sep=2.2pt] at ([xshift=-0.12cm]a.west) {1};
+      \begin{block}{Principal challenges of DLO manipulation}
+        \footnotesize
+        \begin{itemize}
+          \item \textbf{Distributed state.} A DLO has infinite degrees of freedom;
+            the two grasped ends do not determine its shape.
+          \item \textbf{Unknown, variable mechanics.} Bending and contact are nonlinear;
+            material identification is costly and cable-specific.
+          \item \textbf{Whole-object collision.} Safe end-effector paths or
+            collision-free snapshots do not guarantee a safe cable deformation.
+        \end{itemize}
+      \end{block}
+			\begin{block}{Research problem}
+          \small Transition from \textbf{local shape correction} to
+          \textbf{large, obstacle-constrained deformation}.
+      \end{block}
 
-        \node[flowbox,text width=6.65cm,minimum height=1.02cm,anchor=north west,below=of a] (b) {
-          \textbf{Unknown, variable mechanics}\\[-0.3ex]
-          \scriptsize Bending and contact are nonlinear; material identification is costly and cable-specific.};
-        \node[circle,fill=IUBlue,text=white,font=\bfseries\scriptsize,inner sep=2.2pt] at ([xshift=-0.12cm]b.west) {2};
-
-        \node[flowbox,text width=6.65cm,minimum height=1.02cm,anchor=north west,below=of b] (c) {
-          \textbf{Whole-object collision}\\[-0.3ex]
-          \scriptsize Safe end-effector paths or collision-free snapshots do not guarantee a safe cable deformation.};
-        \node[circle,fill=IUBlue,text=white,font=\bfseries\scriptsize,inner sep=2.2pt] at ([xshift=-0.12cm]c.west) {3};
-      \end{tikzpicture}
-
-      \vspace{0.23cm}
-      \begin{beamercolorbox}[wd=\linewidth,sep=5pt]{claimbar}
-        \small\textbf{Research requirement:} the complete DLO shape must be observed,
-        represented, planned, and controlled.
-      \end{beamercolorbox}
+      % \vspace{0.18cm}
+      % \begin{beamercolorbox}[wd=\linewidth,sep=5pt]{claimbar}
+      %   \small\textbf{Research requirement:} the complete DLO shape must be observed,
+      %   represented, planned, and controlled.
+      % \end{beamercolorbox}
     \end{column}
 
-    \begin{column}{0.49\textwidth}
-      \begin{columns}[T,totalwidth=\linewidth]
-        \begin{column}{0.55\linewidth}
+    \begin{column}{0.35\textwidth}
           \includegraphics[width=\linewidth,height=2.42cm,keepaspectratio]{wire_harness.jpg}
-          \centering\scriptsize Wire-harness assembly
-        \end{column}
-        \begin{column}{0.43\linewidth}
-          \includegraphics[width=\linewidth,height=2.42cm,keepaspectratio]{surgical_threads.png}
+          \centering\scriptsize Wire-harness assembly  \\
+          \includegraphics[width=\linewidth,height=2.2cm,keepaspectratio]{surgical_threads.png}
           \centering\scriptsize Surgical-thread manipulation
-        \end{column}
-      \end{columns}
-
       \vspace{0.25cm}
-      \begin{tikzpicture}
-        \node[gapbox,text width=6.85cm,minimum height=1.55cm] {
-          \textbf{Research problem}\\[0.2ex]
-          \small Transition from \textbf{local shape correction} to
-          \textbf{large, obstacle-constrained deformation}.};
-      \end{tikzpicture}
-
-      \source{Dissertation Introduction and Synopsis, Relevance of the thesis topic.}
     \end{column}
   \end{columns}
 
@@ -349,54 +333,69 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 6. Formal problem
+% 6. Formal problem setup
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Mathematical formulation}
+\begin{frame}[t]{Problem setup}
+  \begin{beamercolorbox}[wd=\textwidth,sep=4pt,left]{claimbar}
+    \small Two related problems are studied for the \textbf{complete cable shape},
+    with distinct inputs, constraints, and outputs.
+  \end{beamercolorbox}
+
+  \vspace{0.22cm}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.53\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=3.92cm,keepaspectratio]{dlo_state.png}
-      \source{Dissertation, Chapter 2: ordered current and target DLO shapes.}
+    \begin{column}{0.49\textwidth}
+      \begin{block}{Shape control}
+        \footnotesize
+        \textbf{Given:} observed current shape \(\bm p\) and prescribed target
+        shape \(\bm t\).
+
+        \vspace{0.12cm}
+        \textbf{Determine:} bounded dual-arm motions and intermediary shapes
+        \(\bm p^1,\ldots,\bm p^K\) such that
+        \[
+          \bm p \longrightarrow \bm p^1 \longrightarrow \cdots
+          \longrightarrow \bm p^K=\bm t .
+        \]
+
+        \textbf{Requirements:} admissible deformation, nominal cable length,
+        and convergence of the pointwise shape error.
+      \end{block}
     \end{column}
 
-    \begin{column}{0.45\textwidth}
-      \begin{block}{Finite-dimensional cable state}
-        \vspace{-0.4ex}
+    \begin{column}{0.49\textwidth}
+      \begin{block}{Global routing}
         \footnotesize
-        \[
-          \bm p=[\bm p_1^{\mathsf T},\ldots,\bm p_N^{\mathsf T}]^{\mathsf T}
-          \in\R^{2N},\qquad \bm p_n=[x_n,y_n]^{\mathsf T}.
-        \]
-      \end{block}
+        \textbf{Given:} start and goal configurations
+        \(C_{\mathrm{start}},C_{\mathrm{goal}}\) and a static obstacle set
+        \(\mathcal O\).
 
-      \vspace{-0.05cm}
-      \begin{itemize}\scriptsize
-        \item \textbf{Shape-control problem:} find bounded dual-arm motions that drive
-          \(\bm p\) through admissible intermediary shapes to target \(\bm t\).
-        \item \textbf{Routing problem:} find
-          \(\mathcal P=\{C_0,\ldots,C_K\}\subset\Cfree\) with admissible
-          deformations between every neighboring pair.
-        \item \textbf{Identification-free control requirement:} no prior identification of
-          cable stiffness, damping, or learned dynamics.
-      \end{itemize}
+        \vspace{0.12cm}
+        \textbf{Determine:} an ordered configuration sequence
+        \[
+          \mathcal P=\{C_0,\ldots,C_K\},\quad
+          C_0=C_{\mathrm{start}},\ C_K=C_{\mathrm{goal}}.
+        \]
+
+        \textbf{Requirements:} \(C_k\in\mathcal C_{\mathrm{free}}\) and an
+        admissible swept deformation between every \(C_k\) and \(C_{k+1}\).
+      \end{block}
     \end{column}
   \end{columns}
 
-  \vspace{0.10cm}
-  \begin{beamercolorbox}[wd=\textwidth,sep=3.2pt,left]{claimbar}
-    \scriptsize\textbf{Modeling assumptions used in Chapters 2--4.}
-    The methods are formulated for planar, quasi-static DLO motion, dual-arm endpoint
-    grasps, and known static obstacles. Top-view RGB perception is used only for physical
-    shape-control validation. These assumptions delimit the reported results.
+  \vspace{0.12cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.4pt,left]{claimbar}
+    \scriptsize\textbf{Scope.} Planar quasi-static motion and dual-arm endpoint grasps
+    are assumed. Shape control requires no identified stiffness, damping, or learned
+    dynamics; global routing assumes a known static obstacle map.
   \end{beamercolorbox}
 
-  \note{0:55. Define the common point state first. Distinguish the local shape-control problem from the global routing problem. Explain that planar and quasi-static motion, endpoint grasps, and known obstacles are the modeling assumptions adopted in Chapters 2--4; they delimit the reported results rather than constituting separate contributions. RGB perception belongs only to the physical shape-control study.}
+  \note{0:55. Separate the two formal problems. Shape control maps an observed current shape and prescribed target to bounded robot motions through intermediary shapes. Global routing maps prescribed start and goal configurations plus an obstacle map to a sequence whose states and swept transitions are admissible. No VFP contribution is claimed here; the state representation and its reconstruction are introduced on the next two slides.}
 \end{frame}
 
 % -----------------------------------------------------------------------------
 % 7. Ordered representation
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Ordered DLO representation}
+\begin{frame}[t]{DLO representation: Ordered state}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.50\textwidth}
       \centering
@@ -410,7 +409,7 @@
         \[\|\bm p_{n+1}-\bm p_n\|\approx l_s.\]
       \end{block}
       \begin{itemize}\footnotesize
-        \item ordered material points \(\bm p_1,\ldots,\bm p_N\);
+        \item ordered points \(\bm p_1,\ldots,\bm p_N\);
         \item approximately equidistant centerline discretization;
         \item direct pointwise correspondence with the target state \(\bm t\);
         \item compatible with the developed discrete planning and control models.
@@ -419,21 +418,21 @@
   \end{columns}
 
   \vspace{0.12cm}
-  \centering
-  \begin{tikzpicture}
-    \node[contribution,text width=13.25cm,minimum height=1.02cm,font=\small,align=left] {
-      \textbf{Scientific result 1.} An image-based method reconstructs the ordered finite-dimensional state of a marker-free planar cable. VFPs supplies approximately equidistant material points directly compatible with the discrete planning and control models.};
-  \end{tikzpicture}
+  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
+    \small\textbf{Role of the representation.} The ordered point vector converts the
+    distributed cable geometry into a state used by the subsequent interpolation,
+    control, and routing formulations.
+  \end{beamercolorbox}
 
-  \note{0:55. Define the state and its ordering. State Scientific Result 1 using the synopsis formulation: marker-free image-based reconstruction, approximately equidistant material points, and direct compatibility with the developed planning and control models. Do not imply that VFP images are used by GCR.}
+  \note{0:55. Introduce only the ordered finite-dimensional state: point order, approximate spacing, and pointwise target correspondence. Do not claim the VFP result yet. The next slide explains how this state is reconstructed from an image. Do not imply that VFP images are used by GCR.}
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 9. VFP
+% 8. VFP reconstruction
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{VFP reconstruction}
+\begin{frame}[t]{DLO perception: VFP reconstruction}
   \centering
-  \includegraphics[width=0.88\textwidth,height=4.35cm,keepaspectratio]{vfps_pipeline.png}
+  \includegraphics[width=0.84\textwidth,height=3.78cm,keepaspectratio]{vfps_pipeline.png}
 
   \vspace{0.08cm}
   \begin{tikzpicture}[node distance=0.18cm]
@@ -447,76 +446,86 @@
   \end{tikzpicture}
 
   \vspace{0.12cm}
-  \begin{beamercolorbox}[wd=0.90\textwidth,sep=3.5pt,center]{claimbar}
-    \small The cable remains marker-free; one marked gripper establishes the material-point traversal order.
-  \end{beamercolorbox}
+  \begin{tikzpicture}
+    \node[contribution,text width=13.1cm,minimum height=0.92cm,font=\footnotesize,align=left] {
+      \textbf{Scientific result 1.} The VFP method reconstructs an ordered,
+      approximately equidistant finite-dimensional state from an RGB image of a
+      marker-free planar cable. One marked gripper establishes the traversal origin;
+      the reconstructed state is directly compatible with the developed planning and
+      control models.};
+  \end{tikzpicture}
 
-  \note{0:55. Clarify the wording: the cable is marker-free, while one tool is marked to establish the starting end. Describe segmentation, thinning, circular-mask traversal, and ordered output.}
+  \note{0:55. Explain segmentation, thinning, circular-mask traversal, and ordered output first. Then state Scientific Result 1 using the synopsis formulation: the cable is marker-free, one marked gripper establishes the traversal origin, and the approximately equidistant ordered state is compatible with the developed discrete models.}
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 10. Simulation model
+% 9. DLO model
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Simulation model}
-  \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
-    \footnotesize\textbf{Purpose.} The mass--spring model provides a controlled numerical
-    environment for parameter studies; it is not an input to the shape controller.
+\begin{frame}[t]{DLO model}
+  \begin{beamercolorbox}[wd=\textwidth,sep=2.5pt,left]{claimbar}
+    \scriptsize\textbf{Purpose.} The mass--spring model provides the numerical
+    evaluation environment; it is not an input to the controller.
   \end{beamercolorbox}
 
-  \vspace{0.18cm}
+  \vspace{0.10cm}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.34\textwidth}
-      \begin{block}{Discretization}
+    \begin{column}{0.45\textwidth}
+      \begin{block}{Discrete mechanical representation}
         \centering
-        \includegraphics[width=\linewidth,height=2.25cm,keepaspectratio]{mass_spring.png}
-        \vspace{0.05cm}
+        \includegraphics[width=0.88\linewidth,height=1.90cm,keepaspectratio]{mass_spring.png}
+        \vspace{0.02cm}
         \begin{itemize}\scriptsize
-          \item point masses represent the ordered DLO state;
-          \item linear springs penalize segment extension;
-          \item torsional springs and damping model bending and dissipation.
+          \item \textbf{point masses:} discrete cable state;
+          \item \textbf{linear springs:} segment-length response;
+          \item \textbf{torsional springs:} elastic bending;
+          \item \textbf{damping:} suppression of numerical oscillation.
         \end{itemize}
       \end{block}
     \end{column}
-    \begin{column}{0.38\textwidth}
-      \begin{block}{Mechanical model}
-        \footnotesize
+    \begin{column}{0.53\textwidth}
+      \begin{block}{Equations of motion}
+        \scriptsize
+        \vspace{-0.4ex}
         \[
           \mathbf M\ddot{\bm p}=\bm f_l+\bm f_b+\bm f_d,
         \]
-        \vspace{-1.5ex}
+        \vspace{-2.0ex}
         \[
           E_l=\sum_{n=1}^{N-1}\frac{k_l}{2}
           \bigl(\|\bm p_{n+1}-\bm p_n\|-l_s\bigr)^2,
         \]
-        \vspace{-1.4ex}
+        \vspace{-2.0ex}
         \[
           \bm f_l=-\nabla_{\bm p}E_l.
         \]
+        \vspace{-1.2ex}
       \end{block}
-    \end{column}
-    \begin{column}{0.24\textwidth}
-      \begin{block}{Numerical study}
-        \begin{enumerate}\scriptsize
-          \item backward Euler integration;
-          \item conjugate-gradient solution;
-          \item controller step;
-          \item repeated parameter and target-shape studies.
-        \end{enumerate}
+      \vspace{-0.03cm}
+      \begin{block}{Numerical realization}
+        \scriptsize
+        \begin{itemize}
+          \item backward-Euler time integration;
+          \item conjugate-gradient solution of each implicit update;
+          \item repeated studies over cable length, discretization, target shape,
+            and interpolation step.
+        \end{itemize}
       \end{block}
-      \begin{tikzpicture}
-        \node[gapbox,text width=3.15cm,minimum height=0.82cm,font=\scriptsize,align=left] {
-          \textbf{Claim boundary:} no stiffness or damping value is supplied to the controller.};
-      \end{tikzpicture}
     \end{column}
   \end{columns}
+
+  \vspace{0.03cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=2.3pt,left]{claimbar}
+    \scriptsize\textbf{Boundary.} The controller receives observed geometry---not
+    simulator states or identified stiffness and damping parameters.
+  \end{beamercolorbox}
 
   \note{0:45. Separate the three roles: discrete mechanical representation, numerical realization, and parameter-study use. Emphasize that the mass--spring model generates evaluation data but supplies no material parameter or simulator state to the controller.}
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 11. LI -> ILI -> ALI
+% 10. DLO planning: LI -> ILI -> ALI
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Interpolation methods}
+\begin{frame}[t]{DLO planning: Interpolation methods}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.59\textwidth}
       \footnotesize
@@ -559,9 +568,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 12. ALI
+% 11. DLO planning: ALI
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Angular--linear interpolation}
+\begin{frame}[t]{DLO planning: Angular--linear interpolation}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.44\textwidth}
       \centering
@@ -599,9 +608,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 13. Closed loop
+% 12. DLO control: closed loop
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Shape-control architecture}
+\begin{frame}[t]{DLO control: Architecture}
   \centering
   \begin{beamercolorbox}[wd=\textwidth,sep=3.5pt,left]{claimbar}
     \footnotesize\textbf{Stage policy.} ALI generates
@@ -641,9 +650,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 14. Jacobian and OCP
+% 13. DLO control: Jacobian and OCP
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Geometric Jacobian and control}
+\begin{frame}[t]{DLO control: Geometric Jacobian}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.35\textwidth}
       \centering
@@ -694,9 +703,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 15. Validation design
+% 14. DLO control: validation design
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Experimental setup}
+\begin{frame}[t]{DLO control: Experimental setup}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.60\textwidth}
       \centering
@@ -734,9 +743,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 16. Shape-control results
+% 15. DLO control: results
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Shape-control results}
+\begin{frame}[t]{DLO control: Results}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.59\textwidth}
       \centering
@@ -788,9 +797,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 17. Concavity reversal
+% 16. DLO control: concavity reversal
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Concavity reversal}
+\begin{frame}[t]{DLO control: Concavity reversal}
   \centering
   \renewcommand{\arraystretch}{0.85}
   \begin{tabular}{@{}cccc@{}}
@@ -819,9 +828,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 18. GCR problem
+% 17. DLO routing: problem formulation
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Global routing problem}
+\begin{frame}[t]{DLO routing: Problem formulation}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.57\textwidth}
       \centering
@@ -858,9 +867,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 19. Candidate generation
+% 18. DLO routing: candidate generation
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Candidate generation}
+\begin{frame}[t]{DLO routing: Candidate generation}
   \centering
   \begin{tabular}{@{}ccc@{}}
     \includegraphics[width=0.305\textwidth,height=2.48cm,keepaspectratio]{gcr_raw.pdf} &
@@ -899,19 +908,19 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 20. Transition validation
+% 19. DLO routing: transition validation
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Transition admissibility}
+\begin{frame}[t]{DLO routing: Transition admissibility}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.49\textwidth}
       \centering
       \includegraphics[width=\linewidth,height=3.12cm,keepaspectratio]{transition_free.pdf}
-      \smalltag[ContributionGreen]{Admissible: swept regions are obstacle-free}
+      \smalltag[ContributionGreen]{Admissible: obstacle-free swept regions}
     \end{column}
     \begin{column}{0.49\textwidth}
       \centering
       \includegraphics[width=\linewidth,height=3.12cm,keepaspectratio]{transition_blocked.pdf}
-      \smalltag[GapRed]{Inadmissible: swept region intersects an obstacle}
+      \smalltag[GapRed]{Inadmissible: swept-region collision}
     \end{column}
   \end{columns}
 
@@ -947,9 +956,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 21. GCR algorithm
+% 20. DLO routing: GCR algorithm
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{GCR algorithm}
+\begin{frame}[t]{DLO routing: GCR algorithm}
   \centering
   \begin{tikzpicture}[node distance=0.23cm and 0.25cm]
     \node[flowbox,text width=2.15cm,font=\footnotesize] (trees) {Two-tree initialization};
@@ -997,9 +1006,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 22. GCR benchmarks
+% 21. DLO routing: benchmarks
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{GCR results}
+\begin{frame}[t]{DLO routing: Computational results}
   \begin{beamercolorbox}[wd=\textwidth,sep=3pt,left]{claimbar}
     \scriptsize\textbf{Benchmark design.} The planner was evaluated in \textbf{10 planar scenarios},
     with \(1000\) independent random seeds per scenario.
@@ -1041,9 +1050,9 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 23. MuJoCo validation
+% 22. DLO routing: MuJoCo validation
 % -----------------------------------------------------------------------------
-\begin{frame}[t]{Simulation validation}
+\begin{frame}[t]{DLO routing: Simulation validation}
   \centering\scriptsize
   \setlength{\tabcolsep}{1.8pt}
   \begin{tabular}{@{}ccccc@{}}
@@ -1088,7 +1097,7 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 24. Claims
+% 23. Principal statements
 % -----------------------------------------------------------------------------
 \begin{frame}[t]{Principal statements of the thesis}
   \begin{columns}[T,onlytextwidth]
@@ -1121,7 +1130,7 @@
 \end{frame}
 
 % -----------------------------------------------------------------------------
-% 25. Significance, limits, future
+% 24. Significance and scope
 % -----------------------------------------------------------------------------
 \begin{frame}[t]{Scientific and practical significance}
   \begin{columns}[T,onlytextwidth]
@@ -1257,7 +1266,9 @@
     \vspace{0.65cm}
     {\color{white!92}\LARGE Questions?}\par
     \vspace{1.10cm}
-    {\color{white!82}\normalsize Karam Almaghout --- Candidate defense, specialty 1.2.2}
+    {\color{white!82}\LARGE Karam Almaghout}
+		\vspace{0.5cm} \\
+    {\color{white!82} \normalsize \texttt{k.almaghout@innopolis.university}}
   \end{center}
   \vfill
   \note{0:15. Thank the committee and invite questions. Total target time: approximately 23 minutes 45 seconds.}
@@ -1314,9 +1325,10 @@
 
 \begin{frame}[t]{Task--result traceability}
   \footnotesize
+  \setlength{\tabcolsep}{5.2pt}
   \renewcommand{\arraystretch}{1.23}
   \begin{tabularx}{\textwidth}{
-    >{\bfseries\RaggedRight\arraybackslash}p{0.65cm}
+    >{\bfseries\RaggedRight\arraybackslash}p{0.72cm}
     >{\RaggedRight\arraybackslash}X
     >{\RaggedRight\arraybackslash}X
     >{\RaggedRight\arraybackslash}p{2.15cm}}
