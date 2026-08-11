@@ -1,64 +1,95 @@
 # Candidate defense presentation
 
-This folder is a self-contained, Overleaf-ready Beamer project for the dissertation
-“Mathematical Modeling and Motion Planning for Robotic Manipulation of Deformable
-Linear Objects.”
+Scientific defense presentation for the dissertation:
 
-The compiled deck contains 27 main slides planned for 23 minutes 45 seconds and seven
-appendix slides. Its visual language combines the row-based research-landscape diagram
-from slide 2 of `Thesis presentation.pdf` with the restrained blue academic styling of
-`presentation2.pdf`.
+> Mathematical Modeling and Motion Planning for Robotic Manipulation of
+> Deformable Linear Objects
+
+The compiled deck contains **26 main slides and 7 backup slides**. Its structure
+follows the two supplied defense templates: formulation and provisions first,
+then each method followed immediately by its experimental evidence.
 
 ## Files
 
-- `main.tex` — complete presentation, including hidden `\note{...}` timing cues
-- `theme.tex` — colors, typography, footer, blocks, and reusable diagram styles
-- `publications.bib` — BibTeX records used to typeset the publication citations
-- `speaker_notes.md` — rehearsable slide-by-slide talk track and cumulative timing
-- `assets/` — local copies of all figures used by the presentation
-- `main.pdf` — compiled presentation
+- main.tex — presentation source
+- theme.tex — restrained white-and-blue academic layout
+- speaker_notes.md — slide-by-slide talk track and timing
+- assets/ — figures already localized for the presentation
+- main.pdf — compiled 16:9 presentation
 
-No network access, external font, or shell escape is required. The publication slide is
-generated from `publications.bib` using a compact author--title--venue citation format
-with the Biber backend.
+Several result slides intentionally reference the original dissertation figures
+in ../thesis_phd_math/images/. This keeps the plots and experimental photographs
+identical to the dissertation instead of recreating them as presentation graphics.
 
-## Build locally
+## Build
 
-From this folder, run:
+From defense_presentation/, run:
 
-```bash
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
-```
+    latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 
-The project uses pdfLaTeX and standard TeX Live packages (`beamer`, `tikz`,
-`pgfplots`, `mathtools`, `biblatex`, and `appendixnumberbeamer`). `latexmk`
-automatically invokes Biber when the bibliography data change.
+The project uses pdfLaTeX and standard TeX Live packages. No Biber pass, network
+access, external font, or shell escape is required. The adjacent
+thesis_phd_math/ directory must remain available because the result figures are
+read from it.
 
-## Use in Overleaf
+## Main-slide sequence
 
-1. Upload this entire folder as a new project, or zip the folder and choose
-   **New Project → Upload Project**.
-2. Set `main.tex` as the main document.
-3. Select **pdfLaTeX** as the compiler.
-4. Compile. All figure paths are relative to `assets/`, so no path editing is needed.
+1. Title
+2. Relevance and applications
+3. Existing approaches and research gap
+4. Goal, object, subject, and objectives
+5. Research map: problem → limitation → result → verification → chapter
+6. Provisions presented for defense
+7. Ordered DLO state and Virtual Feature Points
+8. Complete mass--spring DLO model
+9. LI/ILI/ALI intermediary-shape planning
+10. Diminishing-rigidity Jacobian
+11. Constrained dual-arm shape control
+12. Shape-control simulation design
+13. Simulation results for point count \(N\)
+14. ALI step-size \(\lambda\) study
+15. Physical experimental setup
+16. Physical U/L/S/M results
+17. Opposite-concavity physical results
+18. Global Cable Routing problem
+19. Global Cable Routing numerical method
+20. Complete-motion validation
+21. Representative computed routes
+22. Ten-scenario benchmark table
+23. MuJoCo execution and error table
+24. Main scientific results and established scope
+25. Publications and implementation
+26. Closing
 
-## Defense structure
+## Evidence restored in the main deck
 
-The main narrative is:
+- Original U/L/S/M intermediary-profile figures.
+- Original simulated final-shape figures for the point-count study.
+- Exact statement that all 32 tasks completed, while six reached the iteration
+  cap before the strict \(e_{\mathrm{mean}}<0.01L\) condition.
+- Original \(\lambda\)-error and \(\lambda\)-iteration plots.
+- Original KUKA setup photograph and physical final-shape overlays.
+- Exact simulation-versus-physical U/L/S/M error table.
+- Original opposite-concavity experimental sequences and error table.
+- Representative GCR routes, the ten-scenario numerical table, and MuJoCo
+  snapshots with scenario-by-scenario errors.
 
-1. application problem and research gap;
-2. formal mathematical formulation, goal, and independent research methodologies;
-3. ordered marker-free state reconstruction with Virtual Feature Points;
-4. length-feasible ALI paths and geometry-based constrained shape control;
-5. Global Cable Routing with ordered swept-transition feasibility;
-6. computational, physical, and independent simulation evidence;
-7. four principal statements, scientific significance, publications, and conclusions.
+## Claim boundaries
 
-Five scientific novelty results are identified explicitly in the main narrative. The
-detailed correspondence to specialty 1.2.2 is retained as the first appendix slide for
-committee discussion.
+- The mass--spring model includes length, bending, and damping forces. It is an
+  evaluation model, not a separate novelty and not a parameter input to the
+  controller.
+- The controller uses the **diminishing-rigidity Jacobian**, not a method named
+  “Geometric Jacobian.”
+- The cable is marker-free; one gripper is marked only to establish point order.
+- Physical experiments validate planar, obstacle-free shape control.
+- Global Cable Routing is validated by C++ benchmarks and MuJoCo simulation; no
+  physical routing experiment is claimed.
+- All 10,000 tested GCR runs satisfied the stated predicates in the ten tested
+  scenarios. This is empirical evidence, not a completeness guarantee.
 
-Claim boundaries are deliberately explicit: the mass–spring model is a validation
-instrument rather than a claimed novelty; physical experiments validate shape control;
-GCR is validated computationally and in MuJoCo; and 10,000 successful tested routing
-runs are reported as empirical evidence, not as a universal guarantee.
+## Backup slides
+
+The seven backup slides cover abbreviations, detailed mass--spring forces, the
+ALI construction, physical error histories, GCR admissibility, the complete
+seven-column GCR benchmark, and final opposite-concavity overlays.
