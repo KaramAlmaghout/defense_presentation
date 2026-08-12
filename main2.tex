@@ -6,6 +6,8 @@
 \usepackage{amsmath,amssymb,mathtools,bm}
 \usepackage{booktabs,tabularx,array,multirow,makecell,colortbl}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
 \usepackage{ragged2e}
 \usepackage{microtype}
 \usepackage{appendixnumberbeamer}
@@ -36,6 +38,7 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Cfree}{\mathcal C_{\mathrm{free}}}
+\definecolor{GoalPurple}{RGB}{108,76,178}
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
 \newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
 
@@ -349,15 +352,15 @@
       \setlength{\belowdisplayskip}{3pt}
       \textbf{Constrained shape control}
       \[
-        \text{for }\kappa=1,\ldots,K:\qquad \qquad \qquad
+        \text{for }\kappa=1,\ldots,K:\quad \quad \quad
       \]
       \[
         \min_{\bm r} \sum_{n=1}^{N}\|\bm p_n^\kappa-\bm p_n\|,
       \]
       \[
-        \text{s.t. } \qquad 
+        \text{s.t. } \quad 
         \dot{\bm p}=\bm J\dot{\bm r},
-        \qquad |\dot{\bm r}|\leq\bm\nu .
+        \quad |\dot{\bm r}|\leq\bm\nu 
       \]
 			
       \vspace{0.08cm}
@@ -366,12 +369,11 @@
       %   m(n)=\arg\min_{m\in\{1,2\}}D_n^m,
       % \]
       \[
-        \bm J=\operatorname{blkdiag}(\bm J^1,\bm J^2),
-        \qquad \dot{\bm p}=\bm J\dot{\bm r}.
+        \bm J_{2N \times 6}=\operatorname{blkdiag}(\bm J^1,\bm J^2)
+        % \qquad \dot{\bm p}=\bm J\dot{\bm r}.
       \]
-      {\scriptsize Assignment is determined by nominal cable-order distance,
-      not current Euclidean proximity. \(\bm\nu\) contains the componentwise
-      velocity limits.}
+      {\scriptsize Points are assigned to the closest endpoints based on nominal cable-order distance.\\
+			 \(\bm\nu\) the end-effectors velocities limits.}
     \end{column}
 
     \begin{column}{0.39\textwidth}
@@ -397,23 +399,21 @@
       \]
       \vspace{0.08cm}
       {\scriptsize
-      \(m\): end effector with pose
-      \(\bm r_m=[r_{mx},r_{my},\theta_m]^{\mathsf T}\);
-      \(n\): cable point;
-      \(\eta_n^m\): number of nominal segments from endpoint \(m\) to point
-      \(n\); \(D_n^m\): fully stretched distance; \(d_n^m\): current
-      distance; \(\mu_n^m\): slack-dependent geometric weight, not a
-      constitutive material law.}
+			
+			\(m\): end effector with pose
+      \(\bm r_m=[r_{mx},r_{my},\theta_m]^{\mathsf T}\)\\
+      \(\eta_n^m\): number of nominal segments from \(m\) to \(n\)\\
+			\(D_n^m\): fully stretched distance, \(d_n^m\): current distance}
     \end{column}
 
     \begin{column}{0.26\textwidth}
       \centering
-      \includegraphics[width=0.95\linewidth,height=3.52cm,keepaspectratio]{rigidity_geometry.png}
+      \includegraphics[width=0.65\linewidth,height=3.52cm,keepaspectratio]{rigidity_geometry.png}
 
       \vspace{0.12cm}
       \scriptsize
-      Taut section: \(d_n^m\approx D_n^m\), strong coupling.\\[0.10cm]
-      Slack section: \(d_n^m<D_n^m\), diminishing coupling.
+     \(d_n^m\approx D_n^m\), strong coupling.\\[0.10cm]
+     \(d_n^m<D_n^m\), diminishing coupling.
     \end{column}
   \end{columns}
 
@@ -425,192 +425,317 @@
 % 9. Shape-control evidence summary
 % =============================================================================
 \begin{frame}[t]{Shape-control results}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.62\textwidth}
-      \centering
-      \setlength{\tabcolsep}{1pt}
-      \begin{tabular}{@{}cccc@{}}
-        \includegraphics[width=0.145\textwidth,height=1.58cm,keepaspectratio]{f1_035.png} &
-        \includegraphics[width=0.145\textwidth,height=1.58cm,keepaspectratio]{f2_035.png} &
-        \includegraphics[width=0.145\textwidth,height=1.58cm,keepaspectratio]{f3_035.png} &
-        \includegraphics[width=0.145\textwidth,height=1.58cm,keepaspectratio]{f4_035.png}\\[-0.25ex]
-        \scriptsize U simulation & \scriptsize L simulation &
-        \scriptsize S simulation & \scriptsize M simulation\\[0.04cm]
-        \includegraphics[width=0.145\textwidth,height=1.62cm,keepaspectratio]{U1f_c.png} &
-        \includegraphics[width=0.145\textwidth,height=1.62cm,keepaspectratio]{L1f_c.png} &
-        \includegraphics[width=0.145\textwidth,height=1.62cm,keepaspectratio]{S1f_c.png} &
-        \includegraphics[width=0.145\textwidth,height=1.62cm,keepaspectratio]{M1f_c.png}\\[-0.25ex]
-        \scriptsize U physical & \scriptsize L physical &
-        \scriptsize S physical & \scriptsize M physical
-      \end{tabular}
-
-      \vspace{0.10cm}
-      \footnotesize
-      \renewcommand{\arraystretch}{1.08}
-      \setlength{\tabcolsep}{4pt}
-      \begin{tabular}{lcccc}
-        \toprule
-        Mean pointwise error [mm], \(N=10\) & U & L & S & M\\
-        \midrule
-        Simulation & 4.0 & 6.9 & 5.2 & 4.9\\
-        Physical experiment & 11.7 & 10.9 & 10.6 & 5.2\\
-        \bottomrule
-      \end{tabular}
-    \end{column}
-
-    \begin{column}{0.36\textwidth}
-      \footnotesize
-      \textbf{Simulation study}
-      \begin{itemize}
-        \item two cable models, four targets, and
-          \(N\in\{8,10,12,14\}\): 32 tasks;
-        \item all tasks completed; six reached the iteration cap before the
-          strict \(e_{\mathrm{mean}}<0.01L\) condition
-          (\(L\): total cable length);
-        \item \(\lambda\) tested from 1 to 100 mm; recommended range:
-          \(10\)--\(50\) mm.
-      \end{itemize}
-
-      \textbf{Physical study}
-      \begin{itemize}
-        \item two KUKA LBR iiwa robots and top-view RealSense D435;
-        \item all U/L/S/M tasks completed;
-        \item four tested opposite-concavity tasks completed, with mean errors
-          \(4.5\)--\(12.4\) mm.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-
-  \scope{Detailed simulation plots, the DLO model, hardware setup, and full
-  physical error tables are provided in the appendix.}
-\end{frame}
-
-% =============================================================================
-% 10. GCR formulation
-% =============================================================================
-\begin{frame}[t]{Global Cable Routing (GCR): planning problem}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.58\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=4.55cm,keepaspectratio]{gcr_problem.png}
-      \source{Dissertation, Chapter 4: ordered configuration-space problem.}
-    \end{column}
-
-    \begin{column}{0.40\textwidth}
-      \footnotesize
-      Configuration:
-      \[
-        C=(p_1,\ldots,p_N)\in\R^{2N}.
-      \]
-      Find a route
-      \[
-        \mathcal P=(C_0,\ldots,C_K),\qquad
-        C_0=C_{\mathrm s},\quad C_K=C_{\mathrm g}.
-      \]
-
-      \textbf{Static admissibility}
-      \begin{itemize}
-        \item all points lie inside the workspace;
-        \item complete cable segments avoid obstacles;
-        \item segment lengths remain within bounds.
-      \end{itemize}
-
-      \textbf{Transition admissibility}
-      \begin{itemize}
-        \item swept cable-segment regions avoid obstacles;
-        \item point and endpoint ordering is preserved;
-        \item optional robot endpoint constraints are satisfied.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% =============================================================================
-% 11. GCR method
-% =============================================================================
-\begin{frame}[t]{Global Cable Routing: numerical method}
+	\textbf{Simulation Results} \par
+	\scriptsize
+	\begin{enumerate}
+		\item The cable is modeled as mass-spring model with rigid endpoint grasps.
+		\item Two different models are used.
+		\item Each model is tested for N = 8, 10, 12, 14
+		\item  \(\lambda\) tested from 1 to 100 mm
+	\end{enumerate}
+	
   \centering
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}ccc@{}}
-    \includegraphics[width=0.30\textwidth,height=2.50cm,keepaspectratio]{gcr_raw.pdf} &
-    \includegraphics[width=0.30\textwidth,height=2.50cm,keepaspectratio]{gcr_apf.pdf} &
-    \includegraphics[width=0.30\textwidth,height=2.50cm,keepaspectratio]{gcr_relax.pdf}\\[-0.3ex]
-    \footnotesize Guided configuration sample &
-    \footnotesize APF-biased candidate &
-    \footnotesize Projected elastic relaxation
+  {\scriptsize\textit{Initial, desired, and ALI profiles}\par}
+  \vspace{0.04cm}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{@{}cccc@{}}
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c1.png} &
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c2.png} &
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c3.png} &
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c4.png}\\[-0.28ex]
   \end{tabular}
 
-  \vspace{0.16cm}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.49\textwidth}
-      \small
-      \begin{enumerate}
-        \item Grow two search trees from start and goal.
-        \item Sample complete ordered cable configurations using a
-          goal/tree/broad-random mixture.
-        \item Use an Artificial Potential Field (APF) to bias each point
-          toward the opposite tree and away from obstacles.
-      \end{enumerate}
-    \end{column}
-    \begin{column}{0.49\textwidth}
-      \small
-      \begin{enumerate}
-        \setcounter{enumi}{3}
-        \item Relax the candidate while enforcing workspace, segment-length,
-          and clearance constraints.
-        \item Accept only static and ordered-transition-valid connections.
-        \item Join the trees and shortcut the route using the same test.
-      \end{enumerate}
-    \end{column}
-  \end{columns}
+  \vspace{0.06cm}
+  {\scriptsize\textit{Final simulation results; mean error for \(N=10\)}\par}
+  \vspace{0.04cm}
+  \begin{tabular}{@{}cccc@{}}
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f1_07.png} &
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f2_07.png} &
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f3_07.png} &
+    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f4_07.png}\\[-0.28ex]
+    \scriptsize U: 4.2 mm &
+    \scriptsize L: 6.9 mm &
+    \scriptsize S: 6.5 mm &
+    \scriptsize M: 4.2 mm
+  \end{tabular}
 
-  \observation{APF is a sampling bias; the bidirectional tree search performs
-  the global exploration.}
 \end{frame}
 
 % =============================================================================
-% 12. Complete-motion check
+% 10. Physical shape-control evidence
 % =============================================================================
-\begin{frame}[t]{Global Cable Routing: complete-motion validation}
+\begin{frame}[t]{Shape-control results}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.49\textwidth}
+    \begin{column}{0.5\textwidth}
+      \scriptsize
+      \textbf{Physical study:} 
+			\begin{enumerate}
+				\item The cable is a 350 mm long, 9 mm diameter, flexible wire.
+				\item The robots are two KUKA LBR iiwa 7 R800 manipulators.
+				\item The camera is a top-view RealSense D435.
+				\item The number of VFPs is \(N=10\).
+				\item The maximum reference step is \(\lambda=10\) mm.
+				\item All U/L/S/M and opposite-concavity tasks were completed.
+			\end{enumerate}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\centering
+      \includegraphics[width=\linewidth,height=2.15cm,keepaspectratio]{kuka_setup.jpg}
+			\end{column}
+  \end{columns}
+
+  \centering
+  % {\scriptsize\textit{U/L/S/M shapes: initial and intermediary profiles (top), final result (bottom)}\par}
+  \vspace{0.08cm}
+  \setlength{\tabcolsep}{1.5pt}
+  \begin{tabular}{@{}>{\centering\arraybackslash}m{2.0cm}
+    *{4}{>{\centering\arraybackslash}m{0.123\textwidth}}@{}}
+			\scriptsize\makecell[c]{Initial, desired,\\and ALI profiles}&
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{U1inter_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{L1inter_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{S1inter_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{M1inter_c.png}\\[-0.32ex]
+			\scriptsize\makecell[c]{Final results,\\mean error}&
+			\includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{U1f_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{L1f_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{S1f_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{M1f_c.png}\\[-1.32ex]
+		&
+    \scriptsize U: 11.7 mm & \scriptsize L: 10.9 mm &
+    \scriptsize S: 10.6 mm & \scriptsize M: 5.2 mm
+  \end{tabular}
+
+  % {\scriptsize\textit{Opposite-concavity shapes: initial and intermediary profiles (top), final result (bottom)}\par}
+  \vspace{0.12cm}
+  \begin{tabular}{@{}>{\centering\arraybackslash}m{2.0cm}
+    *{4}{>{\centering\arraybackslash}m{0.123\textwidth}}@{}}
+			\scriptsize\makecell[c]{Initial, desired,\\and ALI profiles}&
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_1inter_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_2inter_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_3inter_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_4inter_c.png}\\[-0.32ex]
+			\scriptsize\makecell[c]{Final results,\\mean error}&
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_1f_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_2f_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_3f_c.png} &
+    \includegraphics[width=0.2\textwidth,height=0.70cm,keepaspectratio]{conc_4f_c.png}\\[-1.32ex]
+    &
+		\scriptsize sce.1: 12.4 mm & \scriptsize sce.2: 9.0 mm &
+    \scriptsize sce.3: 8.1 mm & \scriptsize sce.4: 4.5 mm
+  \end{tabular}
+\end{frame}
+
+% =============================================================================
+% 11. Bidirectional search structure
+% =============================================================================
+\begin{frame}[t]{Global Cable Routing (1/3): bi-tree planning structure}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=2.80cm,keepaspectratio]{transition_free.pdf}\\[-0.2ex]
-      {\footnotesize Accepted transition}
+      \includegraphics[width=\linewidth,height=3.55cm,keepaspectratio]{gcr_problem.png}
+      \vspace{0.03cm}
+
+      {\footnotesize
+      \[
+        C=(p_1,\ldots,p_N)\in\R^{2N},\qquad
+        \mathcal P=(C_0,\ldots,C_K).
+      \]
+      \textbf{Each vertex is a complete ordered cable configuration.}}
     \end{column}
-    \begin{column}{0.49\textwidth}
+
+    \begin{column}{0.46\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=2.80cm,keepaspectratio]{transition_blocked.pdf}\\[-0.2ex]
-      {\footnotesize Rejected transition}
+      {\footnotesize\color{IUDeepBlue}\textbf{Two trees grow toward one another}\par}
+      \vspace{0.08cm}
+      \begin{tikzpicture}[
+        x=0.58cm,y=0.62cm,
+        every node/.style={font=\scriptsize},
+        sNode/.style={circle,fill=IUBlue,draw=IUDeepBlue,inner sep=1.6pt},
+        gNode/.style={circle,fill=GoalPurple,draw=GoalPurple,inner sep=1.6pt},
+        sEdge/.style={draw=IUBlue,line width=0.9pt},
+        gEdge/.style={draw=GoalPurple,line width=0.9pt}]
+        \node[sNode,label=left:{\color{IUBlue}\(C_{\mathrm s}\)}] (s0) at (0,1.7) {};
+        \node[sNode] (s1) at (1.1,2.4) {};
+        \node[sNode] (s2) at (1.1,1.0) {};
+        \node[sNode] (s3) at (2.3,2.7) {};
+        \node[sNode] (s4) at (2.5,1.5) {};
+        \node[sNode] (s5) at (3.5,1.9) {};
+        \draw[sEdge] (s0)--(s1) (s0)--(s2) (s1)--(s3) (s1)--(s4) (s4)--(s5);
+        \node[gNode,label=right:{\color{GoalPurple}\(C_{\mathrm g}\)}] (g0) at (7.2,1.7) {};
+        \node[gNode] (g1) at (6.1,2.4) {};
+        \node[gNode] (g2) at (6.1,1.0) {};
+        \node[gNode] (g3) at (4.9,2.7) {};
+        \node[gNode] (g4) at (4.7,1.5) {};
+        \node[gNode] (g5) at (3.8,1.9) {};
+        \draw[gEdge] (g0)--(g1) (g0)--(g2) (g1)--(g3) (g2)--(g4) (g4)--(g5);
+        \draw[-{Latex[length=2mm]},dashed,thick,draw=MidGray] (s5)--(g5);
+        \node[above=0.03cm of s3,text=IUBlue] {start tree \(T_s\)};
+        \node[above=0.03cm of g3,text=GoalPurple] {goal tree \(T_g\)};
+      \end{tikzpicture}
+
+      {\fontsize{7.4}{8.2}\selectfont
+      \[
+        T_s=(V_s,E_s),\quad V_s=\{C_{\mathrm s}\},\quad E_s=\emptyset,
+      \]
+      \[
+        T_g=(V_g,E_g),\quad V_g=\{C_{\mathrm g}\},\quad E_g=\emptyset.
+      \]
+      \textbf{Alternate the roles every iteration:}
+      \[
+      (T_{\mathrm{act}},T_{\mathrm{opp}})=
+      \begin{cases}
+        (T_s,T_g),&i\ \text{odd},\\
+        (T_g,T_s),&i\ \text{even}.
+      \end{cases}
+      \]}
     \end{column}
   \end{columns}
 
-  \vspace{0.14cm}
+  \vspace{0.06cm}
+  \centering
+  {\scriptsize\color{IUDeepBlue}\textbf{Planner loop:}\enspace
+  initialize \(T_s,T_g\) \(\rightarrow\) alternate active tree
+  \(\rightarrow\) expand \(\rightarrow\) try the opposite tree
+  \(\rightarrow\) trace and shortcut the connected path.\par}
+\end{frame}
+
+% =============================================================================
+% 12. One alternating tree expansion
+% =============================================================================
+\begin{frame}[t]{Global Cable Routing (2/3): one tree-expansion step}
+  \begin{beamercolorbox}[wd=\textwidth,center]{normal text}
+  \footnotesize
+  Expand \({\color{IUBlue}T_{\mathrm{act}}}\) toward a target in
+  \({\color{GoalPurple}T_{\mathrm{opp}}}\); then exchange the tree roles.
+  \end{beamercolorbox}
+  \vspace{0.01cm}
+  \setlength{\abovedisplayskip}{2pt}
+  \setlength{\belowdisplayskip}{2pt}
+
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.57\textwidth}
-      \small
-      For segment \(k\), the swept region between configurations \(C^a\) and
-      \(C^b\) is approximated by
+    \begin{column}{0.315\textwidth}
+      \centering
+      {\footnotesize\color{IUDeepBlue}\textbf{1. Generate candidate}\par}
+      \includegraphics[width=\linewidth,height=1.70cm,keepaspectratio]{gcr_raw.pdf}
+      {\fontsize{6.9}{7.7}\selectfont
+      \[
+      C^{\mathrm{raw}}\sim
+      \begin{cases}
+        \text{goal biased},&p_g,\\
+        \text{tree biased},&p_t,\\
+        \text{broad random},&1-p_g-p_t.
+      \end{cases}
+      \]}
+    \end{column}
+
+    \begin{column}{0.315\textwidth}
+      \centering
+      {\footnotesize\color{IUDeepBlue}\textbf{2. Bias toward \(T_{\mathrm{opp}}\)}\par}
+      \includegraphics[width=\linewidth,height=1.70cm,keepaspectratio]{gcr_apf.pdf}
+      {\fontsize{6.9}{7.7}\selectfont
+      \makebox[\linewidth][c]{Target: \(C^{\mathrm{target}}\in V_{\mathrm{opp}}\).}
+      \[
+        U=U_{\mathrm{att}}(C,C^{\mathrm{target}})+U_{\mathrm{rep}}(C,\mathcal O),
+      \]
+      \[
+        C^b=C^{\mathrm{raw}}-\eta\nabla U(C^{\mathrm{raw}}).
+      \]}
+    \end{column}
+
+    \begin{column}{0.315\textwidth}
+      \centering
+      {\footnotesize\color{IUDeepBlue}\textbf{3. Relax about \(T_{\mathrm{act}}\)}\par}
+      \includegraphics[width=\linewidth,height=1.70cm,keepaspectratio]{gcr_relax.pdf}
+      {\fontsize{6.9}{7.7}\selectfont
+      \[
+        C^{\mathrm{ref}}=\arg\min_{C_i\in V_{\mathrm{act}}}d(C_i,C^b),
+      \]
+      \[
+        C^{\mathrm{relax}}=\operatorname{Relax}(C^b,C^{\mathrm{ref}},\mathcal O).
+      \]
+      {\scriptsize Accept only if \(C^{\mathrm{relax}}\in\Cfree\); otherwise reject.}}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.01cm}
+  \centering
+  {\scriptsize\color{IUDeepBlue}\textbf{4. Choose an ordered parent and insert}\par}
+  {\fontsize{6.7}{7.5}\selectfont
+  \[
+  \begin{aligned}
+    \mathcal V_{\mathrm{par}}=
+    \bigl\{(C_i,\sigma):\;&C_i\in V_{\mathrm{act}},\ \sigma\in\{+1,-1\},\\[-0.2ex]
+    &d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon,\quad
+    \Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\bigr\}.
+  \end{aligned}
+  \]
+  If \(\mathcal V_{\mathrm{par}}=\emptyset\), reject. Otherwise choose
+  \(C^{\mathrm{par}}\), set \(C^{\mathrm{new}}=(C^{\mathrm{relax}})^{\sigma^*}\),
+  and insert \((C^{\mathrm{par}},C^{\mathrm{new}})\) into \(T_{\mathrm{act}}\).\par}
+\end{frame}
+
+% =============================================================================
+% 13. Validate and connect the two trees
+% =============================================================================
+\begin{frame}[t]{Global Cable Routing (3/3): validate, connect, and refine}
+  \centering
+  {\scriptsize\color{IUDeepBlue}
+  \(C^{\mathrm{new}}\in T_{\mathrm{act}}\)
+  \(\rightarrow\)
+  \(\mathcal V_{\mathrm{conn}}=\operatorname{Near}(T_{\mathrm{opp}},C^{\mathrm{new}},\epsilon)\)
+  \(\rightarrow\) filter by \(\Gamma\) in start-to-goal order
+  \(\rightarrow\) connect \(T_s\) and \(T_g\).\par}
+
+  \vspace{0.04cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.60\textwidth}
+      \centering
+      \setlength{\tabcolsep}{2pt}
+      \begin{tabular}{@{}cc@{}}
+        \includegraphics[width=0.28\textwidth,height=1.90cm,keepaspectratio]{transition_free.pdf} &
+        \includegraphics[width=0.28\textwidth,height=1.90cm,keepaspectratio]{transition_blocked.pdf}\\[-0.25ex]
+        \scriptsize Accepted bridge & \scriptsize Rejected bridge
+      \end{tabular}
+
+      \vspace{0.04cm}
+      {\fontsize{6.8}{7.6}\selectfont
       \[
         \mathcal S_k(C^a,C^b)=\operatorname{conv}
-        \{p_k^a,p_{k+1}^a,p_{k+1}^b,p_k^b\}.
+        \{p_k^a,p_{k+1}^a,p_{k+1}^b,p_k^b\},\qquad
+        \mathcal S_k\cap\mathcal O=\emptyset\ \ \forall k.
       \]
-      The transition is rejected if
-      \(\mathcal S_k(C^a,C^b)\cap\mathcal O\neq\varnothing\) for any \(k\).
+      \[
+        u(C)=\frac{p_N-p_1}{\|p_N-p_1\|},\qquad
+        u(C^a)^{\mathsf T}u(C^b)\geq\cos\theta_{\max}.
+      \]
+      \[
+        \Gamma=\operatorname{PathFree}\land\operatorname{AxisConsistent}
+        \land\operatorname{EndpointFeasible}.
+      \]}
     \end{column}
-    \begin{column}{0.41\textwidth}
-      \small
-      The ordered test also checks:
-      \begin{itemize}
-        \item rotation of the endpoint axis, preventing the assignment of the
-          two cable ends to the robots from flipping;
-        \item optional end-effector reach and motion bounds.
-      \end{itemize}
+
+    \begin{column}{0.38\textwidth}
+      \footnotesize
+      \textbf{After inserting \(C^{\mathrm{new}}\):}
+      \begin{enumerate}
+        \item find nearby vertices in \(T_{\mathrm{opp}}\);
+        \item accept a bridge only if \(\Gamma=1\);
+        \item trace both parent chains and concatenate them from start to goal;
+        \item shortcut the route using the same \(\Gamma\) test.
+      \end{enumerate}
+
+      \vspace{0.06cm}
+      {\scriptsize\color{MidGray}
+      The predicate \(\Gamma\) is used for parent insertion, inter-tree
+      connection, and shortcut edges.}
     \end{column}
   \end{columns}
 
-  \observation{Each neighboring deformation is checked using this swept-polygon
-  approximation, rather than only its two static configurations.}
+  \vspace{0.04cm}
+  {\scriptsize\color{IUDeepBlue}\textbf{Result:}\enspace
+  \(T_s\leftrightarrow T_g\Rightarrow\mathcal P_{\mathrm{raw}}
+  \Rightarrow\mathcal P_{\mathrm{ref}}\), with
+  \(\Gamma(C_i,C_{i+1})=1\) for every retained edge.\par}
 \end{frame}
 
 % =============================================================================
