@@ -48,6 +48,7 @@
 % 1. Title
 % =============================================================================
 \begin{frame}[plain]
+  \centering
   \vspace*{0.52cm}
   {\color{IUBlue}\rule{\textwidth}{1.0pt}}\par
   \vspace{0.45cm}
@@ -55,19 +56,20 @@
   \vspace{0.25cm}
   {\color{IUBlue}\rule{0.28\textwidth}{2.2pt}}\par
 
-  \vspace{0.70cm}
-  \begin{tabular}{@{}p{4.1cm}p{8.5cm}@{}}
-    \textbf{Candidate} & Karam Almaghout\\[0.28cm]
-    \textbf{Scientific supervisor} & Alexandr Klimchik, PhD\\[0.28cm]
-    \textbf{Organization} & Innopolis University\\[0.28cm]
-    \textbf{Specialty 1.2.2} &
-      Mathematical modeling, numerical methods and software packages
-  \end{tabular}
+  \vspace{0.58cm}
+  {\large\bfseries Karam Almaghout\par}
+  {\footnotesize\color{MidGray}Candidate\par}
+
+  \vspace{0.24cm}
+  {\small\textbf{Scientific supervisor:} Alexandr Klimchik, PhD\par}
+  {\small Innopolis University\par}
+
+  \vspace{0.24cm}
+  {\footnotesize\textbf{Specialty 1.2.2}\par}
+  {\footnotesize Mathematical modeling, numerical methods and software packages\par}
 
   \vfill
-  \begin{flushright}
-    \color{MidGray}Thesis for the degree of Candidate of Technical Sciences
-  \end{flushright}
+  {\small\color{MidGray}Thesis for the degree of Candidate of Technical Sciences\par}
 \end{frame}
 
 % =============================================================================
@@ -103,12 +105,12 @@
       \end{itemize}
 
       \vspace{0.10cm}
-      \textbf{Research problem.} Control and route the complete planar DLO
+      \textbf{Research problem.} Control and route a planar DLO
       with two robots using its geometry, without prior identification of
-      stiffness or damping.
+      cable parameters (bending, stiffness, ..).
     \end{column}
   \end{columns}
-  \source{Dissertation, Introduction and Chapter 1.}
+  % \source{Dissertation, Introduction and Chapter 1.}
 \end{frame}
 
 % =============================================================================
@@ -116,7 +118,17 @@
 % =============================================================================
 \begin{frame}[t]{Goal and research objectives}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.72\textwidth}
+    \begin{column}{0.30\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=2.35cm,keepaspectratio]{conc_1inter_c.png}\\[-0.2ex]
+      {\scriptsize Large shape deformation}
+
+      \vspace{0.30cm}
+      \includegraphics[width=\linewidth,height=2.35cm,keepaspectratio]{gcr_problem.png}\\[-0.2ex]
+      {\scriptsize Routing among obstacles}
+    \end{column}
+
+    \begin{column}{0.68\textwidth}
       \footnotesize
       \textbf{Goal.} Develop mathematical models and effective numerical
       methods for dual-arm shape control and routing of DLOs under large planar
@@ -131,29 +143,15 @@
           opposite-concavity transformations.
         \item Model local robot--cable kinematics and calculate bounded
           dual-arm motion.
-        \item Plan the complete cable route among static obstacles with valid
+        \item Plan a cable route among static obstacles with valid
           swept motion and endpoint correspondence.
         \item Implement and verify the developed models and numerical methods.
       \end{enumerate}
 
       \vspace{0.02cm}
-      \textbf{Object:} planar dual-arm robotic manipulation of a DLO.\\
-      \textbf{Subject:} mathematical models, numerical methods, and algorithms
-      for representation, simulation, perception, deformation planning,
-      control, and routing.
-    \end{column}
-
-    \begin{column}{0.26\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=2.00cm,keepaspectratio]{conc_1inter_c.png}\\[-0.2ex]
-      {\scriptsize Large shape deformation}
-
-      \vspace{0.28cm}
-      \includegraphics[width=\linewidth,height=2.05cm,keepaspectratio]{gcr_problem.png}\\[-0.2ex]
-      {\scriptsize Routing among obstacles}
     \end{column}
   \end{columns}
-  \source{Dissertation, Introduction: goal, object, subject, and objectives.}
+  % \source{Dissertation, Introduction: goal, object, subject, and objectives.}
 \end{frame}
 
 % =============================================================================
@@ -192,10 +190,10 @@
   \end{tabularx}
 
   \vspace{0.24cm}
-  \textbf{Validation boundary.} Chapter 3 uses image feedback in physical
-  shape-control experiments. Chapter 4 starts from prescribed ordered
-  configurations and known obstacle geometry and is validated computationally
-  and in MuJoCo.
+  % \textbf{Validation boundary.} Chapter 3 uses image feedback in physical
+  % shape-control experiments. Chapter 4 starts from prescribed ordered
+  % configurations and known obstacle geometry and is validated computationally
+  % and in MuJoCo.
 \end{frame}
 
 % =============================================================================
@@ -217,9 +215,9 @@
       model and numerical method with guided sampling, Artificial Potential
       Field (APF) bias, projected relaxation, and swept-transition validation.
 
-    \item \textbf{Software and verification:} Vision-based cable detection and tracking, MATLAB simulations, a C++ GCR implementation, physical KUKA experiments, and MuJoCo validation.
+    \item \textbf{Software and verification:} Vision-based cable detection and tracking, MATLAB simulations, a C++ GCR implementation, physical KUKA experiments, and simulation validation (MuJoCo).
   \end{enumerate}
-  \source{Dissertation, Introduction: scientific novelty and main results.}
+  % \source{Dissertation, Introduction: scientific novelty and main results.}
 \end{frame}
 
 % =============================================================================
@@ -417,8 +415,8 @@
     \end{column}
   \end{columns}
 
-  \observation{The controller uses observed geometry and robot poses; it does
-  not require identified cable stiffness or damping.}
+  % \observation{The controller uses observed geometry and robot poses; it does
+  % not require identified cable parameters.}
 \end{frame}
 
 % =============================================================================
@@ -475,7 +473,7 @@
 				\item The camera is a top-view RealSense D435.
 				\item The number of VFPs is \(N=10\).
 				\item The maximum reference step is \(\lambda=10\) mm.
-				\item All U/L/S/M and opposite-concavity tasks were completed.
+				\item All U/L/S/M and opposite-concavity tasks were achieved.
 			\end{enumerate}
 			\end{column}
 			\begin{column}{0.5\textwidth}
@@ -568,7 +566,7 @@
         \node[gNode] (g4) at (4.7,1.5) {};
         \node[gNode] (g5) at (3.8,1.9) {};
         \draw[gEdge] (g0)--(g1) (g0)--(g2) (g1)--(g3) (g2)--(g4) (g4)--(g5);
-        \draw[-{Latex[length=2mm]},dashed,thick,draw=MidGray] (s5)--(g5);
+        % \draw[-{Latex[length=2mm]},dashed,thick,draw=MidGray] (s5)--(g5);
         \node[above=0.03cm of s3,text=IUBlue] {start tree \(T_s\)};
         \node[above=0.03cm of g3,text=GoalPurple] {goal tree \(T_g\)};
       \end{tikzpicture}
@@ -772,53 +770,72 @@
       \end{tabularx}
 
       \vspace{0.12cm}
-      Single-threaded C++ implementation.
     \end{column}
   \end{columns}
 
   \observation{All tested paths satisfied the stated static and transition
-  predicates. This is empirical evidence, not a completeness guarantee.}
+  predicates. }
 \end{frame}
 
 % =============================================================================
 % 14. MuJoCo evidence
 % =============================================================================
 \begin{frame}[t]{Global Cable Routing: MuJoCo validation}
+  
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.68\textwidth}
+    \begin{column}{0.71\textwidth}
       \centering
-      \includegraphics[width=0.91\linewidth,height=2.25cm,keepaspectratio]{mujoco_setup.pdf}
-
-      \vspace{0.06cm}
-      \setlength{\tabcolsep}{2pt}
-      \begin{tabular}{@{}cccc@{}}
-        \includegraphics[width=0.145\textwidth,height=1.38cm,keepaspectratio]{mujoco_s1_start.pdf} &
-        \includegraphics[width=0.145\textwidth,height=1.38cm,keepaspectratio]{mujoco_s1_33.pdf} &
-        \includegraphics[width=0.145\textwidth,height=1.38cm,keepaspectratio]{mujoco_s1_67.pdf} &
-        \includegraphics[width=0.145\textwidth,height=1.38cm,keepaspectratio]{mujoco_s1_end.pdf}\\[-0.2ex]
-        \scriptsize Start & \scriptsize 33\% & \scriptsize 67\% & \scriptsize End
+      \includegraphics[width=0.92\linewidth,height=2.20cm,keepaspectratio]{mujoco_setup.pdf} 
+      \vspace{0.3cm}
+      \hline
+      \vspace{0.3cm}
+      \centering
+      \setlength{\tabcolsep}{1.5pt}
+      \begin{tabular}{@{}c@{\hspace{1mm}}cccc@{}}
+        & \scriptsize Start
+        & \scriptsize \makecell{Intermediate\\stage 1}
+        & \scriptsize \makecell{Intermediate\\stage 2}
+        & \scriptsize End\\[0.03cm]
+        \scriptsize S1 &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_01/start.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_01/33pct.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_01/67pct.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_01/end.pdf}\\[0.08cm]
+        \scriptsize S7 &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_07/start.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_07/33pct.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_07/67pct.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_07/end.pdf}\\[0.08cm]
+        \scriptsize S10 &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_10/start.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_10/33pct.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_10/67pct.pdf} &
+        \includegraphics[width=0.155\textwidth,height=1.48cm,keepaspectratio]{mujoco/scenario_10/end.pdf}
       \end{tabular}
-
-      \vspace{0.05cm}
-      \footnotesize Two UR10 manipulators; cable length \(0.27\) m.
     \end{column}
 
-    \begin{column}{0.30\textwidth}
-      \small
-      The two robots track the endpoint waypoints of the refined GCR route.
-
-      \vspace{0.28cm}
-      \textbf{Ten scenarios}
-      \begin{itemize}
-        \item final cable-shape root-mean-square error (RMSE):
-          \(1.60\)--\(4.66\) mm;
-        \item final maximum point error:
-          \(2.31\)--\(7.81\) mm.
-      \end{itemize}
-
-      \vspace{0.18cm}
-      \textbf{Validation boundary:} MuJoCo simulation; no physical GCR
-      experiment is claimed.
+    \begin{column}{0.27\textwidth}
+      \vspace{1.7cm}
+      \centering
+      \scriptsize
+      \renewcommand{\arraystretch}{1.06}
+      \begin{tabular}{r@{\hspace{0.30cm}}r@{\hspace{0.30cm}}r}
+        \toprule
+        Sc. & RMSE & Max.\\
+            & [mm] & [mm]\\
+        \midrule
+        1  & 2.20 & 3.41\\
+        2  & 2.22 & 3.72\\
+        3  & 4.32 & 6.49\\
+        4  & \textbf{1.60} & \textbf{2.31}\\
+        5  & 1.87 & 2.70\\
+        6  & 2.08 & 3.32\\
+        7  & 4.66 & 7.81\\
+        8  & 4.13 & 6.28\\
+        9  & 4.58 & 7.32\\
+        10 & 2.83 & 4.73\\
+        \bottomrule
+      \end{tabular}
     \end{column}
   \end{columns}
 \end{frame}
@@ -837,7 +854,7 @@
         \item ALI generates length-feasible intermediary profiles and enabled
           four tested opposite-concavity physical transformations.
         \item The diminishing-rigidity Jacobian and constrained control use
-          cable geometry without identified stiffness or damping.
+          cable geometry without identified dynamic parameters.
         \item GCR plans ordered cable routes and rejects transitions whose
           swept-region approximations intersect obstacles.
         \item All 10,000 tested GCR runs met the stated predicates; MuJoCo RMSE
@@ -849,17 +866,13 @@
       \small
       \textbf{Established limitations}
       \begin{itemize}
-        \item planar, quasi-static manipulation;
-        \item no out-of-plane bending or torsion;
-        \item nonlinear elasticity, plasticity, and frictional contact are not
-          modeled;
-        \item clear top view, without occlusion or self-intersection;
-        \item known static obstacles;
-        \item physical validation only for shape control.
+        \item Planar, quasi-static manipulation
+        \item Occlusion and self-intersection are not considered
+        \item Known static obstacles
       \end{itemize}
 
       \textbf{Further work}\\
-      3D perception and manipulation, richer mechanics and contact, and
+      3D perception and manipulation, and
       physical global-routing experiments.
     \end{column}
   \end{columns}
@@ -891,13 +904,12 @@
           Russian Journal of Nonlinear Dynamics, 18(5), 2022, pp.~843--858.
       \end{enumerate}
 
-      Four works are indexed by Scopus; one is published in a journal included
-      in the list of the Russian Higher Attestation Commission.
+     
     \end{column}
 
     \begin{column}{0.36\textwidth}
       \fontsize{7.6}{8.5}\selectfont
-      \textbf{Conferences and approbation}
+      \textbf{Conferences}
       \begin{enumerate}
         \item 10th IFAC Conference on Manufacturing Modelling, Management and
           Control (MIM), Nantes, France, 2022.
@@ -959,9 +971,9 @@
 \end{frame}
 
 % =============================================================================
-% A2. Complete DLO simulation model
+% A2. Energy-minimizing DLO model
 % =============================================================================
-\begin{frame}[t]{Appendix: mass--spring model of the DLO}
+\begin{frame}[t]{Appendix: energy-minimizing DLO model}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.38\textwidth}
       \centering
@@ -973,36 +985,46 @@
         \item \(N\) point masses;
         \item \(N-1\) stiff linear springs for length preservation;
         \item \(N-2\) torsion springs for elastic bending;
-        \item damping between adjacent points.
+        \item endpoints \(\bm p_1\) and \(\bm p_N\) fixed by the grippers.
       \end{itemize}
     \end{column}
 
     \begin{column}{0.60\textwidth}
       \small
-      Complete force balance:
-      \[
-        \ddot{\bm p}=\bm M^{-1}
-        \left[\bm f_l(\bm p)+\bm f_b(\bm p)
-        +\bm f_d(\bm p,\dot{\bm p})\right].
-      \]
+      \textbf{Stretching and bending energies}
       \[
         E_l=\sum_{n=2}^{N}\frac{k_l}{2}
         \left(\|\bm p_n-\bm p_{n-1}\|-l_s\right)^2,
-        \qquad \bm f_l=-\nabla_{\bm p}E_l,
       \]
       \[
         E_b=\sum_{n=2}^{N-1}\frac{k_b}{2}\gamma_n^2,
-        \qquad \bm f_b=-\nabla_{\bm p}E_b.
       \]
-      \footnotesize
-      \(\bm f_l\) preserves segment length; \(\bm f_b\) models bending;
-      \(\bm f_d\) suppresses relative oscillation. Backward Euler integration,
-      linearization, and a conjugate-gradient solve are used.
+
+      \textbf{Minimum-energy equilibrium update}
+      \[
+        E(\bm p)=E_l(\bm p)+E_b(\bm p),
+      \]
+      \[
+        \begin{aligned}
+          \underset{\bm p_{\mathrm{inner}}}{\operatorname{minimize}}
+          \quad & E(\bm p) \\
+          % \text{s.t.}\quad
+          % & \bm p_1=\bm p_1^{\mathrm{grip}}, \\
+          % & \bm p_N=\bm p_N^{\mathrm{grip}},
+          % \qquad
+          % \bm p_{\mathrm{inner}}=
+          % [\bm p_2,\ldots,\bm p_{N-1}]^{\mathsf T}.
+        \end{aligned}
+      \]
+
+      \footnotesize After every gripper-endpoint update, the inner cable
+      points are optimized to obtain the equilibrium shape with minimum total
+      elastic energy.
     \end{column}
   \end{columns}
 
-  \scope{This is the Chapter 3 simulation environment, not a separate novelty
-  claim and not a source of stiffness or damping parameters for the controller.}
+  % \scope{This is the Chapter 3 simulation environment, not a separate novelty
+  % claim and not a source of stiffness or damping parameters for the controller.}
 \end{frame}
 
 % =============================================================================
@@ -1023,9 +1045,6 @@
         \item targets: U, L, S, M;
         \item \(N=8,10,12,14\);
         \item 32 tasks total;
-        \item strict condition:
-          \(e_{\mathrm{mean}}<0.01L\);
-        \item cap: \(20K\) controller iterations.
       \end{itemize}
     \end{column}
 
@@ -1048,8 +1067,7 @@
       \end{tabular}
 
       \vspace{0.10cm}
-      \footnotesize All 32 tasks completed; six reached the iteration cap
-      before satisfying the strict convergence condition.
+      \footnotesize All 32 tasks completed
     \end{column}
   \end{columns}
 \end{frame}
@@ -1069,8 +1087,7 @@
     \footnotesize DLO 2: iterations & \footnotesize DLO 2: computation time
   \end{tabular}
 
-  \observation{Iterations and computation time generally increase with \(N\).
-  The six iteration-cap cases occurred for \(N=10,12,14\), not for \(N=8\).}
+  \observation{Iterations and computation time generally increase with \(N\).}
 \end{frame}
 
 % =============================================================================
@@ -1129,7 +1146,7 @@
     \begin{column}{0.70\textwidth}
       \centering
       \includegraphics[width=\linewidth,height=4.58cm,keepaspectratio]{kuka_setup.jpg}
-      \source{Dissertation, Chapter 3: physical experimental setup.}
+      % \source{Dissertation, Chapter 3: physical experimental setup.}
     \end{column}
     \begin{column}{0.28\textwidth}
       \small
@@ -1142,7 +1159,6 @@
         \item planar, obstacle-free workspace.
       \end{itemize}
 
-      \scope{Physical validation of shape control only.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -1256,56 +1272,53 @@
     \bottomrule
   \end{tabular}
 
-  \vspace{0.16cm}
-  \footnotesize Each row summarizes 1000 independent seeds. Success denotes
-  paths satisfying the stated static and transition predicates.
 \end{frame}
 
 % =============================================================================
 % A12. Complete MuJoCo table
 % =============================================================================
-\begin{frame}[t]{Appendix: complete MuJoCo tracking results}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.62\textwidth}
-      \centering
-      \includegraphics[width=0.92\linewidth,height=2.20cm,keepaspectratio]{mujoco_setup.pdf}
+% \begin{frame}[t]{Appendix: complete MuJoCo tracking results}
+%   \begin{columns}[T,onlytextwidth]
+%     \begin{column}{0.62\textwidth}
+%       \centering
+%       \includegraphics[width=0.92\linewidth,height=2.20cm,keepaspectratio]{mujoco_setup.pdf}
 
-      \vspace{0.08cm}
-      \setlength{\tabcolsep}{1pt}
-      \begin{tabular}{@{}cccc@{}}
-        \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_start.pdf} &
-        \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_33.pdf} &
-        \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_67.pdf} &
-        \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_end.pdf}
-      \end{tabular}
-    \end{column}
+%       \vspace{0.08cm}
+%       \setlength{\tabcolsep}{1pt}
+%       \begin{tabular}{@{}cccc@{}}
+%         \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_start.pdf} &
+%         \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_33.pdf} &
+%         \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_67.pdf} &
+%         \includegraphics[width=0.132\textwidth,height=1.42cm,keepaspectratio]{mujoco_s1_end.pdf}
+%       \end{tabular}
+%     \end{column}
 
-    \begin{column}{0.36\textwidth}
-      \centering
-      \footnotesize
-      \renewcommand{\arraystretch}{1.07}
-      \setlength{\tabcolsep}{2pt}
-      \begin{tabular}{ccc}
-        \toprule
-        Scenario & RMSE [mm] & Maximum [mm]\\
-        \midrule
-        1 & 2.20 & 3.41\\
-        2 & 2.22 & 3.72\\
-        3 & 4.32 & 6.49\\
-        4 & 1.60 & 2.31\\
-        5 & 1.87 & 2.70\\
-        6 & 2.08 & 3.32\\
-        7 & 4.66 & 7.81\\
-        8 & 4.13 & 6.28\\
-        9 & 4.58 & 7.32\\
-        10 & 2.83 & 4.73\\
-        \bottomrule
-      \end{tabular}
-    \end{column}
-  \end{columns}
+%     \begin{column}{0.36\textwidth}
+%       \centering
+%       \footnotesize
+%       \renewcommand{\arraystretch}{1.07}
+%       \setlength{\tabcolsep}{2pt}
+%       \begin{tabular}{ccc}
+%         \toprule
+%         Scenario & RMSE [mm] & Maximum [mm]\\
+%         \midrule
+%         1 & 2.20 & 3.41\\
+%         2 & 2.22 & 3.72\\
+%         3 & 4.32 & 6.49\\
+%         4 & 1.60 & 2.31\\
+%         5 & 1.87 & 2.70\\
+%         6 & 2.08 & 3.32\\
+%         7 & 4.66 & 7.81\\
+%         8 & 4.13 & 6.28\\
+%         9 & 4.58 & 7.32\\
+%         10 & 2.83 & 4.73\\
+%         \bottomrule
+%       \end{tabular}
+%     \end{column}
+%   \end{columns}
 
-  \scope{Two UR10 manipulators, a 0.27 m cable; MuJoCo simulation only.}
-\end{frame}
+%   % \scope{Two UR10 manipulators, a 0.27 m cable; MuJoCo simulation only.}
+% \end{frame}
 
 % =============================================================================
 % A13. Specialty compliance -- imported from main22 appendix
@@ -1326,15 +1339,21 @@
       APF bias; projected relaxation; swept-transition tests.\\
     Software packages &
       Perception and control software; MATLAB simulation studies;
-      single-threaded C++ GCR implementation; MuJoCo validation.\\
+       C++ GCR implementation; MuJoCo validation.\\
     \bottomrule
   \end{tabularx}
 
   \vspace{0.22cm}
   \footnotesize
-  Related specialty passport points: 2 (effective computational methods),
-  3 (problem-oriented programs), 5 (validation methods), 6 (simulation
-  systems), 8 (comprehensive investigation), and 9 (numerical experiments).
+  Related specialty passport points: 
+  \begin{itemize}
+    \item point 2: effective computational methods
+    \item point 3: problem-oriented programs
+    \item point 5: validation methods
+    \item point 6: simulation systems
+    \item point 8: comprehensive investigation
+    \item point 9: numerical experiments
+  \end{itemize}
 \end{frame}
 
 % =============================================================================
@@ -1372,9 +1391,7 @@
 % =============================================================================
 \begin{frame}[t]{Appendix: comparative scope of shape-control studies}
   \footnotesize
-  \textbf{Comparison basis.} Selected Chapter 3 works addressing comparable
-  DLO shape-control tasks; the table is not a universal ranking.
-
+  
   \vspace{0.14cm}
   \centering
   \fontsize{7.4}{8.5}\selectfont
@@ -1441,7 +1458,7 @@
   \vspace{0.18cm}
   \footnotesize
   The proposed Jacobian is an analytical geometric approximation of
-  slack-dependent coupling; it is not an identified elastic constitutive law.
+  slack-dependent coupling.
 
 \end{frame}
 
