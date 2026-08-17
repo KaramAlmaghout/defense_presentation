@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.14)  17 AUG 2026 16:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.14)  17 AUG 2026 17:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1577,114 +1577,107 @@ Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 7
 <assets/gcr_raw.pdf, id=155, 572.13701pt x 370.61958pt>
 File: assets/gcr_raw.pdf Graphic file (type pdf)
 <use assets/gcr_raw.pdf>
-Package pdftex.def Info: assets/gcr_raw.pdf  used on input line 865.
-(pdftex.def)             Requested size: 50.5036pt x 32.71527pt.
+Package pdftex.def Info: assets/gcr_raw.pdf  used on input line 874.
+(pdftex.def)             Requested size: 83.45099pt x 54.05797pt.
 <assets/gcr_apf.pdf, id=156, 572.13701pt x 370.61958pt>
 File: assets/gcr_apf.pdf Graphic file (type pdf)
 <use assets/gcr_apf.pdf>
-Package pdftex.def Info: assets/gcr_apf.pdf  used on input line 865.
-(pdftex.def)             Requested size: 50.5036pt x 32.71527pt.
+Package pdftex.def Info: assets/gcr_apf.pdf  used on input line 874.
+(pdftex.def)             Requested size: 83.45099pt x 54.05797pt.
 <assets/gcr_relax.pdf, id=157, 572.13701pt x 370.61958pt>
 File: assets/gcr_relax.pdf Graphic file (type pdf)
 <use assets/gcr_relax.pdf>
-Package pdftex.def Info: assets/gcr_relax.pdf  used on input line 865.
-(pdftex.def)             Requested size: 50.5036pt x 32.71527pt.
+Package pdftex.def Info: assets/gcr_relax.pdf  used on input line 874.
+(pdftex.def)             Requested size: 83.45099pt x 54.05797pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.5pt on input line 865.
+(Font)              scaled to size 6.5pt on input line 874.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.5pt on input line 865.
-LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
+(Font)              scaled to size 6.5pt on input line 874.
+LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 4.74496pt on input line 865.
+(Font)              scaled to size 4.74496pt on input line 874.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 3.57501pt on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 865.
+(Font)              scaled to size 3.57501pt on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 874.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 865.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 874.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
- [12
+
+Overfull \vbox (6.15843pt too high) detected at line 874
+ []
+
+[12
 
  <./assets/gcr_raw.pdf> <./assets/gcr_apf.pdf> <./assets/gcr_relax.pdf>]
 <assets/transition_free.pdf, id=313, 601.045pt x 388.72084pt>
 File: assets/transition_free.pdf Graphic file (type pdf)
 <use assets/transition_free.pdf>
-Package pdftex.def Info: assets/transition_free.pdf  used on input line 930.
+Package pdftex.def Info: assets/transition_free.pdf  used on input line 939.
 (pdftex.def)             Requested size: 123.37093pt x 79.78911pt.
 <assets/transition_blocked.pdf, id=314, 601.045pt x 388.72084pt>
 File: assets/transition_blocked.pdf Graphic file (type pdf)
 <use assets/transition_blocked.pdf>
-Package pdftex.def Info: assets/transition_blocked.pdf  used on input line 930.
+Package pdftex.def Info: assets/transition_blocked.pdf  used on input line 939.
 (pdftex.def)             Requested size: 123.37093pt x 79.78911pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 930.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 939.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 930.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 939.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [13
 
@@ -1692,138 +1685,138 @@ Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 9
 <assets/route_arc.pdf, id=440, 619.85698pt x 402.09622pt>
 File: assets/route_arc.pdf Graphic file (type pdf)
 <use assets/route_arc.pdf>
-Package pdftex.def Info: assets/route_arc.pdf  used on input line 979.
+Package pdftex.def Info: assets/route_arc.pdf  used on input line 988.
 (pdftex.def)             Requested size: 97.79823pt x 63.44092pt.
 <assets/route_gate.pdf, id=441, 619.85698pt x 402.09622pt>
 File: assets/route_gate.pdf Graphic file (type pdf)
 <use assets/route_gate.pdf>
-Package pdftex.def Info: assets/route_gate.pdf  used on input line 979.
+Package pdftex.def Info: assets/route_gate.pdf  used on input line 988.
 (pdftex.def)             Requested size: 97.79823pt x 63.44092pt.
 <assets/route_trap.pdf, id=442, 619.85698pt x 402.09622pt>
 File: assets/route_trap.pdf Graphic file (type pdf)
 <use assets/route_trap.pdf>
-Package pdftex.def Info: assets/route_trap.pdf  used on input line 979.
+Package pdftex.def Info: assets/route_trap.pdf  used on input line 988.
 (pdftex.def)             Requested size: 97.79823pt x 63.44092pt.
 <assets/route_corridor.pdf, id=443, 619.85698pt x 402.09622pt>
 File: assets/route_corridor.pdf Graphic file (type pdf)
 <use assets/route_corridor.pdf>
-Package pdftex.def Info: assets/route_corridor.pdf  used on input line 979.
+Package pdftex.def Info: assets/route_corridor.pdf  used on input line 988.
 (pdftex.def)             Requested size: 97.79823pt x 63.44092pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 979.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 979.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 988.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 988.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 979.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 988.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [14
 
  <./assets/route_arc.pdf> <./assets/route_gate.pdf> <./assets/route_trap.pdf> <./assets/route_corridor.pdf>]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
 <../thesis_phd_math/images/ch4/mujoco/scenario_01/start.pdf, id=567, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_01/start.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_01/start.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/start.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/start.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_01/33pct.pdf, id=568, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_01/33pct.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_01/33pct.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/33pct.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/33pct.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_01/67pct.pdf, id=569, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_01/67pct.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_01/67pct.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/67pct.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/67pct.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_01/end.pdf, id=570, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_01/end.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_01/end.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/end.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_01/end.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_07/start.pdf, id=571, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_07/start.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_07/start.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/start.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/start.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_07/33pct.pdf, id=572, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_07/33pct.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_07/33pct.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/33pct.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/33pct.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_07/67pct.pdf, id=573, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_07/67pct.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_07/67pct.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/67pct.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/67pct.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_07/end.pdf, id=574, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_07/end.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_07/end.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/end.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_07/end.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf, id=575, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_10/33pct.pdf, id=576, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_10/33pct.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_10/33pct.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/33pct.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/33pct.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_10/67pct.pdf, id=577, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_10/67pct.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_10/67pct.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/67pct.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/67pct.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
 <../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf, id=578, 462.52798pt x 260.17201pt>
 File: ../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf Graphic file (type pdf)
 <use ../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf>
-Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf  used on input line 1049.
+Package pdftex.def Info: ../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 51.8169pt x 29.147pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
 <assets/mujoco_setup.pdf, id=579, 870.1308pt x 498.54214pt>
 File: assets/mujoco_setup.pdf Graphic file (type pdf)
 <use assets/mujoco_setup.pdf>
-Package pdftex.def Info: assets/mujoco_setup.pdf  used on input line 1049.
+Package pdftex.def Info: assets/mujoco_setup.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 90.37727pt x 51.78174pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1049.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1058.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1049.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1058.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [15
 
  <../thesis_phd_math/images/ch4/mujoco/scenario_01/start.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_01/33pct.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_01/67pct.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_01/end.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_07/start.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_07/33pct.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_07/67pct.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_07/end.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_10/33pct.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_10/67pct.pdf> <../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf> <./assets/mujoco_setup.pdf>]
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1082.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1091.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [16
 
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 8.0pt on input line 1121.
+(Font)              scaled to size 8.0pt on input line 1130.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1121.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1130.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [17
 
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 24.88pt on input line 1137.
+(Font)              scaled to size 24.88pt on input line 1146.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 24.88pt on input line 1137.
-LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 1137.
+(Font)              scaled to size 24.88pt on input line 1146.
+LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 1146.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 9.0pt on input line 1137.
+(Font)              scaled to size 9.0pt on input line 1146.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `ntxtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1833,101 +1826,101 @@ Package microtype Info: Loading generic protrusion settings for font family
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 1142.
+(hyperref)                removing `\translate ' on input line 1151.
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1166.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1175.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1166.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1175.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
 [19
 
 ]
 File: assets/mass_spring.png Graphic file (type png)
 <use assets/mass_spring.png>
-Package pdftex.def Info: assets/mass_spring.png  used on input line 1237.
+Package pdftex.def Info: assets/mass_spring.png  used on input line 1246.
 (pdftex.def)             Requested size: 169.33733pt x 62.4552pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1246.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1237.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1246.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [20
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
 <../thesis_phd_math/images/ch3/f1_035.png, id=668, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/f1_035.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f1_035.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f1_035.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f1_035.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
 <../thesis_phd_math/images/ch3/f2_035.png, id=669, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/f2_035.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f2_035.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f2_035.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f2_035.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
 <../thesis_phd_math/images/ch3/f3_035.png, id=670, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/f3_035.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f3_035.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f3_035.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f3_035.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
 <../thesis_phd_math/images/ch3/f4_035.png, id=671, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/f4_035.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f4_035.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f4_035.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f4_035.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
 File: ../thesis_phd_math/images/ch3/f1_07.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f1_07.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f1_07.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f1_07.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
 File: ../thesis_phd_math/images/ch3/f2_07.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f2_07.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f2_07.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f2_07.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
 File: ../thesis_phd_math/images/ch3/f3_07.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f3_07.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f3_07.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f3_07.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
 File: ../thesis_phd_math/images/ch3/f4_07.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/f4_07.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/f4_07.png  used on input line 1284.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/f4_07.png  used on input line 1293.
 (pdftex.def)             Requested size: 49.59618pt x 37.19713pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1284.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1293.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1284.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1293.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [21
 
@@ -1935,28 +1928,28 @@ Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1
 <../thesis_phd_math/images/ch3/iter_035.png, id=677, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/iter_035.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/iter_035.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/iter_035.png  used on input line 1302.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/iter_035.png  used on input line 1311.
 (pdftex.def)             Requested size: 81.5603pt x 61.17023pt.
 <../thesis_phd_math/images/ch3/time_035.png, id=678, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/time_035.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/time_035.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/time_035.png  used on input line 1302.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/time_035.png  used on input line 1311.
 (pdftex.def)             Requested size: 81.5603pt x 61.17023pt.
 <../thesis_phd_math/images/ch3/iter_07.png, id=679, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/iter_07.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/iter_07.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/iter_07.png  used on input line 1302.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/iter_07.png  used on input line 1311.
 (pdftex.def)             Requested size: 81.5603pt x 61.17023pt.
 <../thesis_phd_math/images/ch3/time_07.png, id=680, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/time_07.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/time_07.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/time_07.png  used on input line 1302.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/time_07.png  used on input line 1311.
 (pdftex.def)             Requested size: 81.5603pt x 61.17023pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1302.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1302.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1311.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1311.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1302.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1311.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [22
 
@@ -1964,17 +1957,17 @@ Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1
 <../thesis_phd_math/images/ch3/lambda_error.png, id=688, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/lambda_error.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/lambda_error.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/lambda_error.png  used on input line 1323.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/lambda_error.png  used on input line 1332.
 (pdftex.def)             Requested size: 166.16327pt x 124.62245pt.
 <../thesis_phd_math/images/ch3/lambda_iter.png, id=689, 429.10312pt x 310.91156pt>
 File: ../thesis_phd_math/images/ch3/lambda_iter.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/lambda_iter.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/lambda_iter.png  used on input line 1323.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/lambda_iter.png  used on input line 1332.
 (pdftex.def)             Requested size: 171.99832pt x 124.62334pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1323.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1332.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1323.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1332.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [23
 
@@ -1982,105 +1975,105 @@ Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1
 <../thesis_phd_math/images/ch3/U1.png, id=695, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/U1.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/U1.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/U1.png  used on input line 1350.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/U1.png  used on input line 1359.
 (pdftex.def)             Requested size: 91.8076pt x 68.8557pt.
 <../thesis_phd_math/images/ch3/L1.png, id=696, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/L1.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/L1.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/L1.png  used on input line 1350.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/L1.png  used on input line 1359.
 (pdftex.def)             Requested size: 91.8076pt x 68.8557pt.
 <../thesis_phd_math/images/ch3/S1.png, id=697, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/S1.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/S1.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/S1.png  used on input line 1350.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/S1.png  used on input line 1359.
 (pdftex.def)             Requested size: 91.8076pt x 68.8557pt.
 <../thesis_phd_math/images/ch3/M1.png, id=698, 421.575pt x 316.18124pt>
 File: ../thesis_phd_math/images/ch3/M1.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/M1.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/M1.png  used on input line 1350.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/M1.png  used on input line 1359.
 (pdftex.def)             Requested size: 91.8076pt x 68.8557pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1350.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1350.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1359.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1359.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1350.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1359.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [24
 
  <../thesis_phd_math/images/ch3/U1.png (PNG copy)> <../thesis_phd_math/images/ch3/L1.png (PNG copy)> <../thesis_phd_math/images/ch3/S1.png (PNG copy)> <../thesis_phd_math/images/ch3/M1.png (PNG copy)>]
 File: assets/kuka_setup.jpg Graphic file (type jpg)
 <use assets/kuka_setup.jpg>
-Package pdftex.def Info: assets/kuka_setup.jpg  used on input line 1375.
+Package pdftex.def Info: assets/kuka_setup.jpg  used on input line 1384.
 (pdftex.def)             Requested size: 289.57724pt x 130.30975pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1375.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1384.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1375.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1384.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [25
 
 ]
 File: ../thesis_phd_math/images/ch3/U1f_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/U1f_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/U1f_c.png  used on input line 1411.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/U1f_c.png  used on input line 1420.
 (pdftex.def)             Requested size: 95.25496pt x 36.25023pt.
 File: ../thesis_phd_math/images/ch3/L1f_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/L1f_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/L1f_c.png  used on input line 1411.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/L1f_c.png  used on input line 1420.
 (pdftex.def)             Requested size: 95.25839pt x 36.22052pt.
 File: ../thesis_phd_math/images/ch3/S1f_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/S1f_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/S1f_c.png  used on input line 1411.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/S1f_c.png  used on input line 1420.
 (pdftex.def)             Requested size: 95.2559pt x 36.14262pt.
 File: ../thesis_phd_math/images/ch3/M1f_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/M1f_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/M1f_c.png  used on input line 1411.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/M1f_c.png  used on input line 1420.
 (pdftex.def)             Requested size: 95.25839pt x 36.22052pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1420.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1420.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1420.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1420.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1420.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1420.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1411.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1420.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [26
 
 ]
 File: ../thesis_phd_math/images/ch3/conc_1inter_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/conc_1inter_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_1inter_c.png  used on input line 1442.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_1inter_c.png  used on input line 1451.
 (pdftex.def)             Requested size: 95.25821pt x 36.6624pt.
 File: ../thesis_phd_math/images/ch3/conc_2inter_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/conc_2inter_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_2inter_c.png  used on input line 1442.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_2inter_c.png  used on input line 1451.
 (pdftex.def)             Requested size: 95.25615pt x 36.68542pt.
 File: ../thesis_phd_math/images/ch3/conc_3inter_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/conc_3inter_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_3inter_c.png  used on input line 1442.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_3inter_c.png  used on input line 1451.
 (pdftex.def)             Requested size: 95.25821pt x 36.6624pt.
 File: ../thesis_phd_math/images/ch3/conc_4inter_c.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/conc_4inter_c.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_4inter_c.png  used on input line 1442.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/conc_4inter_c.png  used on input line 1451.
 (pdftex.def)             Requested size: 95.25641pt x 36.73494pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1442.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1442.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1442.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1442.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1451.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1451.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1451.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1451.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1442.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1451.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [27
 
@@ -2088,115 +2081,115 @@ Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1
 <../thesis_phd_math/images/ch3/U1e.png, id=720, 451.6875pt x 376.40625pt>
 File: ../thesis_phd_math/images/ch3/U1e.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/U1e.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/U1e.png  used on input line 1458.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/U1e.png  used on input line 1467.
 (pdftex.def)             Requested size: 73.06407pt x 60.88672pt.
 <../thesis_phd_math/images/ch3/L1e.png, id=721, 451.6875pt x 376.40625pt>
 File: ../thesis_phd_math/images/ch3/L1e.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/L1e.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/L1e.png  used on input line 1458.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/L1e.png  used on input line 1467.
 (pdftex.def)             Requested size: 73.06407pt x 60.88672pt.
 <../thesis_phd_math/images/ch3/S1e.png, id=722, 451.6875pt x 376.40625pt>
 File: ../thesis_phd_math/images/ch3/S1e.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/S1e.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/S1e.png  used on input line 1458.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/S1e.png  used on input line 1467.
 (pdftex.def)             Requested size: 73.06407pt x 60.88672pt.
 <../thesis_phd_math/images/ch3/M1e.png, id=723, 451.6875pt x 376.40625pt>
 File: ../thesis_phd_math/images/ch3/M1e.png Graphic file (type png)
 <use ../thesis_phd_math/images/ch3/M1e.png>
-Package pdftex.def Info: ../thesis_phd_math/images/ch3/M1e.png  used on input line 1458.
+Package pdftex.def Info: ../thesis_phd_math/images/ch3/M1e.png  used on input line 1467.
 (pdftex.def)             Requested size: 73.06407pt x 60.88672pt.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1458.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1467.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1458.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1467.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [28
 
  <../thesis_phd_math/images/ch3/U1e.png (PNG copy)> <../thesis_phd_math/images/ch3/L1e.png (PNG copy)> <../thesis_phd_math/images/ch3/S1e.png (PNG copy)> <../thesis_phd_math/images/ch3/M1e.png (PNG copy)>]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1486.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1495.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1486.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1495.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [29
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1568.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1577.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1568.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1577.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [30
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1598.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1607.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1598.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1607.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [31
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1637.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1646.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1637.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1646.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [32
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1674.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1683.
 File: innopolis-university-seeklogo.png Graphic file (type png)
 <use innopolis-university-seeklogo.png>
-Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1674.
+Package pdftex.def Info: innopolis-university-seeklogo.png  used on input line 1683.
 (pdftex.def)             Requested size: 63.22432pt x 14.79555pt.
  [33
 
@@ -2221,13 +2214,13 @@ Package rerunfilecheck Info: File `main2.out' has not changed.
 Here is how much of TeX's memory you used:
  33273 strings out of 474222
  646314 string characters out of 5746180
- 1949975 words of memory out of 5000000
+ 1947975 words of memory out of 5000000
  54583 multiletter control sequences out of 15000+600000
  760036 words of font info for 385 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,19n,123p,1047b,1174s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/txbmiaX.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main2.pdf (33 pages, 8120704 bytes).
+Output written on main2.pdf (33 pages, 8120355 bytes).
 PDF statistics:
  841 PDF objects out of 1000 (max. 8388607)
  324 compressed objects within 4 object streams

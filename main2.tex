@@ -761,47 +761,48 @@
 % =============================================================================
 \begin{frame}[t]{GCR: Tree-expansion step}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.32\textwidth}
+    \begin{column}{0.25\textwidth}
       \centering
-      {\scriptsize 1. Raw candidate\par}
-      \includegraphics[width=\linewidth,height=1.15cm,keepaspectratio]{gcr_raw.pdf}
+      {\scriptsize 1. Raw candidate}\\
+			\vspace{0.06cm}
+      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_raw.pdf}\\
+    % \end{column}
+    % \begin{column}{0.32\textwidth}
+      
+		{\scriptsize 2. APF-biased candidate} \\
+			\vspace{0.06cm}
+      
+			\includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_apf.pdf} \\
+    % \end{column}
+    % \begin{column}{0.32\textwidth}
+      {\scriptsize 3. Relaxed configuration}\\
+			\vspace{0.06cm}
+			
+      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_relax.pdf}\\
     \end{column}
-    \begin{column}{0.32\textwidth}
-      \centering
-      {\scriptsize 2. APF-biased candidate\par}
-      \includegraphics[width=\linewidth,height=1.15cm,keepaspectratio]{gcr_apf.pdf}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \centering
-      {\scriptsize 3. Relaxed configuration\par}
-      \includegraphics[width=\linewidth,height=1.15cm,keepaspectratio]{gcr_relax.pdf}
-    \end{column}
-  \end{columns}
-
-  \vspace{0.01cm}
-  \begingroup
+		\begin{column}{0.75\textwidth}
   \setlength{\jot}{0pt}
   \setlength{\abovedisplayskip}{0pt}
   \setlength{\belowdisplayskip}{0pt}
 
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.05cm]{block body}
     \fontsize{6.5}{7.0}\selectfont
-    \textbf{1. Draw a guided mixture sample.}\par\vspace{-0.2ex}
+    \textbf{1. Draw a guided mixture sample.}\par\vspace{0.2ex}
     \centering
     \(
       C^{\mathrm{raw}}\sim
       \begin{cases}
-        \text{goal-biased sample}, & \text{with probability }p_g,\\
-        \text{tree-biased sample}, & \text{with probability }p_t,\\
-        \text{broad random sample}, & \text{with probability }1-p_g-p_t.
+        \text{goal-biased sample}\\
+        \text{tree-biased sample}\\
+        \text{broad random sample}
       \end{cases}
     \)
   \end{beamercolorbox}
 
-  \vspace{0cm}
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+  \vspace{0.025cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.15cm]{block body}
     \fontsize{6.5}{7.0}\selectfont
-    \textbf{2. Apply the opposite-tree APF bias.}\par\vspace{-0.2ex}
+    \textbf{2. Apply the opposite-tree APF bias.}\par\vspace{0.5ex}
     \centering
     \(
       C^{\mathrm{target}}\in V_{\mathrm{opp}},\qquad
@@ -811,24 +812,25 @@
   \end{beamercolorbox}
 
   \vspace{0.025cm}
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.15cm]{block body}
     \fontsize{6.5}{7.0}\selectfont
-    \textbf{3. Choose the nearest reference and solve the constrained elastic relaxation.}\par\vspace{-0.2ex}
+    \textbf{3. Solve the constrained elastic relaxation with respect to the nearest reference configuration}\par\vspace{0.2ex}
     \centering
     \(
       \begin{aligned}
-        C^{\mathrm{ref}}
-          &=\arg\min_{C_i\in V_{\mathrm{act}}}d(C_i,C^b),\\[-0.2ex]
+        % C^{\mathrm{ref}}
+        %   &=\arg\min_{C_i\in V_{\mathrm{act}}}d(C_i,C^b),\\[-0.2ex]
         C^{\mathrm{relax}}
           &=\arg\min_C\Bigl[\|C-C^b\|^2
             +\alpha_s\!\sum_{k=1}^{N-1}\!\|v_k(C)-v_k(C^{\mathrm{ref}})\|^2
-            +\alpha_b\!\sum_{k=1}^{N-2}\!\|b_k(C)-b_k(C^{\mathrm{ref}})\|^2\Bigr]\\[-0.2ex]
+            +\alpha_b\!\sum_{k=1}^{N-2}\!\|b_k(C)-b_k(C^{\mathrm{ref}})\|^2\Bigr]\\
         \text{s.t.}\quad
           &p_n\in\mathcal W\ (n=1,\ldots,N),\quad
            \ell_{\min}\leq\|p_{k+1}-p_k\|\leq\ell_{\max}\ (k=1,\ldots,N-1),\quad
            \operatorname{clearance}(C,\mathcal O)\geq d_{\min}.
       \end{aligned}
     \)\par
+		\vspace{0.025cm}
     \raggedright
     Reject if \(C^{\mathrm{relax}}=\emptyset\) or \(C^{\mathrm{relax}}\notin\Cfree\).
   \end{beamercolorbox}
@@ -836,17 +838,17 @@
   \vspace{0.025cm}
   \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
     \fontsize{6.5}{7.0}\selectfont
-    \textbf{4. Select an ordered feasible parent, insert the node, and update its cost.}\par\vspace{-0.2ex}
+    \textbf{4. Select an ordered feasible parent, insert the node, and update its cost.}\par\vspace{0.2ex}
     \centering
     \(
       \begin{aligned}
         \mathcal V_{\epsilon}
           &=\{(C_i,\sigma)\mid C_i\in V_{\mathrm{act}},\ \sigma\in\{+1,-1\},\
-               \ d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\},\\[-0.2ex]
+               \ d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\},\\[0.5ex]
         \mathcal V_{\mathrm{par}}
           &=\{(C_i,\sigma)\in\mathcal V_{\epsilon}\mid
                \Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\},\qquad
-               \mathcal V_{\mathrm{par}}=\emptyset\Rightarrow\text{reject},\\[-0.2ex]
+               \mathcal V_{\mathrm{par}}=\emptyset\Rightarrow\text{reject},\\[0.5ex]
         (C^{\mathrm{par}},\sigma^\ast)
           &=\arg\min_{(C_i,\sigma)\in\mathcal V_{\mathrm{par}}}
             \bigl[g(C_i)+d(C_i,(C^{\mathrm{relax}})^\sigma)
@@ -855,13 +857,20 @@
       \end{aligned}
     \)\par
     \raggedright
+		\vspace{0.025cm}
     Set \(C^{\mathrm{new}}=(C^{\mathrm{relax}})^{\sigma^\ast}\); insert
     \(C^{\mathrm{new}}\) and \((C^{\mathrm{par}},C^{\mathrm{new}})\) into
     \(T_{\mathrm{act}}\), set its parent to \(C^{\mathrm{par}}\), and update
     \(g(C^{\mathrm{new}})=g(C^{\mathrm{par}})+d(C^{\mathrm{par}},C^{\mathrm{new}})
       +\alpha_{\mathrm{def}}E_{\mathrm{def}}(C^{\mathrm{new}},C^{\mathrm{par}})\).
   \end{beamercolorbox}
-  \endgroup
+  % \endgroup
+			
+		\end{column}
+  \end{columns}
+
+  \vspace{0.01cm}
+  
 \end{frame}
 
 % =============================================================================
