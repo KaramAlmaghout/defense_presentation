@@ -1,13 +1,14 @@
 % Restrained academic layout based on the two supplied defense templates.
 % The deck deliberately uses one accent colour, flat tables, and source figures.
 
-\definecolor{IUBlue}{RGB}{10,91,160}
-\definecolor{IUDeepBlue}{RGB}{6,55,105}
-\definecolor{Ink}{RGB}{20,24,31}
-\definecolor{MidGray}{RGB}{92,98,108}
-\definecolor{RuleGray}{RGB}{175,181,190}
-\definecolor{SoftGray}{RGB}{245,247,249}
-\definecolor{TableBlue}{RGB}{232,240,247}
+% Palette sampled from the official logo: primary green #40B820.
+\definecolor{IUBlue}{RGB}{64,184,32}
+\definecolor{IUDeepBlue}{RGB}{34,112,27}
+\definecolor{Ink}{RGB}{20,24,20}
+\definecolor{MidGray}{RGB}{82,94,80}
+\definecolor{RuleGray}{RGB}{174,190,170}
+\definecolor{SoftGray}{RGB}{247,250,246}
+\definecolor{TableBlue}{RGB}{235,248,231}
 
 \setbeamercolor{normal text}{fg=Ink,bg=white}
 \setbeamercolor{structure}{fg=IUBlue}
@@ -34,7 +35,8 @@
   \nointerlineskip
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.80cm,dp=0.18cm,leftskip=0.56cm,rightskip=0.48cm]{frametitle}%
     \usebeamerfont{frametitle}\insertframetitle
-    \hfill{\color{IUBlue}\bfseries\scriptsize INNOPOLIS UNIVERSITY}
+    \hfill\raisebox{-0.12cm}{%
+      \includegraphics[height=0.52cm]{innopolis-university-seeklogo.png}}
   \end{beamercolorbox}%
   \nointerlineskip
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.07cm,dp=0cm]{title rule}\end{beamercolorbox}%
@@ -44,14 +46,9 @@
 \setbeamertemplate{footline}{%
   \leavevmode
   \hbox{%
-    \begin{beamercolorbox}[wd=.37\paperwidth,ht=0.29cm,dp=0.12cm,leftskip=0.56cm]{footline}%
-      \color{MidGray}\insertshortauthor
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.37\paperwidth,ht=0.29cm,dp=0.12cm,center]{footline}%
-      \color{MidGray}
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.26\paperwidth,ht=0.29cm,dp=0.12cm,rightskip=0.56cm plus 1fil]{footline}%
-      \color{MidGray}\insertframenumber\,/\,\inserttotalframenumber
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.29cm,dp=0.12cm,
+      rightskip=0.56cm]{footline}%
+      \hfill\color{MidGray}\insertframenumber\,/\,\inserttotalframenumber
     \end{beamercolorbox}%
   }
 }
