@@ -517,75 +517,96 @@
 \end{frame}
 
 % =============================================================================
-% 9. Shape-control simulation evidence
+% 9. DLO simulation model and shape-control evidence
 % =============================================================================
-\begin{frame}[t]{Shape-control results: simulation}
-  % \centering
-  % {\small\color{IUDeepBlue}\textbf{32 of 32 manipulation tasks reached the
-  % target shape.}\par}
-  % \vspace{0.08cm}
+\begin{frame}[t]{DLO simulation model and shape-control results}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.43\textwidth}
+      \centering
+      {\footnotesize\color{IUDeepBlue}\textbf{Discrete DLO model}\par}
+      \vspace{0.03cm}
+      \includegraphics[width=\linewidth,height=1.72cm,keepaspectratio]{mass_spring.png}
 
-  % {\footnotesize\textbf{Final shapes for DLO 2 across
-  % \(N=8,10,12,14\)}\par}
-  % \vspace{0.04cm}
-  % \setlength{\tabcolsep}{2pt}
-  % \begin{tabular}{@{}cccc@{}}
-  %   \includegraphics[width=0.235\textwidth,height=2.92cm,keepaspectratio]{f1_07.png} &
-  %   \includegraphics[width=0.235\textwidth,height=2.92cm,keepaspectratio]{f2_07.png} &
-  %   \includegraphics[width=0.235\textwidth,height=2.92cm,keepaspectratio]{f3_07.png} &
-  %   \includegraphics[width=0.235\textwidth,height=2.92cm,keepaspectratio]{f4_07.png}\\[-0.22ex]
-  %   \footnotesize U & \footnotesize L & \footnotesize S & \footnotesize M
-  % \end{tabular}
+      \scriptsize
+      \textbf{Linear springs} resist stretching; \textbf{torsion springs}
+      resist bending.
 
-  % \vspace{0.12cm}
-  % \begin{columns}[T,onlytextwidth]
-  %   \begin{column}{0.49\textwidth}
-  %     \begin{beamercolorbox}[wd=\linewidth,sep=0.10cm]{block body}
-  %       \footnotesize
-  %       \textbf{Test matrix:} two cable models; four target shapes; and
-  %       \(N=8,10,12,14\), giving 32 independent tasks.
-  %     \end{beamercolorbox}
-  %   \end{column}
-  %   \begin{column}{0.49\textwidth}
-  %     \begin{beamercolorbox}[wd=\linewidth,sep=0.10cm]{block body}
-  %       \footnotesize
-  %       \textbf{Observed trend:} 26 runs met the strict convergence threshold;
-  %       larger \(N\) increased computation and tended to increase error.
-  %     \end{beamercolorbox}
-  %   \end{column}
-  % \end{columns}
-  \scriptsize
-	\begin{enumerate}
-		\item The cable is modeled as mass-spring model with rigid endpoint grasps.
-		\item Two different models are used.
-		\item Each model is tested for N = 8, 10, 12, 14
-		\item  \(\lambda\) tested from 1 to 100 mm
-	\end{enumerate}
-	
-  \centering
-  {\scriptsize\textit{Initial, desired, and ALI profiles}\par}
-  \vspace{0.04cm}
-  \setlength{\tabcolsep}{2pt}
-  \begin{tabular}{@{}cccc@{}}
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c1.png} &
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c2.png} &
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c3.png} &
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{c4.png}\\[-0.28ex]
-  \end{tabular}
+      \vspace{0.08cm}
+      \setlength{\abovedisplayskip}{0pt}
+      \setlength{\belowdisplayskip}{0pt}
+      \setlength{\abovedisplayshortskip}{0pt}
+      \setlength{\belowdisplayshortskip}{0pt}
 
-  \vspace{0.06cm}
-  {\scriptsize\textit{Final simulation results; mean error for \(N=10\)}\par}
-  \vspace{0.04cm}
-  \begin{tabular}{@{}cccc@{}}
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f1_07.png} &
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f2_07.png} &
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f3_07.png} &
-    \includegraphics[width=0.225\textwidth,height=1.85cm,keepaspectratio]{f4_07.png}\\[-0.28ex]
-    \scriptsize U: 4.2 mm &
-    \scriptsize L: 6.9 mm &
-    \scriptsize S: 6.5 mm &
-    \scriptsize M: 4.2 mm
-  \end{tabular}
+      \raggedright
+      {\color{IUBlue}\textbf{Stretching energy} \(E_l\)}
+      \[
+        E_l(\bm p)=\sum_{n=2}^{N}\frac{k_l}{2}(\Delta l_n)^2,
+        \qquad
+        \Delta l_n=\|\bm p_n-\bm p_{n-1}\|-l_s .
+      \]
+
+      {\color{GoalPurple}\textbf{Bending energy} \(E_b\)}
+      \[
+        E_b(\bm p)=\sum_{n=2}^{N-1}\frac{k_b}{2}\gamma_n^2,
+        \qquad E(\bm p)=E_l(\bm p)+E_b(\bm p).
+      \]
+
+      {\color{IUDeepBlue}\textbf{Energy-minimizing equilibrium}}
+      \[
+        \begin{aligned}
+          \bm p_{\mathrm{inner}}^{*}
+          &=\underset{\bm p_2,\ldots,\bm p_{N-1}}{\arg\min}\ E(\bm p),\\[-0.2ex]
+          \bm p_1&=\bm p_1^{\mathrm{grip}},\qquad
+          \bm p_N=\bm p_N^{\mathrm{grip}}.
+        \end{aligned}
+      \]
+
+      \vspace{0.08cm}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.06cm]{block body}
+        \scriptsize
+        The energy minimizer gives the cable response after each gripper
+        update. The controller itself does not use \(k_l\) or \(k_b\).
+      \end{beamercolorbox}
+    \end{column}
+
+    \begin{column}{0.55\textwidth}
+      \centering
+      {\footnotesize\color{IUDeepBlue}\textbf{Shape-control results}\par}
+
+      \vspace{0.07cm}
+      {\scriptsize\textit{Initial, desired, and ALI profiles}\par}
+      \vspace{0.02cm}
+      \setlength{\tabcolsep}{1pt}
+      \begin{tabular}{@{}cccc@{}}
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c1.png} &
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c2.png} &
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c3.png} &
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c4.png}\\[-0.28ex]
+        \tiny U & \tiny L & \tiny S & \tiny M
+      \end{tabular}
+
+      \vspace{0.11cm}
+      {\scriptsize\textit{Final simulated shapes; mean error for \(N=10\)}\par}
+      \vspace{0.02cm}
+      \begin{tabular}{@{}cccc@{}}
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f1_07.png} &
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f2_07.png} &
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f3_07.png} &
+        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f4_07.png}\\[-0.28ex]
+        \tiny U: 4.2 mm &
+        \tiny L: 6.9 mm &
+        \tiny S: 6.5 mm &
+        \tiny M: 4.2 mm
+      \end{tabular}
+
+      \vspace{0.10cm}
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.06cm]{block body}
+        \scriptsize
+        Two DLO models; four target shapes; and
+        \(N=8,10,12,14\), giving 32 simulation tasks.
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
 
 \end{frame}
 
