@@ -176,7 +176,8 @@
       \centering
       {\small\color{IUDeepBlue}\textbf{Shape control}\par}
       % \includegraphics[width=0.5\linewidth,height=1.55cm]{CEP11.png}
-      \includegraphics[width=\linewidth,height=3.55cm,keepaspectratio]{fw.drawio.png}
+      % \includegraphics[width=\linewidth,height=3.55cm,keepaspectratio]{fw.drawio.png}
+			\includegraphics[width=\linewidth,height=3.55cm,keepaspectratio]{ppp.png}
       \includegraphics[width=\linewidth,height=1.cm,keepaspectratio]{conc_2i_c.png}
       \includegraphics[width=\linewidth,height=1.cm,keepaspectratio]{conc_2f_c.png}
       
@@ -187,8 +188,7 @@
         \footnotesize
         \textbf{Given:} observed shape \(\bm p\), target \(\bm t\), and
         end-effector poses \(\bm r\).\\
-        \textbf{Find:} feasible profiles and bounded dual-arm motion that
-        minimize shape error.
+        \textbf{Find:} feasible profiles and bounded dual-arm motion that minimize shape error of large deformation tasks.
       \end{beamercolorbox}
     \end{column}
 
@@ -308,24 +308,37 @@
         \item Slide the mask to the new feature point.
         \item Repeat Steps 5 and 6 until the cable end is reached.
       \end{enumerate}
-			\small
-  \observation{VFPs reconstruct an ordered, approximately equidistant cable
-  state from one top-view camera image.}
-			\vspace{0.03cm}
-			\[
-	  \bm p=[\bm p_1,\ldots,\bm p_N]^{\mathsf T},
-    \qquad \|\bm p_{n+1}-\bm p_n\|\approx l_s .
-  	\]
+			% \small
+  % \observation{VFPs reconstruct an ordered, approximately equidistant cable
+  % state from one top-view camera image.}
+			% \vspace{0.03cm}
+		% 	\[
+	  % \bm p=[\bm p_1,\ldots,\bm p_N]^{\mathsf T},
+    % \qquad \|\bm p_{n+1}-\bm p_n\|\approx l_s .
+  	% \] 
+		\vspace{0.2cm}
+		\textbf{Example of tracking a marker-free cable with VFPs:} \(\bm p\) is reconstructed from one image and tracked over time.
+
+			\includegraphics[width=\linewidth,height=1.3cm,keepaspectratio]{ex2_1.png} 
+			\includegraphics[width=\linewidth,height=1.3cm,keepaspectratio]{ex2_2.png} 
+			\includegraphics[width=\linewidth,height=1.3cm,keepaspectratio]{ex2_3.png} 
+			\includegraphics[width=\linewidth,height=1.3cm,keepaspectratio]{ex2_4.png} 
+			% \includegraphics[width=\linewidth,height=1.4cm,keepaspectratio]{input_3.png}
+			% \includegraphics[width=\linewidth,height=1.4cm,keepaspectratio]{inter_02.png}
     \end{column}
 
     \begin{column}{0.45\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=2.65cm,keepaspectratio]{vfps-steps.png}
-      \vspace{0.08cm}
+      
 
-      \includegraphics[width=\linewidth,height=3.25cm,keepaspectratio]{vfps_pipeline.png}
+      \includegraphics[width=\linewidth,height=3.25cm,keepaspectratio]{vfp_upf.png}
+			 \vspace{0.08cm}
+			\includegraphics[width=\linewidth,height=3.4cm,keepaspectratio]{vfps-steps.png} 
+			
+     
     \end{column}
   \end{columns}
+
 	
 \end{frame}
 
@@ -528,8 +541,8 @@
       \includegraphics[width=\linewidth,height=1.72cm,keepaspectratio]{mass_spring.png}
 
       \scriptsize
-      \textbf{Linear springs} resist stretching; \textbf{torsion springs}
-      resist bending.
+			Mass-spring model with \(N\) point masses and \(N-1\) segments of nominal length \(l_s\).
+      \textbf{Linear springs} represent stretching force; \textbf{torsion springs} represent bending force.
 
       \vspace{0.08cm}
       \setlength{\abovedisplayskip}{0pt}
@@ -538,7 +551,7 @@
       \setlength{\belowdisplayshortskip}{0pt}
 
       \raggedright
-      {\color{IUBlue}\textbf{Stretching energy} \(E_l\)}
+      {\color{GoalPurple}\textbf{Stretching energy} \(E_l\)}
       \[
         E_l(\bm p)=\sum_{n=2}^{N}\frac{k_l}{2}(\Delta l_n)^2,
         \qquad
@@ -547,16 +560,14 @@
 
       {\color{GoalPurple}\textbf{Bending energy} \(E_b\)}
       \[
-        E_b(\bm p)=\sum_{n=2}^{N-1}\frac{k_b}{2}\gamma_n^2,
-        \qquad E(\bm p)=E_l(\bm p)+E_b(\bm p).
+        E_b(\bm p)=\sum_{n=2}^{N-1}\frac{k_b}{2}\gamma_n^2
       \]
 
       {\color{IUDeepBlue}\textbf{Energy-minimizing equilibrium}}
       \[
         \begin{aligned}
-          \bm p_{\mathrm{inner}}^{*}
-          &=\underset{\bm p_2,\ldots,\bm p_{N-1}}{\arg\min}\ E(\bm p),\\[-0.2ex]
-          \bm p_1&=\bm p_1^{\mathrm{grip}},\qquad
+          & \underset{\bm p_2,\ldots,\bm p_{N-1}}{\arg\min} (E_l(\bm p)+E_b(\bm p))\\
+          & \bm p_1=\bm p_1^{\mathrm{grip}},\qquad
           \bm p_N=\bm p_N^{\mathrm{grip}}.
         \end{aligned}
       \]
@@ -578,10 +589,10 @@
       \vspace{0.02cm}
       \setlength{\tabcolsep}{1pt}
       \begin{tabular}{@{}cccc@{}}
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c1.png} &
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c2.png} &
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c3.png} &
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{c4.png}\\[-0.28ex]
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{c1.png} &
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{c2.png} &
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{c3.png} &
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{c4.png}\\[-0.28ex]
         \tiny U & \tiny L & \tiny S & \tiny M
       \end{tabular}
 
@@ -589,10 +600,10 @@
       {\scriptsize\textit{Final simulated shapes; mean error for \(N=10\)}\par}
       \vspace{0.02cm}
       \begin{tabular}{@{}cccc@{}}
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f1_07.png} &
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f2_07.png} &
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f3_07.png} &
-        \includegraphics[width=0.128\textwidth,height=1.62cm,keepaspectratio]{f4_07.png}\\[-0.28ex]
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{f1_07.png} &
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{f2_07.png} &
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{f3_07.png} &
+        \includegraphics[width=0.25\textwidth,height=1.62cm,keepaspectratio]{f4_07.png}\\[-0.28ex]
         \tiny U: 4.2 mm &
         \tiny L: 6.9 mm &
         \tiny S: 6.5 mm &
@@ -624,8 +635,9 @@
       \vspace{0.4cm}
       \begin{beamercolorbox}[wd=\linewidth,sep=0.10cm]{block body}
         \footnotesize
-        two KUKA LBR iiwa robots, top-view RealSense D435,
+        \textbf{Setup:} Two KUKA LBR iiwa robots, top-view RealSense D435,
         350 mm cable, \(N=10\) VFPs, and \(\lambda=10\) mm.\\[0.04cm]
+				\textbf{Implementation:} ROS, C++, Python, OpenCV, and Eigen.\\[0.04cm]
         \textbf{Outcome:} all U/L/S/M and opposite-concavity
         transformations were achieved.
       \end{beamercolorbox}
@@ -635,7 +647,7 @@
   \vspace{0.10cm}
   \centering
   {\footnotesize\color{IUDeepBlue}\textbf{U/L/S/M targets}\par}
-  {\scriptsize\color{MidGray}Initial \(\longrightarrow\) final in every pair\par}
+  % {\scriptsize\color{MidGray}Initial \(\longrightarrow\) final in every pair\par}
   \setlength{\tabcolsep}{2pt}
   \begin{tabular}{@{}cccc@{}}
     \begin{tabular}{@{}c@{}}
@@ -693,6 +705,7 @@
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.44\textwidth}
       \centering
+			
       {\footnotesize\color{IUDeepBlue}\textbf{Routing problem in configuration space}\par}
       \vspace{0.04cm}
       \includegraphics[width=\linewidth,height=3.38cm,keepaspectratio]{gcr_problem.png}
@@ -708,6 +721,7 @@
 
     \begin{column}{0.54\textwidth}
       \centering
+			\hspace{-1.5cm}
       {\footnotesize\color{IUDeepBlue}\textbf{Bidirectional planner loop}\par}
       \vspace{0.06cm}
       \begin{tikzpicture}[
@@ -747,79 +761,107 @@
 % =============================================================================
 \begin{frame}[t]{GCR: Tree-expansion step}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.42\textwidth}
+    \begin{column}{0.32\textwidth}
       \centering
-      {\footnotesize\color{IUDeepBlue}\textbf{Configuration evolution}\par}
-      \vspace{0.04cm}
-      {\footnotesize{1. Raw candidate}\par}
-      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_raw.pdf}
-      \vspace{0.03cm}
-
-      {\footnotesize{2. APF-biased candidate}\par}
-      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_apf.pdf}
-      \vspace{0.03cm}
-
-      {\footnotesize{3. Relaxed configuration}\par}
-      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_relax.pdf}
-      
+      {\scriptsize 1. Raw candidate\par}
+      \includegraphics[width=\linewidth,height=1.15cm,keepaspectratio]{gcr_raw.pdf}
     \end{column}
-
-    \begin{column}{0.56\textwidth}
-      {\footnotesize\color{IUDeepBlue}\textbf{Sampling and projection}\par}
-      \vspace{0.04cm}
-
-      \begin{beamercolorbox}[wd=\linewidth,sep=0.09cm]{block body}
-        \footnotesize
-        \textbf{1. Generate a candidate.}
-        \(
-          C^{\mathrm{raw}}\sim
-          \{\text{goal-biased }(p_g),\ \text{tree-biased }(p_t),\
-          \text{broad random }(1-p_g-p_t)\}.
-        \)
-      \end{beamercolorbox}
-
-      \vspace{0.06cm}
-      \begin{beamercolorbox}[wd=\linewidth,sep=0.09cm]{block body}
-        \footnotesize
-        \textbf{2. Bias toward the opposite tree.}
-        Select \(C^{\mathrm{target}}\in V_{\mathrm{opp}}\), then
-        \[
-          C^b=C^{\mathrm{raw}}-\eta\nabla
-          \bigl(U_{\mathrm{att}}+U_{\mathrm{rep}}\bigr)(C^{\mathrm{raw}}).
-        \]
-      \end{beamercolorbox}
-
-      \vspace{0.06cm}
-      \begin{beamercolorbox}[wd=\linewidth,sep=0.09cm]{block body}
-        \footnotesize
-        \textbf{3. Project to a feasible shape.}
-        \[
-          C^{\mathrm{ref}}=\arg\min_{C_i\in V_{\mathrm{act}}}d(C_i,C^b),
-          \qquad
-          C^{\mathrm{relax}}=\operatorname{Relax}(C^b,C^{\mathrm{ref}},\mathcal O).
-        \]
-        Accept only if \(C^{\mathrm{relax}}\in\Cfree\).
-      \end{beamercolorbox}
-      \begin{beamercolorbox}[wd=\textwidth,sep=0.09cm]{block body}
-    \footnotesize
-    \textbf{4. Select a parent and insert.}
-    For both endpoint orders \(\sigma\in\{+1,-1\}\), retain only candidates satisfying
-    \(d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\) and
-    \(\Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\). Reject if none remains;
-    otherwise insert the best feasible edge into \(T_{\mathrm{act}}\).
-  \end{beamercolorbox}
+    \begin{column}{0.32\textwidth}
+      \centering
+      {\scriptsize 2. APF-biased candidate\par}
+      \includegraphics[width=\linewidth,height=1.15cm,keepaspectratio]{gcr_apf.pdf}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \centering
+      {\scriptsize 3. Relaxed configuration\par}
+      \includegraphics[width=\linewidth,height=1.15cm,keepaspectratio]{gcr_relax.pdf}
     \end{column}
   \end{columns}
 
-  \vspace{0.08cm}
-  % \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
-  %   \footnotesize
-  %   \textbf{4. Select a parent and insert.}
-  %   For both endpoint orders \(\sigma\in\{+1,-1\}\), retain only candidates satisfying
-  %   \(d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\) and
-  %   \(\Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\). Reject if none remains;
-  %   otherwise insert the best feasible edge into \(T_{\mathrm{act}}\).
-  % \end{beamercolorbox}
+  \vspace{0.01cm}
+  \begingroup
+  \setlength{\jot}{0pt}
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\belowdisplayskip}{0pt}
+
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+    \fontsize{6.5}{7.0}\selectfont
+    \textbf{1. Draw a guided mixture sample.}\par\vspace{-0.2ex}
+    \centering
+    \(
+      C^{\mathrm{raw}}\sim
+      \begin{cases}
+        \text{goal-biased sample}, & \text{with probability }p_g,\\
+        \text{tree-biased sample}, & \text{with probability }p_t,\\
+        \text{broad random sample}, & \text{with probability }1-p_g-p_t.
+      \end{cases}
+    \)
+  \end{beamercolorbox}
+
+  \vspace{0cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+    \fontsize{6.5}{7.0}\selectfont
+    \textbf{2. Apply the opposite-tree APF bias.}\par\vspace{-0.2ex}
+    \centering
+    \(
+      C^{\mathrm{target}}\in V_{\mathrm{opp}},\qquad
+      U(C)=U_{\mathrm{att}}(C,C^{\mathrm{target}})+U_{\mathrm{rep}}(C,\mathcal O),
+      \qquad C^b=C^{\mathrm{raw}}-\eta\nabla U(C^{\mathrm{raw}}).
+    \)
+  \end{beamercolorbox}
+
+  \vspace{0.025cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+    \fontsize{6.5}{7.0}\selectfont
+    \textbf{3. Choose the nearest reference and solve the constrained elastic relaxation.}\par\vspace{-0.2ex}
+    \centering
+    \(
+      \begin{aligned}
+        C^{\mathrm{ref}}
+          &=\arg\min_{C_i\in V_{\mathrm{act}}}d(C_i,C^b),\\[-0.2ex]
+        C^{\mathrm{relax}}
+          &=\arg\min_C\Bigl[\|C-C^b\|^2
+            +\alpha_s\!\sum_{k=1}^{N-1}\!\|v_k(C)-v_k(C^{\mathrm{ref}})\|^2
+            +\alpha_b\!\sum_{k=1}^{N-2}\!\|b_k(C)-b_k(C^{\mathrm{ref}})\|^2\Bigr]\\[-0.2ex]
+        \text{s.t.}\quad
+          &p_n\in\mathcal W\ (n=1,\ldots,N),\quad
+           \ell_{\min}\leq\|p_{k+1}-p_k\|\leq\ell_{\max}\ (k=1,\ldots,N-1),\quad
+           \operatorname{clearance}(C,\mathcal O)\geq d_{\min}.
+      \end{aligned}
+    \)\par
+    \raggedright
+    Reject if \(C^{\mathrm{relax}}=\emptyset\) or \(C^{\mathrm{relax}}\notin\Cfree\).
+  \end{beamercolorbox}
+
+  \vspace{0.025cm}
+  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
+    \fontsize{6.5}{7.0}\selectfont
+    \textbf{4. Select an ordered feasible parent, insert the node, and update its cost.}\par\vspace{-0.2ex}
+    \centering
+    \(
+      \begin{aligned}
+        \mathcal V_{\epsilon}
+          &=\{(C_i,\sigma)\mid C_i\in V_{\mathrm{act}},\ \sigma\in\{+1,-1\},\
+               \ d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\},\\[-0.2ex]
+        \mathcal V_{\mathrm{par}}
+          &=\{(C_i,\sigma)\in\mathcal V_{\epsilon}\mid
+               \Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\},\qquad
+               \mathcal V_{\mathrm{par}}=\emptyset\Rightarrow\text{reject},\\[-0.2ex]
+        (C^{\mathrm{par}},\sigma^\ast)
+          &=\arg\min_{(C_i,\sigma)\in\mathcal V_{\mathrm{par}}}
+            \bigl[g(C_i)+d(C_i,(C^{\mathrm{relax}})^\sigma)
+            +\alpha_{\mathrm{def}}E_{\mathrm{def}}((C^{\mathrm{relax}})^\sigma,C_i)\bigr],
+            \quad \mathcal V_{\mathrm{par}}\neq\emptyset.
+      \end{aligned}
+    \)\par
+    \raggedright
+    Set \(C^{\mathrm{new}}=(C^{\mathrm{relax}})^{\sigma^\ast}\); insert
+    \(C^{\mathrm{new}}\) and \((C^{\mathrm{par}},C^{\mathrm{new}})\) into
+    \(T_{\mathrm{act}}\), set its parent to \(C^{\mathrm{par}}\), and update
+    \(g(C^{\mathrm{new}})=g(C^{\mathrm{par}})+d(C^{\mathrm{par}},C^{\mathrm{new}})
+      +\alpha_{\mathrm{def}}E_{\mathrm{def}}(C^{\mathrm{new}},C^{\mathrm{par}})\).
+  \end{beamercolorbox}
+  \endgroup
 \end{frame}
 
 % =============================================================================
