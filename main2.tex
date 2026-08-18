@@ -163,12 +163,12 @@
 % =============================================================================
 \begin{frame}[t]{Problem formulation}
   \centering
-  \footnotesize
-  One ordered geometric state supports two complementary tasks:
-  \(
-    \bm p=[\bm p_1,\ldots,\bm p_N]^{\mathsf T}\in\R^{2N},
-    \quad \|\bm p_{n+1}-\bm p_n\|\approx l_s.
-  \)
+  % \footnotesize
+  % One ordered geometric state supports two complementary tasks:
+  % \(
+  %   \bm p=[\bm p_1,\ldots,\bm p_N]^{\mathsf T}\in\R^{2N},
+  %   \quad \|\bm p_{n+1}-\bm p_n\|\approx l_s.
+  % \)
 
   \vspace{0.10cm}
   \begin{columns}[T,onlytextwidth]
@@ -262,7 +262,7 @@
     \node[contrib,right=of vfp] (ali) {\textbf{ALI planner (Ch.~3)}\\planning computer};
     \node[contrib,right=of ali,text width=2.55cm] (control)
       {\textbf{Shape control (Ch.~3)}\\Jacobian + bounded solver};
-    \node[plant,right=of control] (robot) {\textbf{Dual-arm DLO}\\physical workspace};
+    \node[plant,right=of control] (robot) {\textbf{workspace} robots and DLO};
 
     \draw[flow] (vfp)-- node[above,font=\scriptsize]{\(\bm p\)} (ali);
     \draw[flow] (ali)-- node[above,font=\scriptsize]{\(\bm p^\kappa\)} (control);
@@ -280,7 +280,7 @@
     \node[io,right=0.35cm of gcr,text width=2.45cm] (path)
       {Refined route\\endpoint trajectories};
     \node[plant,right=0.35cm of path] (validation)
-      {Execution\\robots or MuJoCo};
+      {Robots};
 
     \draw[flow] (input)--(gcr);
     \draw[flow] (gcr)--(path);
@@ -317,7 +317,7 @@
     % \qquad \|\bm p_{n+1}-\bm p_n\|\approx l_s .
   	% \] 
 		\vspace{0.2cm}
-		\textbf{Example of tracking a marker-free cable with VFPs:} \(\bm p\) is reconstructed from one image and tracked over time.
+		\textbf{Example of tracking a marker-free cable with VFPs:}
 
 			\includegraphics[width=\linewidth,height=1.3cm,keepaspectratio]{ex2_1.png} 
 			\includegraphics[width=\linewidth,height=1.3cm,keepaspectratio]{ex2_2.png} 
@@ -741,7 +741,7 @@
         \node[loopstage,below=of alternate] (expand) {\textbf{Expand \(T_{\mathrm{act}}\)}\\
           \scriptsize sample, bias, relax, and validate};
         \node[loopstage,below=of expand] (connect) {\textbf{Try \(T_{\mathrm{opp}}\)}\\
-          \scriptsize accept a bridge only when \(\Gamma=1\)};
+          \scriptsize connect only after the ordered edge test};
         \node[finalstep,below=of connect] (trace) {\textbf{Trace and shortcut}\\
           \scriptsize return the connected start-to-goal path};
         \draw[arr] (init)--(alternate);
@@ -759,248 +759,309 @@
 % =============================================================================
 % 12. One alternating tree expansion
 % =============================================================================
-\begin{frame}[t]{GCR: Tree-expansion step}
+\begin{frame}[t]{GCR: Generate a candidate}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.25\textwidth}
       \centering
       {\scriptsize 1. Raw candidate}\\
-			\vspace{0.06cm}
+      \vspace{0.06cm}
       \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_raw.pdf}\\
-    % \end{column}
-    % \begin{column}{0.32\textwidth}
-      
-		{\scriptsize 2. APF-biased candidate} \\
-			\vspace{0.06cm}
-      
-			\includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_apf.pdf} \\
-    % \end{column}
-    % \begin{column}{0.32\textwidth}
+
+      {\scriptsize 2. APF-biased candidate}\\
+      \vspace{0.06cm}
+      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_apf.pdf}\\
+
       {\scriptsize 3. Relaxed configuration}\\
-			\vspace{0.06cm}
-			
+      \vspace{0.06cm}
       \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_relax.pdf}\\
     \end{column}
-		\begin{column}{0.75\textwidth}
-  \setlength{\jot}{0pt}
-  \setlength{\abovedisplayskip}{0pt}
-  \setlength{\belowdisplayskip}{0pt}
 
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.05cm]{block body}
-    \fontsize{6.5}{7.0}\selectfont
-    \textbf{1. Draw a guided mixture sample.}\par\vspace{0.2ex}
-    \centering
-    \(
-      C^{\mathrm{raw}}\sim
-      \begin{cases}
-        \text{goal-biased sample}\\
-        \text{tree-biased sample}\\
-        \text{broad random sample}
-      \end{cases}
-    \)
-  \end{beamercolorbox}
+    \begin{column}{0.75\textwidth}
+      \setlength{\jot}{0pt}
+      \setlength{\abovedisplayskip}{0pt}
+      \setlength{\belowdisplayskip}{0pt}
 
-  \vspace{0.025cm}
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.15cm]{block body}
-    \fontsize{6.5}{7.0}\selectfont
-    \textbf{2. Apply the opposite-tree APF bias.}\par\vspace{0.5ex}
-    \centering
-    \(
-      C^{\mathrm{target}}\in V_{\mathrm{opp}},\qquad
-      U(C)=U_{\mathrm{att}}(C,C^{\mathrm{target}})+U_{\mathrm{rep}}(C,\mathcal O),
-      \qquad C^b=C^{\mathrm{raw}}-\eta\nabla U(C^{\mathrm{raw}}).
-    \)
-  \end{beamercolorbox}
+      % \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+      %   \fontsize{6.6}{7.1}\selectfont
+      %   \textbf{Purpose of one expansion.}\par\vspace{0.2ex}
+      %   Transform a random full-cable configuration into a statically admissible
+      %   candidate. Only after this candidate exists do we test whether it can be
+      %   connected to an existing tree vertex by a valid swept transition.
+      % \end{beamercolorbox}
 
-  \vspace{0.025cm}
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.15cm]{block body}
-    \fontsize{6.5}{7.0}\selectfont
-    \textbf{3. Solve the constrained elastic relaxation with respect to the nearest reference configuration}\par\vspace{0.2ex}
-    \centering
-    \(
-      \begin{aligned}
-        % C^{\mathrm{ref}}
-        %   &=\arg\min_{C_i\in V_{\mathrm{act}}}d(C_i,C^b),\\[-0.2ex]
-        C^{\mathrm{relax}}
-          &=\arg\min_C\Bigl[\|C-C^b\|^2
-            +\alpha_s\!\sum_{k=1}^{N-1}\!\|v_k(C)-v_k(C^{\mathrm{ref}})\|^2
-            +\alpha_b\!\sum_{k=1}^{N-2}\!\|b_k(C)-b_k(C^{\mathrm{ref}})\|^2\Bigr]\\
-        \text{s.t.}\quad
-          &p_n\in\mathcal W\ (n=1,\ldots,N),\quad
-           \ell_{\min}\leq\|p_{k+1}-p_k\|\leq\ell_{\max}\ (k=1,\ldots,N-1),\quad
-           \operatorname{clearance}(C,\mathcal O)\geq d_{\min}.
-      \end{aligned}
-    \)\par
-		\vspace{0.025cm}
-    \raggedright
-    Reject if \(C^{\mathrm{relax}}=\emptyset\) or \(C^{\mathrm{relax}}\notin\Cfree\).
-  \end{beamercolorbox}
+      \vspace{0.035cm}
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.6}{7.1}\selectfont
+        \textbf{1. Create new sample.}\par\vspace{0.2ex}
+        \centering
+        \(
+          C^{\mathrm{raw}}\sim
+          \begin{cases}
+            \text{goal-biased sample},\\[0.2ex]
+            \text{tree-biased sample},\\[0.2ex]
+            \text{broad random sample}.
+          \end{cases}
+        \)
+      \end{beamercolorbox}
 
-  \vspace{0.025cm}
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
-    \fontsize{6.5}{7.0}\selectfont
-    \textbf{4. Select an ordered feasible parent, insert the node, and update its cost.}\par\vspace{0.2ex}
-    \centering
-    \(
-      \begin{aligned}
-        \mathcal V_{\epsilon}
-          &=\{(C_i,\sigma)\mid C_i\in V_{\mathrm{act}},\ \sigma\in\{+1,-1\},\
-               \ d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\},\\[0.5ex]
-        \mathcal V_{\mathrm{par}}
-          &=\{(C_i,\sigma)\in\mathcal V_{\epsilon}\mid
-               \Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\},\qquad
-               \mathcal V_{\mathrm{par}}=\emptyset\Rightarrow\text{reject},\\[0.5ex]
-        (C^{\mathrm{par}},\sigma^\ast)
-          &=\arg\min_{(C_i,\sigma)\in\mathcal V_{\mathrm{par}}}
-            \bigl[g(C_i)+d(C_i,(C^{\mathrm{relax}})^\sigma)
-            +\alpha_{\mathrm{def}}E_{\mathrm{def}}((C^{\mathrm{relax}})^\sigma,C_i)\bigr],
-            \quad \mathcal V_{\mathrm{par}}\neq\emptyset.
-      \end{aligned}
-    \)\par
-    \raggedright
-		\vspace{0.025cm}
-    Set \(C^{\mathrm{new}}=(C^{\mathrm{relax}})^{\sigma^\ast}\); insert
-    \(C^{\mathrm{new}}\) and \((C^{\mathrm{par}},C^{\mathrm{new}})\) into
-    \(T_{\mathrm{act}}\), set its parent to \(C^{\mathrm{par}}\), and update
-    \(g(C^{\mathrm{new}})=g(C^{\mathrm{par}})+d(C^{\mathrm{par}},C^{\mathrm{new}})
-      +\alpha_{\mathrm{def}}E_{\mathrm{def}}(C^{\mathrm{new}},C^{\mathrm{par}})\).
-  \end{beamercolorbox}
-  % \endgroup
-			
-		\end{column}
+      \vspace{0.035cm}
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.6}{7.1}\selectfont
+        \textbf{2. Apply the opposite-tree APF bias.}\par\vspace{0.4ex}
+        \centering
+        \(
+          C^{\mathrm{target}}\in V_{\mathrm{opp}},\qquad
+          U(C)=U_{\mathrm{att}}(C,C^{\mathrm{target}})+U_{\mathrm{rep}}(C,\mathcal O),
+          \qquad
+          C^b=C^{\mathrm{raw}}-\eta\nabla U(C^{\mathrm{raw}}).
+        \)
+        \par\raggedright\vspace{0.2ex}
+        The attractive term pulls the candidate toward the opposite tree; the
+        obstacle term pushes sampled cable points away from occupied regions.
+      \end{beamercolorbox}
+
+      \vspace{0.035cm}
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.6}{7.1}\selectfont
+        \textbf{3. Project the biased sample to a locally feasible cable shape.}\par\vspace{0.2ex}
+        \centering
+        \(
+          \begin{aligned}
+            % C^{\mathrm{ref}}&=\arg\min_{C_i\in V_{\mathrm{act}}} d(C_i,C^b),\\[-0.1ex]
+            C^{\mathrm{relax}}
+              &=\arg\min_C\Bigl[\|C-C^b\|^2
+                +\alpha_s\sum_{k=1}^{N-1}\|v_k(C)-v_k(C^{\mathrm{ref}})\|^2
+                +\alpha_b\sum_{k=1}^{N-2}\|b_k(C)-b_k(C^{\mathrm{ref}})\|^2\Bigr]\\[-0.1ex]
+            \text{s.t.}\quad \\
+              &p_n\in\mathcal W,\quad \\
+              & \ell_{\min}\leq\|p_{k+1}-p_k\|\leq\ell_{\max},\quad \\
+              & \operatorname{clearance}(C,\mathcal O)\geq d_{\min}.
+          \end{aligned}
+        \)
+        \par\raggedright\vspace{0.2ex}
+        Reject if \(C^{\mathrm{relax}}=\emptyset\) or \(C^{\mathrm{relax}}\notin\Cfree\).
+      \end{beamercolorbox}
+
+      % \vspace{0.035cm}
+      % {\fontsize{6.4}{6.9}\selectfont\color{IUDeepBlue}
+      % \textbf{Transition to the next slide:} a relaxed shape is only a candidate
+      % state. The next step asks whether an existing tree vertex can reach it without
+      % sweeping any cable segment through an obstacle or flipping the endpoint order.\par}
+    \end{column}
   \end{columns}
-
-  \vspace{0.01cm}
-  
 \end{frame}
 
-\begin{frame}
-	[t]{GCR: Tree-expansion step}
+\begin{frame}[t]{GCR: Validate the edge and insert}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.25\textwidth}
-			
+    \begin{column}{0.31\textwidth}
       \centering
-      {\scriptsize Accepted: swept regions are free}\\
-			\vspace{0.06cm}
-      \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{transition_free.pdf} 
-        
-    % \end{column}
-    % \begin{column}{0.32\textwidth}
-      
-		{\scriptsize Rejected: one swept region collides} \\
-			\vspace{0.06cm}
-      
-			\includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{transition_blocked.pdf}\\
-    % \end{column}
-    % \begin{column}{0.32\textwidth}
-      % {\scriptsize 3. Relaxed configuration}\\
-			% \vspace{0.06cm}
-			
-      % \includegraphics[width=\linewidth,height=1.9cm,keepaspectratio]{gcr_relax.pdf}\\
-    \end{column}
-		\begin{column}{0.75\textwidth}
-  \setlength{\jot}{0pt}
-  \setlength{\abovedisplayskip}{0pt}
-  \setlength{\belowdisplayskip}{0pt}
-  \begin{beamercolorbox}[wd=\textwidth,sep=0.035cm]{block body}
-    \fontsize{6.5}{7.0}\selectfont
-    \textbf{4. Select an ordered feasible parent, insert the node, and update its cost.}\par\vspace{0.2ex}
-    \centering
-    \(
-      \begin{aligned}
-        \mathcal V_{\epsilon}
-          &=\{(C_i,\sigma)\mid C_i\in V_{\mathrm{act}},\ \sigma\in\{+1,-1\},\
-               \ d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\},\\[0.5ex]
-        \mathcal V_{\mathrm{par}}
-          &=\{(C_i,\sigma)\in\mathcal V_{\epsilon}\mid
-               \Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\},\qquad
-               \mathcal V_{\mathrm{par}}=\emptyset\Rightarrow\text{reject},\\[0.5ex]
-        (C^{\mathrm{par}},\sigma^\ast)
-          &=\arg\min_{(C_i,\sigma)\in\mathcal V_{\mathrm{par}}}
-            \bigl[g(C_i)+d(C_i,(C^{\mathrm{relax}})^\sigma)
-            +\alpha_{\mathrm{def}}E_{\mathrm{def}}((C^{\mathrm{relax}})^\sigma,C_i)\bigr],
-            \quad \mathcal V_{\mathrm{par}}\neq\emptyset.
-      \end{aligned}
-    \)\par
-    \raggedright
-		\vspace{0.025cm}
-    Set \(C^{\mathrm{new}}=(C^{\mathrm{relax}})^{\sigma^\ast}\); insert
-    \(C^{\mathrm{new}}\) and \((C^{\mathrm{par}},C^{\mathrm{new}})\) into
-    \(T_{\mathrm{act}}\), set its parent to \(C^{\mathrm{par}}\), and update
-    \(g(C^{\mathrm{new}})=g(C^{\mathrm{par}})+d(C^{\mathrm{par}},C^{\mathrm{new}})
-      +\alpha_{\mathrm{def}}E_{\mathrm{def}}(C^{\mathrm{new}},C^{\mathrm{par}})\).
-  \end{beamercolorbox}
-  % \endgroup
-			
-		\end{column}
-  \end{columns}
+      {\scriptsize Accepted: all swept regions are free}\\
+      \vspace{0.06cm}
+      \includegraphics[width=\linewidth,height=2.05cm,keepaspectratio]{transition_free.pdf}\\[0.16cm]
 
-  \vspace{0.01cm}
+      {\scriptsize Rejected: one swept region collides}\\
+      \vspace{0.06cm}
+      \includegraphics[width=\linewidth,height=2.05cm,keepaspectratio]{transition_blocked.pdf}\\[0.12cm]
+
+      \begin{beamercolorbox}[wd=\linewidth,sep=0.07cm]{block body}
+        \fontsize{6.1}{6.6}\selectfont
+        \textbf{Swept segment}\vspace{-0.5ex}
+        \[
+          \mathcal S_k(C^a,C^b)=
+          \operatorname{conv}\{p_k^a,p_{k+1}^a,p_{k+1}^b,p_k^b\}.
+        \]
+      \end{beamercolorbox}
+    \end{column}
+
+    \begin{column}{0.67\textwidth}
+      \setlength{\jot}{0pt}
+      \setlength{\abovedisplayskip}{1pt}
+      \setlength{\belowdisplayskip}{1pt}
+
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.4}{6.9}\selectfont
+        \textbf{Ordered edge-feasibility predicate.}\par\vspace{0.2ex}
+        \centering
+        \(
+          \begin{aligned}
+          \Gamma(C^a,C^b)={}&
+          \operatorname{PathFree}(C^a,C^b)\land
+          \operatorname{AxisConsistent}(C^a,C^b)\\[0.2ex]
+          &\land\operatorname{EndpointFeasible}(C^a,C^b).
+          \end{aligned}
+        \)
+        \par\raggedright\vspace{0.2ex}
+        % \begin{tabularx}{\linewidth}{@{c}p{0.29\linewidth}X@{}}
+          \textbf{PathFree:} every swept polygon is obstacle-free: \(\mathcal S_k(C^a,C^b)\cap\mathcal O=\emptyset\), \(k=1,\ldots,N-1\) \qquad \\[0.2ex]
+          \textbf{AxisConsistent}  the ordered endpoint axis does not flip:
+          \(u(C)=\frac{p_N-p_1}{\|p_N-p_1\|}\),
+          \(u(C^a)^\mathsf T u(C^b)\ge\cos\theta_{\max}\).\\[0.2ex]
+          \textbf{EndpointFeasible}  robot/task endpoint constraints are satisfied.
+        % \end{tabularx}
+      \end{beamercolorbox}
+
+      \vspace{0.035cm}
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.4}{6.9}\selectfont
+        \textbf{4. Find ordered feasible parents for the relaxed candidate.}\par\vspace{0.2ex}
+        \centering
+        \(
+          \begin{aligned}
+            \mathcal V_{\epsilon}
+              &=\{(C_i,\sigma)\mid C_i\in V_{\mathrm{act}},\ \sigma\in\{+1,-1\},\ d(C_i,(C^{\mathrm{relax}})^\sigma)\leq\epsilon\},\\[0.35ex]
+            \mathcal V_{\mathrm{par}}
+              &=\{(C_i,\sigma)\in\mathcal V_{\epsilon}\mid
+                   \Gamma(C_i,(C^{\mathrm{relax}})^\sigma)=1\}.
+          \end{aligned}
+        \)
+        \par\raggedright\vspace{0.2ex}
+        The reversal \(\sigma\in\{+1,-1\}\) tests both possible point orderings,
+        but \(\Gamma\) keeps only transitions that preserve a valid ordered correspondence.
+      \end{beamercolorbox}
+
+      \vspace{0.035cm}
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.4}{6.9}\selectfont
+        \textbf{5. Insert the feasible edge}\par\vspace{0.2ex}
+        \centering
+        \(
+          \begin{aligned}
+            \mathcal V_{\mathrm{par}}=\emptyset&\Rightarrow\text{reject},\\[0.1ex]
+            (C^{\mathrm{par}},\sigma^*)
+              &=\arg\min_{(C_i,\sigma)\in\mathcal V_{\mathrm{par}}}
+                \bigl[g(C_i)+d(C_i,(C^{\mathrm{relax}})^\sigma)
+                +\alpha_{\mathrm{def}}E_{\mathrm{def}}((C^{\mathrm{relax}})^\sigma,C_i)\bigr],\\[0.1ex]
+            C^{\mathrm{new}}&=(C^{\mathrm{relax}})^{\sigma^*}
+          \end{aligned}
+        \)
+        \par\raggedright\vspace{0.2ex}
+        Insert \(C^{\mathrm{new}}\) and \((C^{\mathrm{par}},C^{\mathrm{new}})\) into
+        \(T_{\mathrm{act}}\); update the parent pointer and
+        \(g(C^{\mathrm{new}})=g(C^{\mathrm{par}})+d(C^{\mathrm{par}},C^{\mathrm{new}})
+        +\alpha_{\mathrm{def}}E_{\mathrm{def}}(C^{\mathrm{new}},C^{\mathrm{par}})\).
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 % =============================================================================
 % 13. Validate and connect the two trees
 % =============================================================================
-\begin{frame}[t]{GCR: Validate, connect, refine}
+\begin{frame}[t]{GCR: Connect the trees and refine the path}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.62\textwidth}
+    \begin{column}{0.40\textwidth}
       \centering
-      {\footnotesize\color{IUDeepBlue}\textbf{Swept-transition test}\par}
-      \vspace{0.04cm}
-      \setlength{\tabcolsep}{2pt}
-      \begin{tabular}{@{}cc@{}}
-        \includegraphics[width=0.47\linewidth,height=3.00cm,keepaspectratio]{transition_free.pdf} &
-        \includegraphics[width=0.47\linewidth,height=3.00cm,keepaspectratio]{transition_blocked.pdf}\\[-0.22ex]
-        \scriptsize Accepted: swept regions are free &
-        \scriptsize Rejected: one swept region collides
-      \end{tabular}
-
-      \vspace{0.10cm}
-      \footnotesize
-      \[
-        \mathcal S_k(C^a,C^b)=\operatorname{conv}
-        \{p_k^a,p_{k+1}^a,p_{k+1}^b,p_k^b\},\qquad
-        \mathcal S_k\cap\mathcal O=\emptyset\ \ \forall k.
-      \]
-      \[
-        u(C)=\frac{p_N-p_1}{\|p_N-p_1\|},\qquad
-        u(C^a)^{\mathsf T}u(C^b)\geq\cos\theta_{\max}.
-      \]
+      {\footnotesize\color{IUDeepBlue}\textbf{Accepted connection between the two search trees}\par}
+      \vspace{0.02cm}
+      \begin{tikzpicture}[
+        x=0.64cm,y=0.72cm,
+        sedge/.style={draw=IUBlue,line width=0.8pt},
+        gedge/.style={draw=MidGray,line width=0.8pt},
+        sv/.style={circle,draw=IUBlue,fill=white,line width=0.65pt,
+          minimum size=3.8pt,inner sep=0pt},
+        gv/.style={circle,draw=MidGray,fill=white,line width=0.65pt,
+          minimum size=3.8pt,inner sep=0pt},
+        bridge/.style={-{Latex[length=1.8mm]},draw=IUDeepBlue,line width=1.15pt}]
+        \path
+          coordinate (s0) at (0,-1.05) coordinate (s1) at (.92,-.72)
+          coordinate (s2a) at (1.66,.08) coordinate (s2b) at (1.86,-.58)
+          coordinate (s2c) at (1.56,-1.30)
+          coordinate (s3a) at (2.56,.48) coordinate (s3b) at (2.76,-.03)
+          coordinate (cnew) at (3.45,.20) coordinate (s3c) at (2.82,-.65)
+          coordinate (s3d) at (2.10,-1.45)
+          coordinate (g0) at (8,1.10) coordinate (g1) at (7.04,.78)
+          coordinate (g2a) at (6.50,1.38) coordinate (g2b) at (6.47,.70)
+          coordinate (g2c) at (6.74,.05)
+          coordinate (g3a) at (5.76,1.55) coordinate (g3b) at (5.54,1.20)
+          coordinate (cconn) at (4.55,.42) coordinate (g3c) at (5.30,.25)
+          coordinate (g3d) at (5.88,-.55) coordinate (g4a) at (5.04,-.55);
+        \foreach \a/\b in {s0/s1,s1/s2a,s1/s2b,s1/s2c,
+          s2a/s3a,s2a/s3b,s2b/cnew,s2b/s3c,s2c/s3d}
+          \draw[sedge] (\a)--(\b);
+        \foreach \a/\b in {g0/g1,g1/g2a,g1/g2b,g1/g2c,
+          g2a/g3a,g2a/g3b,g2b/cconn,g2b/g3c,g2c/g3d,g3d/g4a}
+          \draw[gedge] (\a)--(\b);
+        \draw[bridge] (cnew)--node[above=1pt,font=\scriptsize,
+          text=IUDeepBlue]{\(\Gamma=1\)} (cconn);
+        \foreach \v in {s0,s1,s2a,s2b,s2c,s3a,s3b,cnew,s3c,s3d}
+          \node[sv] at (\v) {};
+        \foreach \v in {g0,g1,g2a,g2b,g2c,g3a,g3b,cconn,g3c,g3d,g4a}
+          \node[gv] at (\v) {};
+        \node[sv,fill=IUBlue,minimum size=5.2pt] at (s0) {};
+        \node[gv,fill=IUDeepBlue,draw=IUDeepBlue,minimum size=5.2pt] at (g0) {};
+        \node[sv,fill=IUBlue,minimum size=5.2pt] at (cnew) {};
+        \node[gv,fill=IUDeepBlue,draw=IUDeepBlue,minimum size=5.2pt] at (cconn) {};
+        \node[font=\scriptsize\bfseries,text=IUDeepBlue] at (1.22,.50) {\(T_s\)};
+        \node[font=\scriptsize\bfseries,text=IUDeepBlue] at (6.78,-.42) {\(T_g\)};
+        \node[font=\scriptsize,anchor=north] at (0,-1.25) {\(C_{\mathrm{start}}\)};
+        \node[font=\scriptsize,anchor=south] at (8,1.30) {\(C_{\mathrm{goal}}\)};
+        \node[font=\scriptsize,anchor=north east] at ($(cnew)+(.75,-.15)$)
+          {\(C^{\mathrm{new}}\)};
+        \node[font=\scriptsize,anchor=south west] at ($(cconn)+(-.20,.1)$)
+          {\(C^{\mathrm{connect}}\)};
+      \end{tikzpicture}
     \end{column}
 
-    \begin{column}{0.36\textwidth}
-      \footnotesize
-			
-      {\color{IUDeepBlue}\textbf{Connection and refinement}\par}
-      \vspace{0.08cm}
-      After inserting \(C^{\mathrm{new}}\):
-      \begin{enumerate}
-        \item find nearby vertices in \(T_{\mathrm{opp}}\);
-        \item orient every candidate from start to goal;
-        \item accept a bridge only if \(\Gamma=1\);
-        \item trace both parent chains and shortcut using the same test.
-      \end{enumerate}
+    \begin{column}{0.58\textwidth}
+      \setlength{\jot}{0pt}
+      \setlength{\abovedisplayskip}{0pt}
+      \setlength{\belowdisplayskip}{0pt}
 
-      \vspace{0.12cm}
-      \begin{beamercolorbox}[wd=\linewidth,sep=0.10cm]{block body}
-        \footnotesize
-        \[
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.4}{6.9}\selectfont
+        \textbf{6. Connect the two trees.}\par\vspace{0.2ex}
+        \centering
+        \(
           \begin{aligned}
-          \Gamma={}&\operatorname{PathFree}\land
-          \operatorname{AxisConsistent}\\
-          &\land\operatorname{EndpointFeasible}.
+            \mathcal V_{\mathrm{conn}}
+              &=\{C_i\in V_{\mathrm{opp}}\mid
+                   d(C_i,C^{\mathrm{new}})\leq\epsilon\},\\[0.2ex]
+            (C_i^a,C_i^b)
+              &=\begin{cases}
+                  (C^{\mathrm{new}},C_i), & T_{\mathrm{act}}=T_s,\\[-0.2ex]
+                  (C_i,C^{\mathrm{new}}), & T_{\mathrm{act}}=T_g,
+                \end{cases}\\[0.2ex]
+            \mathcal V_{\mathrm{feas}}
+              &=\{C_i\in\mathcal V_{\mathrm{conn}}\mid
+                   \Gamma(C_i^a,C_i^b)=1\},\\[0.2ex]
+            C^{\mathrm{connect}}&\in\mathcal V_{\mathrm{feas}},
+              \qquad \mathcal V_{\mathrm{feas}}\neq\emptyset.
           \end{aligned}
-        \]
-        The same predicate validates parent edges, tree bridges, and shortcuts.
+        \)
+        \par\raggedright\vspace{0.2ex}
+        Candidate edges are oriented in final start-to-goal order; a feasible
+        endpoint \(C^{\mathrm{connect}}\) completes the bridge.
+      \end{beamercolorbox}
+
+      \vspace{0.035cm}
+      \begin{beamercolorbox}[wd=\textwidth,sep=0.07cm]{block body}
+        \fontsize{6.4}{6.9}\selectfont
+        \textbf{7. Extract and refine the path.}\par\vspace{0.2ex}
+        Trace the two parent chains and concatenate them in start-to-goal order:
+        \(
+          \mathcal P_{\mathrm{raw}}=\mathcal P_s\oplus\mathcal P_g.
+        \)
+        Replace a subpath \(\{C_i,\ldots,C_j\}\) only if its direct shortcut is
+        feasible and does not increase the cost:
+        \par\centering\vspace{0.2ex}
+        {\fontsize{5.8}{6.4}\selectfont
+        \(
+          \begin{aligned}
+            &\Gamma(C_i,C_j)=1,\\[0.2ex]
+            &d(C_i,C_j)+\alpha_{\mathrm{def}}E_{\mathrm{def}}(C_j,C_i)\\[0.2ex]
+            &\quad\leq\sum_{k=i}^{j-1}\Bigl[
+              d(C_k,C_{k+1})
+              +\alpha_{\mathrm{def}}E_{\mathrm{def}}(C_{k+1},C_k)
+              \Bigr].
+          \end{aligned}
+        \)}
+        \par\raggedright\vspace{0.2ex}
+        {\textbf{Result:}\enspace
+        \(\mathcal P_{\mathrm{raw}}
+        \Rightarrow\mathcal P_{\mathrm{refined}}\).}
       \end{beamercolorbox}
     \end{column}
   \end{columns}
-
-  \vspace{0.10cm}
-  \centering
-  {\footnotesize\color{IUDeepBlue}\textbf{Result:}\enspace
-  \(T_s\leftrightarrow T_g\Rightarrow\mathcal P_{\mathrm{raw}}
-  \Rightarrow\mathcal P_{\mathrm{ref}}\), with
-  \(\Gamma(C_i,C_{i+1})=1\) for every retained edge.\par}
 \end{frame}
 
 % =============================================================================

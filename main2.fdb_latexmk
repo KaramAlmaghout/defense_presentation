@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1786978338.35894 "/home/karam/Desktop/phd/defense_presentation/main2.tex" "main2.pdf" "main2" 1786978341.43394 0
+["pdflatex"] 1787048673.45266 "/home/karam/Desktop/phd/defense_presentation/main2.tex" "main2.pdf" "main2" 1787048676.67509 0
   "../thesis_phd_math/images/Testing-board.jpg" 1785927611.98618 95353 d919d228be808751b1725001ab35adfe ""
   "../thesis_phd_math/images/ch3/CEP_angles.drawio.png" 1785927612.00818 47607 6abf0cf0d45c193591a2a66b04ed40e5 ""
   "../thesis_phd_math/images/ch3/L1.png" 1785927612.00818 19920 5e0746c74f7aa98f054eae5cf7e988d2 ""
@@ -57,7 +57,7 @@
   "../thesis_phd_math/images/ch4/mujoco/scenario_10/end.pdf" 1785927612.03918 92196 6fed58c11cce063fdade91400809dea5 ""
   "../thesis_phd_math/images/ch4/mujoco/scenario_10/start.pdf" 1785927612.04018 94663 3e509997d19f75317f833761fd7c09cc ""
   "../thesis_phd_math/images/threads.png" 1785927612.28918 279723 9e587f77bb7ede138eb046cd222a2a1d ""
-  "/home/karam/Desktop/phd/defense_presentation/main2.tex" 1786978338.22387 71662 8e8e186d4f258fe973e2908cbd3b921c ""
+  "/home/karam/Desktop/phd/defense_presentation/main2.tex" 1787048673.33342 75925 02548a99d1b60e55429c44d8a9616b8d ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc" 1529098226 2457 aaabbccba4df2a7f7371410ee4e075a3 ""
@@ -391,10 +391,10 @@
   "ex2_3.png" 1786969310.31537 240137 aee1cffe1b2b53355d895dccd154ec15 ""
   "ex2_4.png" 1786969310.30937 238070 41ed156fe60739f7c9218bb17e3f3dd6 ""
   "innopolis-university-seeklogo.png" 1786966728.31361 20951 c41591dd549bf1237cce17a7a3bb0c83 ""
-  "main2.aux" 1786978341.31993 5477 491cc292f237c4cbb4883c16d239f0a4 "pdflatex"
-  "main2.nav" 1786978341.32093 3722 ee409c03ae7471aa4519e71bf7a2625d "pdflatex"
-  "main2.out" 1786978341.32093 81 5bcea9cf7d2d9aece7cac4018e9f6c5b "pdflatex"
-  "main2.tex" 1786978338.22387 71662 8e8e186d4f258fe973e2908cbd3b921c ""
+  "main2.aux" 1787048676.56248 5477 491cc292f237c4cbb4883c16d239f0a4 "pdflatex"
+  "main2.nav" 1787048676.56248 3722 ee409c03ae7471aa4519e71bf7a2625d "pdflatex"
+  "main2.out" 1787048676.56248 81 5bcea9cf7d2d9aece7cac4018e9f6c5b "pdflatex"
+  "main2.tex" 1787048673.33342 75925 02548a99d1b60e55429c44d8a9616b8d ""
   "ppp.png" 1786967918.56949 344367 3ab338e041377e567c59c9cf99c573a6 ""
   "theme.tex" 1786966728.35662 2619 b0cffc5afe3d12ac6b70e7af5a839930 ""
   "vfp_upf.png" 1786968808.25204 1191346 11c7372030607c81a0fdf0740f09accc ""
